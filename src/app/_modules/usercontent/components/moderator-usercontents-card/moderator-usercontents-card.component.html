@@ -1,0 +1,105 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div *ngIf="currentUserContent" class="edit-form">
+          <form>
+       
+            <div class="form-group">
+              <label><strong>Moderator name: </strong></label>
+              {{ currentUserContent.username }}
+            </div>
+
+            <div class="form-group">
+                <label><strong>Total Users: </strong></label>
+                {{ currentUserContent.bitOptimizer }}
+              </div>
+  
+              <div class="form-group">
+                <label><strong>bitOptimizerCoin: </strong></label>
+                {{ currentUserContent.bitOptimizer }}
+              </div>
+    
+              <div class="form-group">
+                <label><strong>bitOptimizerCoin Value: $</strong></label>
+                {{ currentUserContent.bitOptimizerValue }}
+              </div>
+    
+              <div class="form-group">
+                <label><strong>Investment: $</strong></label>
+                {{ currentUserContent.investment }}
+              </div>
+    
+              <div class="form-group">
+                <label><strong>Balance: $</strong></label>
+                {{ currentUserContent.balance }}
+              </div>
+     
+          </form>
+        </div>
+        <div *ngIf="!currentUserContent">
+          <br />
+          <p>Cannot access this Usercontent card...</p>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div *ngIf="currentUserContent" class="edit-form">
+          <form>
+  
+
+            <div class="form-group">
+              <label><strong>Deposit: $</strong></label>
+              {{ currentUserContent.deposit }}
+            </div>
+  
+            <div class="form-group">
+              <label><strong>Withdrawal: $</strong></label>
+              {{ currentUserContent.withdrawal }}
+            </div>
+  
+            <div class="form-group">
+              <label><strong>ReturnFromInvestment: $</strong></label>
+              {{ currentUserContent.returnfrominvestment }}
+            </div>
+  
+            <div class="form-group">
+              <label><strong>InterestFromBalance: $</strong></label>
+              {{ currentUserContent.interestfrombalance }}
+            </div>
+  
+            <div class="form-group">
+              <label><strong>Invested: $</strong></label>
+              {{ currentUserContent.invested }}
+            </div>
+  
+            <div class="form-group">
+              <label><strong>Purchased: $</strong></label>
+              {{ currentUserContent.purchased }}
+            </div>
+  
+            <div class="form-group">
+              <label><strong>Sold: $</strong></label>
+              {{ currentUserContent.sold }}
+            </div>
+
+            <div class="form-group">
+              <label><strong>Earned: $</strong></label>
+              {{ currentUserContent.earned }}
+            </div>
+  
+          </form>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div *ngIf="currentUserContent" class="edit-form">
+          <form>
+    
+            <div class="form-group" *ngIf='currentUserContent.updatedAt'>
+              <label><strong>Updated:</strong></label>
+              {{ currentUserContent.updatedAt }}
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

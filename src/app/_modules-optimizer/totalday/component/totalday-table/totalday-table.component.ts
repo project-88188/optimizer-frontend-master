@@ -1,0 +1,50 @@
+import {  AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { BehaviorSubject, merge, of } from 'rxjs';
+import { startWith, switchMap, catchError, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { TotaldayTableService } from '../../service/totalday-table.service';
+
+//$ npm install --save @angular/material @angular/cdk @angular/animations
+
+
+@Component({
+  selector: 'app-totalday-table',
+  templateUrl: './totalday-table.component.html',
+  styleUrls: ['./totalday-table.component.css']
+})
+export class TotaldayTableComponent implements AfterViewInit {
+
+  displayedColumns: string[] = ['Name'];
+  data: any[] = [];
+  @ViewChild(MatSort) sort!: MatSort;
+  term$ = new BehaviorSubject<string>('');
+  resultsLength = 0;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  constructor(private symbolService:TotaldayTableService) { }
+
+  ngAfterViewInit() {
+    // If the user changes the sort order, reset back to the first page.
+    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+
+    merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page)
+      .pipe(
+        startWith({}),
+        switchMap((searchTerm) => {
+          return this.symbolService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
+            .pipe(catchError(() => of(null)));
+        }),
+        map(data => {
+          if (data === null) {
+            return [];
+          }
+
+          this.resultsLength = data.total_count;
+          return data.items;
+        })
+      ).subscribe(data => this.data = data);
+
+  }
+
+}

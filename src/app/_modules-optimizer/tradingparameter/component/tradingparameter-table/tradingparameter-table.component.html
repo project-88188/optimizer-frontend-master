@@ -1,0 +1,86 @@
+
+<mat-card class="flex">
+    <mat-card-content>
+
+      <div class="table-main-container mat-elevation-z8">
+        <table mat-table [dataSource]="data" matSort matSortActive="created"
+        matSortDisableClear matSortDirection="desc">
+
+        <!-- SymbolName Column -->
+        <ng-container matColumnDef="Expert" sticky>
+            <th mat-header-cell *matHeaderCellDef>EXPERT</th>
+            <td mat-cell *matCellDef="let row">{{row.expert}}</td>
+        </ng-container>
+
+        <!-- SymbolName Column -->
+        <ng-container matColumnDef="Symbol">
+        <th mat-header-cell *matHeaderCellDef>SYMBOL</th>
+        <td mat-cell *matCellDef="let row">{{row.symbol}}</td>
+        </ng-container>
+
+                                            <!-- SymbolName Column -->
+        <ng-container matColumnDef="Period">
+            <th mat-header-cell *matHeaderCellDef>PERIOD</th>
+            <td mat-cell *matCellDef="let row">{{row.period}}</td>
+        </ng-container>
+
+        <!-- SymbolName Column -->
+        <ng-container matColumnDef="DD">
+        <th mat-header-cell *matHeaderCellDef>DRAWDOWN</th>
+        <td mat-cell *matCellDef="let row">{{row.drawDown}}</td>
+    </ng-container>
+
+        <!-- SymbolName Column -->
+        <ng-container matColumnDef="ROI">
+        <th mat-header-cell *matHeaderCellDef>MONTHLY RETURN</th>
+        <td mat-cell *matCellDef="let row">{{row.returnPerMonth}}</td>
+    </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+      </div>
+        
+</mat-card-content>
+  
+<mat-card-footer class="p-3">
+
+    <section>
+        <div class="p-3">
+            <input class="mtext-input text-left" 
+            type="text" placeholder="Search a text" 
+            (input)="term$.next($any($event.target).value)" /> 
+        </div>
+    </section>
+      
+    <section>
+        <div class="p-3">
+          <button mat-icon-button color="accent" (click) ="firstPage()">
+            <img src="../../../../../assets/images/nav/baseline_first_page_black_18dp.png" />
+          </button>
+          <button mat-icon-button color="accent" (click) ="previousPage()" >
+            <img src="../../../../../assets/images/nav/baseline_chevron_left_black_18dp.png" />
+          </button>
+          <input class="m-input text-center" 
+          [(ngModel)]="currentpageindex"
+          (ngModelChange)="inputPageChanged($event)">
+          <button mat-icon-button color="accent" (click)="nextPage()" >
+            <img src="../../../../../assets/images/nav/baseline_chevron_right_black_18dp.png" />
+          </button>
+          <button mat-icon-button color="accent" (click)="lastPage()">
+            <img src="../../../../../assets/images/nav/baseline_last_page_black_18dp.png" />
+          </button>
+          </div>
+      </section>
+    
+    <mat-paginator hidden="true"
+    [length]="resultsLength"
+    [pageSize]="12"
+    [pageSizeOptions]="[5, 10, 30]" 
+    aria-label="Select page">
+    </mat-paginator>
+
+</mat-card-footer>
+
+</mat-card>

@@ -1,0 +1,25 @@
+
+  
+  .mat-card-header{
+    color:cornsilk;
+    background-color:dodgerblue  !important;
+    padding:5px !important;
+  }
+  
+  .mat-card {
+    color:cornsilk;
+    background-color:dodgerblue  !important;
+    padding:5px !important;
+  }
+  
+  .mat-card-content{
+    color:cornsilk;
+    background-color:dodgerblue  !important;
+    padding:5px !important;
+  }
+
+  .mat-card-subtitle {
+    color:cornsilk;
+    background-color:dodgerblue  !important;
+    padding:5px !important;
+  }

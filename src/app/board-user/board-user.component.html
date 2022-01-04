@@ -1,0 +1,110 @@
+<mat-card class="p-3">
+  <mat-card-content>
+    <app-usercontent-card [currentUserContent]="currentUserContent"></app-usercontent-card>
+  </mat-card-content>
+</mat-card>
+<mat-card class="p-3 mt-3">
+  <mat-card-content>
+    <mat-tab-group mat-align-tabs="center">
+
+      <mat-tab label="Deposit">
+        <mat-card class="p-3">
+          <mat-card-content>
+            <div class="main-div">
+              <app-butt-deposit [currentUserContent]="currentUserContent"></app-butt-deposit>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+
+      <mat-tab label="Withdrawal">
+        <mat-card class="p-3">
+          <mat-card-content>
+            <div class="main-div">
+              <app-butt-withdrawal [currentUserContent]="currentUserContent"></app-butt-withdrawal>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+
+      <mat-tab label="Buy bitOptimizer">
+        <mat-card class="p-3">
+          <mat-card-content>
+            <div class="main-div">
+              <app-butt-buy-bitoptimizer [currentUserContent]="currentUserContent"></app-butt-buy-bitoptimizer>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+
+      <mat-tab label="Sell bitOptimizer">
+        <mat-card class="p-3">
+          <mat-card-content>
+            <div class="main-div">
+              <app-butt-sell-bitoptimizer [currentUserContent]="currentUserContent"></app-butt-sell-bitoptimizer>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+
+      <mat-tab label="Buy Investment">
+        <mat-card class="p-3">
+          <mat-card-content>
+            <div class="main-div">
+              <app-butt-buy-investment [currentUserContent]="currentUserContent"></app-butt-buy-investment>
+            </div>
+          </mat-card-content>
+        </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Sell Investment">
+      <mat-card class="p-3">
+        <mat-card-content>
+          <div class="main-div">
+            <app-butt-sell-investment [currentUserContent]="currentUserContent"></app-butt-sell-investment>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+
+    <!--- 
+
+    <mat-tab label="Buy Product">
+      <mat-card class="p-3">
+        <mat-card-content>
+          <div class="main-div">
+            <app-butt-buy-product [currentUserContent]="currentUserContent"></app-butt-buy-product>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+
+    <mat-tab label="Buy Solution">
+      <mat-card class="p-3">
+        <mat-card-content>
+          <div class="main-div">
+            <app-butt-buy-solution [currentUserContent]="currentUserContent"></app-butt-buy-solution>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-tab>
+
+    --->
+
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>
+
+    
+   
+    
+   
+   
+    
+    
+
+   
+   
+   
+
+

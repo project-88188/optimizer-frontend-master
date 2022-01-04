@@ -1,0 +1,313 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search by Item name"
+        [(ngModel)]="itemname"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchItemName()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      [responsive]="true"
+      (pageChange)="handlePageChange($event)"
+    ></pagination-controls>
+  </div>
+
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="
+          let product of models | paginate : {
+                  itemsPerPage: pageSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+        [class.active]="i == currentIndex"
+        (click)="setActiveProduct(product, i)"
+      >
+        {{ product.itemname }}
+      </li>
+    </ul>
+  </div>
+  
+  <div class="col-md-6">
+
+    <div *ngIf="!currentmodel">
+      <br />
+      <p>Please click on a Product...</p>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    Items per Page:
+    <select (change)="handlePageSizeChange($event)">
+      <option *ngFor="let size of pageSizes" [ngValue]="size">
+        {{ size }}
+      </option>
+    </select>
+  </div>
+</div>
+
+<!---TITLE--->
+<div *ngIf="currentmodel.id">
+  <!---INPUT--->
+  <div class="card card-container submit-form">
+  
+    <div class="form-group">
+      <label for="title">Item name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="itemname"
+        [(ngModel)]="currentmodel.itemname"
+        name="itemname"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+      type="text"
+        class="form-control"
+        id="description"
+        [(ngModel)]="currentmodel.description"
+        name="description"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="design">design</label>
+      <input
+      type="text"
+        class="form-control"
+        id="design"
+        [(ngModel)]="currentmodel.design"
+        name="design"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="manufacturer">manufacturer</label>
+      <input
+      type="text"
+        class="form-control"
+        id="manufacturer"
+        [(ngModel)]="currentmodel.manufacturer"
+        name="manufacturer"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="cpu">cpu</label>
+      <input
+      type="text"
+        class="form-control"
+        id="cpu"
+        [(ngModel)]="currentmodel.cpu"
+        name="cpu"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="memory">memory</label>
+      <input
+      type="text"
+        class="form-control"
+        id="memory"
+        [(ngModel)]="currentmodel.memory"
+        name="memory"
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="rom">rom</label>
+      <input
+      type="text"
+        class="form-control"
+        id="rom"
+        [(ngModel)]="currentmodel.rom"
+        name="rom"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="config">config</label>
+      <input
+      type="text"
+        class="form-control"
+        id="config"
+        [(ngModel)]="currentmodel.config"
+        name="config"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="display">display</label>
+      <input
+      type="text"
+        class="form-control"
+        id="display"
+        [(ngModel)]="currentmodel.display"
+        name="display"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="stock">stock</label>
+      <input
+        class="form-control"
+        id="stock"
+        [(ngModel)]="currentmodel.stock"
+        name="stock"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="unitprice">unit price</label>
+      <input
+        class="form-control"
+        id="unitprice"
+        [(ngModel)]="currentmodel.unitprice"
+        name="unitprice"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="discount">discount</label>
+      <input
+        class="form-control"
+        id="discount"
+        [(ngModel)]="currentmodel.discount"
+        name="discount"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="shippingprice">shippingprice</label>
+      <input
+        class="form-control"
+        id="shippingprice"
+        [(ngModel)]="currentmodel.shippingprice"
+        name="shippingprice"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="shippingdetail">shippingdetail</label>
+      <input
+        class="form-control"
+        id="shippingdetail"
+        [(ngModel)]="currentmodel.shippingdetail"
+        name="shippingdetail"
+      />
+    </div>
+    
+    <div class="form-group">
+      <label for="deliverytime">deliverytime</label>
+      <input
+        class="form-control"
+        id="deliverytime"
+        [(ngModel)]="currentmodel.deliverytime"
+        name="deliverytime"
+      />
+    </div>
+
+    <div class="form-group">
+      <label><strong>Status:</strong></label>
+      {{ currentmodel.published ? "Published" : "Pending" }}
+    </div>
+
+    <div class="form-group">
+      <button (click)="saveProduct()" class="btn btn-success">SaveChanged</button>
+      <button (click)="switchPublished()"
+       class="btn btn-success"
+       *ngIf="currentmodel.published"
+       >Hold</button>
+       <button (click)="switchPublished()"
+       class="btn btn-success"
+       *ngIf="!currentmodel.published"
+       >Publish</button>
+    </div>      
+  
+  </div>
+  <!---ENDINPUT--->
+
+  <!---PICTURE--->
+<div class="card card-container submit-form" *ngIf="currentmodel.id">
+  <form>
+
+    <label for="title">Current Picture</label>
+  
+    <div *ngFor='let pi of currentpictureInfos'>
+      <div *ngIf='pi.Url'>
+        <img  [src]="pi.Url" class="profile-img-card">
+        <button (click)="deletePicture(pi.Id)" class="btn btn-success btn-picture-delete">Delete id:{{pi.Id}}</button>
+      </div>
+    </div>
+
+    <label for="title">New Picture(s)</label>
+    
+    <div *ngFor='let preview of previews'>
+      <div *ngIf='preview.Url'>
+        <img  [src]="preview.Url" class="profile-img-card">
+      </div>
+    </div>
+
+    <div *ngFor="let progressInfo of progressInfos" class="mb-2">
+      <span>Upload file: {{ progressInfo.fileName }}</span>
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-info progress-bar-striped"
+          role="progressbar"
+          attr.aria-valuenow="{{ progressInfo.value }}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [ngStyle]="{ width: progressInfo.value + '%' }"
+        >
+          {{ progressInfo.value }}%
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-8">
+        <label class="btn btn-default p-0">
+          <input type="file" accept="image/*" multiple (change)="selectFiles($event)" />
+        </label>
+      </div>
+    </div>
+    
+    <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
+      <ul *ngFor="let msg of message; let i = index">
+        <li>{{ msg }}</li>
+      </ul>
+    </div>
+
+    <div *ngIf="uploadfilesenable">
+      <button (click)="savePicture()" class="btn btn-success">Save for product id:{{currentmodel.id}}</button>
+    </div>
+    
+  </form>
+</div>
+<!---ENDPICTURE--->
+
+</div>
+<!---ENDTITLE--->

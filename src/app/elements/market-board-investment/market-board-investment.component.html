@@ -1,0 +1,33 @@
+
+<mat-card class="p-2">
+  <mat-card-title>
+    <b class="text-center" >INVESTMENT</b>
+  </mat-card-title>
+  <mat-card-content>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>qty</th>
+          <th>sell@$</th>
+          <th>buy@$</th>
+          <th>qty</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sell of sells">
+          <th>{{sell.remainunits}}</th>
+          <th>{{sell.unitprice}}</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let buy of buys">
+          <th></th>
+          <th></th>
+          <th>{{buy.unitprice}}</th>
+          <th>{{buy.remainunits}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>
+

@@ -1,0 +1,69 @@
+
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark sticky-top">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="#">bitOptimizer</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav me-auto">
+
+            <li class="nav-item">
+              <a href="/home" class="nav-link" routerLink="home">Home</a>
+            </li>
+
+            <div *ngIf="showAdminBoard">
+              <li class="nav-item">
+                <a href="/admin" class="nav-link" routerLink="admin">Admin</a>
+              </li>
+            </div>
+
+            <div *ngIf="showModeratorBoard">
+              <li class="nav-item">
+                <a href="/mod" class="nav-link" routerLink="mod">Moderator</a>
+              </li>
+            </div>
+
+            <div *ngIf="isLoggedIn">
+              <li class="nav-item">
+                <a href="/user" class="nav-link"  routerLink="user">MyAccount</a>
+              </li>
+            </div>
+
+          </ul>
+
+          <div *ngIf="!isLoggedIn">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a href="/register" class="nav-link" routerLink="register" > Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a href="/login" class="nav-link" routerLink="login"> Login  </a>
+              </li>
+            </ul>
+          </div>
+
+          <div *ngIf="isLoggedIn">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a href="/profile" class="nav-link" routerLink="profile" > {{username}}  </a>
+              </li>
+              <li class="nav-item">
+                <a href class="nav-link" (click)="logout()" > Logout </a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
