@@ -84,8 +84,6 @@ export class RegisterComponent implements OnInit {
 
     const { username, email, password, supervisorname } = this.form;
     
-    console.log(this.form);
-
     this.authService.register(username, email, password, supervisorname).subscribe(
       data => {
        
@@ -94,6 +92,8 @@ export class RegisterComponent implements OnInit {
   
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+
+        console.log(data);
         this.reloadUser();
 
       },
@@ -102,6 +102,8 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = err.error.message;
         this.isSignUpFailed = true;
         this.isSuccessful = false;
+
+        console.log(this.errorMessage);
         this.reloadSignUp();
 
       }
@@ -111,7 +113,7 @@ export class RegisterComponent implements OnInit {
   reloadSignUp(): void {
     setTimeout(() => {
       window.location.reload();
-    }, 20000);
+    }, 10000);
   };
 
   reloadUser(): void {
@@ -120,6 +122,6 @@ export class RegisterComponent implements OnInit {
       .then(() => {
         window.location.reload();
       });
-    }, 2000);
+    }, 10000);
   };
 }
