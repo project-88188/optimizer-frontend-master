@@ -34,8 +34,8 @@ export class ButtWithdrawalComponent implements OnInit {
     }
 
     this.elementsService.createtransection_withdrawal(data).subscribe(data => {
-        if(data)
-        console.log(data);
+      //  if(data)
+      //  console.log(data);
       });
 
     this.submitted=true;

@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from '../_providers/global-url';
+import { TokenStorageService } from '../_services/token-storage.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
-const ELEMENTS_API = BASE_URL + '/transections/';
+const ELEMENTS_API = BASE_URL + '/server/transections/';
 
 @Injectable({
   providedIn: 'root'
@@ -16,45 +13,142 @@ const ELEMENTS_API = BASE_URL + '/transections/';
 export class ElementsService {
   read:any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private tokenStorege:TokenStorageService) { }
 
   createtransection_deposit(transection:any): Observable<any> {
-  return   this.http.post(ELEMENTS_API + 'deposit',transection,httpOptions);
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', 'application/json')
+      .append('Transection-Type',['deposit'])
+      
+    };
+
+    console.log(JSON.stringify(httpOptions));
+    console.log(JSON.stringify(httpOptions.headers.get('Transection-Type')));
+    console.log(JSON.stringify(httpOptions.headers.get('x-access-token')));
+    
+    return   this.http.post(ELEMENTS_API,transection,httpOptions);
   }
 
   createtransection_withdrawal(transection:any): Observable<any> {
-   return    this.http.post(ELEMENTS_API + 'withdrawal',transection,httpOptions);
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+      .append('Transection-Type', 'withdrawal')
+    };
+
+    console.log(JSON.stringify(httpOptions));
+    console.log(JSON.stringify(httpOptions.headers.get('x-access-token')));
+    
+   return  this.http.post(ELEMENTS_API,transection,httpOptions);
   }
 
   createtransection_buy_investment(transection:any): Observable<any> {
-    return    this.http.post(ELEMENTS_API + 'buy_investment',transection,httpOptions);
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+      .append('Transection-Type', 'buy_investment')
+      
+    };
+    
+    return    this.http.post(ELEMENTS_API,transection,httpOptions);
    }
 
    createtransection_sell_investment(transection:any): Observable<any> {
-    return    this.http.post(ELEMENTS_API + 'sell_investment',transection,httpOptions);
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+      .append('Transection-Type', 'sell_investment')
+      
+    };
+    
+    return    this.http.post(ELEMENTS_API,transection,httpOptions);
    }
 
    createtransection_buy_bitoptimizer(transection:any): Observable<any> {
-    return    this.http.post(ELEMENTS_API + 'buy_bitoptimizer',transection,httpOptions);
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+      .append('Transection-Type', 'buy_bitoptimizer')
+     
+    };
+    
+    return    this.http.post(ELEMENTS_API,transection,httpOptions);
    }
    
    createtransection_sell_bitoptimizer(transection:any): Observable<any> {
-    return    this.http.post(ELEMENTS_API + 'sell_bitoptimizer',transection,httpOptions);
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+      .append('Transection-Type', 'sell_bitoptimizer')
+    
+    };
+
+    console.log(httpOptions);
+    
+    return    this.http.post(ELEMENTS_API,transection,httpOptions);
    }
    
    get_market_sell_bitoptimizer(): Observable<any> {
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+      
+     
+    };
+    
     return    this.http.get(ELEMENTS_API + 'market_sell_bitoptimizer',httpOptions);
    }
 
    get_market_buy_bitoptimizer(): Observable<any> {
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+      
+    };
+    
     return    this.http.get(ELEMENTS_API + 'market_buy_bitoptimizer',httpOptions);
    }
 
    get_market_sell_investment(): Observable<any> {
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+     
+    };
+    
     return    this.http.get(ELEMENTS_API + 'market_sell_investment',httpOptions);
    }
 
    get_market_buy_investment(): Observable<any> {
+    
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',''+ this.tokenStorege.getToken())
+      .append('Content-Type', 'application/json')
+      
+    };
+    
     return    this.http.get(ELEMENTS_API + 'market_buy_investment',httpOptions);
    }
 

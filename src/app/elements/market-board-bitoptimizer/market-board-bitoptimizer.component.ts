@@ -15,17 +15,17 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.elementsService.get_market_buy_bitoptimizer().subscribe(
-      data=>{
-        this.buys=data as any[];
-        this.buys.sort((a,b) => a.unitprice.localeCompare(b.unitprice));
-      });
-    this.elementsService.get_market_sell_bitoptimizer().subscribe(
-      data=>{
+  //  this.elementsService.get_market_buy_bitoptimizer().subscribe(
+   //   data=>{
+   //     this.buys=data as any[];
+  //      this.buys.sort((a,b) => a.unitprice.localeCompare(b.unitprice));
+  //    });
+  //  this.elementsService.get_market_sell_bitoptimizer().subscribe(
+   //   data=>{
        
-        this.sells=data as any[];
-        this.sells.sort((a,b) => b.unitprice.localeCompare(a.unitprice));
-      });
+   //     this.sells=data as any[];
+    //    this.sells.sort((a,b) => b.unitprice.localeCompare(a.unitprice));
+    //  });
   }
 
 }

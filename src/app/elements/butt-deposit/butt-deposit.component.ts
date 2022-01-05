@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
 
 @Component({
@@ -19,34 +20,35 @@ export class ButtDepositComponent implements OnInit {
   result:any;
   submitted = false;
   successed = false;
-  constructor(private elementsService:ElementsService) { }
+  constructor(private elementsService:ElementsService,
+    private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
    }
 
   onSubmit() {
 
-    const data:any = {
-      username:this.currentUserContent.username,
-      amount:this.form.amount,
-      paymentmethod:"PAYPAL",
-      paymentdetail:this.form.paypalaccount,
-      published:false,
-      status:"created"
+    if(this.tokenStorage.getToken())
+    {
+      const data:any = {
+        username:this.currentUserContent.username,
+        amount:this.form.amount,
+        paymentmethod:"PAYPAL",
+        paymentdetail:this.form.paypalaccount,
+        published:false,
+        status:"created",
+      }
+  
+      this.elementsService.createtransection_deposit(data).subscribe(data => { });
+  
+      this.submitted=true;
+  
+      setTimeout(() => {
+        this.submitted=false;
+        this.successed=true;
+      }, 10000);
+  
     }
 
-    this.elementsService.createtransection_deposit(data).subscribe(data => {
-        if(data)
-        console.log(data);
-      });
-
-    this.submitted=true;
-
-    setTimeout(() => {
-      this.submitted=false;
-      this.successed=true;
-    }, 10000);
-
   }
-
 }

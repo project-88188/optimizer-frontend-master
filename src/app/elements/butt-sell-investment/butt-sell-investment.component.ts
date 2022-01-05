@@ -38,8 +38,8 @@ export class ButtSellInvestmentComponent implements OnInit {
     }
 
     this.elementsService.createtransection_sell_investment(data).subscribe(data =>{
-        if(data)
-        console.log(data);
+       // if(data)
+       // console.log(data);
       });
 
       this.submitted=true;

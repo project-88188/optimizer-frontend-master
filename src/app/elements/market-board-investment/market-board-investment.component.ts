@@ -15,16 +15,16 @@ export class MarketBoardInvestmentComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.elementsService.get_market_buy_investment().subscribe(
-      data=>{
-        this.buys=data as any[];
-        this.buys.sort((a,b) => a.unitprice.localeCompare(b.unitprice));
-      });
-    this.elementsService.get_market_sell_investment().subscribe(
-      data=>{
-        this.sells=data as any[];
-        this.sells.sort((a,b) => b.unitprice.localeCompare(a.unitprice));
-      });
+ //   this.elementsService.get_market_buy_investment().subscribe(
+  //    data=>{
+  //      this.buys=data as any[];
+  //      this.buys.sort((a,b) => a.unitprice.localeCompare(b.unitprice));
+  //    });
+  //  this.elementsService.get_market_sell_investment().subscribe(
+  //    data=>{
+   //     this.sells=data as any[];
+   //     this.sells.sort((a,b) => b.unitprice.localeCompare(a.unitprice));
+   //   });
   }
 
 }

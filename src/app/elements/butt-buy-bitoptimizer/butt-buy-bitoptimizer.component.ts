@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
 
 @Component({
@@ -19,7 +20,8 @@ export class ButtBuyBitoptimizerComponent implements OnInit {
 
   submitted = false;
   successed = false;
-  constructor(  private elementsService:ElementsService ) { }
+  constructor(  private elementsService:ElementsService,
+    private tokenStorege:TokenStorageService ) { }
 
   ngOnInit(): void { }
 
@@ -36,8 +38,8 @@ export class ButtBuyBitoptimizerComponent implements OnInit {
     }
 
     this.elementsService.createtransection_buy_bitoptimizer(data).subscribe(data => {
-        if(data)
-        console.log(data);
+      //  if(data)
+      //  console.log(data);
       }
       );
 

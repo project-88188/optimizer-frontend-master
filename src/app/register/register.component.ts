@@ -93,7 +93,7 @@ export class RegisterComponent implements OnInit {
         this.isSuccessful = true;
         this.isSignUpFailed = false;
 
-        console.log(data);
+        console.log(data.message);
         this.reloadUser();
 
       },
@@ -113,7 +113,7 @@ export class RegisterComponent implements OnInit {
   reloadSignUp(): void {
     setTimeout(() => {
       window.location.reload();
-    }, 10000);
+    }, 5000);
   };
 
   reloadUser(): void {
@@ -122,6 +122,6 @@ export class RegisterComponent implements OnInit {
       .then(() => {
         window.location.reload();
       });
-    }, 10000);
+    }, 5000);
   };
 }
