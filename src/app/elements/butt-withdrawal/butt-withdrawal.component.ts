@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
 
 @Component({
@@ -8,8 +9,8 @@ import { ElementsService } from '../elements.service';
 })
 export class ButtWithdrawalComponent implements OnInit {
   form: any = {
-    amount: null,
-    paypalaccount: null
+    amount: 0,
+    paypalaccount: this.tokenStorage.getUser().email
   };
 
   @Input()
@@ -18,9 +19,12 @@ export class ButtWithdrawalComponent implements OnInit {
 
   submitted = false;
   successed = false;
-  constructor(private elementsService:ElementsService) { }
+  constructor(private elementsService:ElementsService,
+    private tokenStorage:TokenStorageService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+
+  }
 
   onSubmit() {
 

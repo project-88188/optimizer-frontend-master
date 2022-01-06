@@ -20,7 +20,7 @@
       <div  class="form-group">
         <mat-form-field  appearance="fill">
           <mat-label>Deposit in USD amount</mat-label>
-          <input matInput type="text"
+          <input matInput type="number" autocomplete="current-deposit"
             [(ngModel)]="form.amount" 
             required>
         </mat-form-field>
@@ -29,8 +29,7 @@
         <div  class="form-group">
         <mat-form-field  appearance="fill">
           <mat-label>PayPal account</mat-label>
-          <input matInput type="text"
-          placeholder="pat@example.com"
+          <input matInput type="email" autocomplete="email"
           [(ngModel)]="form.paypalaccount"
             required>
         </mat-form-field>

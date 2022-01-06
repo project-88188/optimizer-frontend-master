@@ -10,8 +10,8 @@ import { ElementsService } from '../elements.service';
 export class ButtDepositComponent implements OnInit {
 
   form: any = {
-    amount: 10,
-    paypalaccount: null
+    amount: 0,
+    paypalaccount: this.tokenStorage.getUser().email
   };
 
   @Input()
@@ -24,6 +24,7 @@ export class ButtDepositComponent implements OnInit {
     private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
+
    }
 
   onSubmit() {
