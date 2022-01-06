@@ -13,7 +13,6 @@ import { ButtDepositComponent } from './butt-deposit/butt-deposit.component';
 import { ButtWithdrawalComponent } from './butt-withdrawal/butt-withdrawal.component';
 import { SolutionModule } from '../_modules/solution/solution.module';
 import { ProductModule } from '../_modules/product/product.module';
-import { GreetingTitleComponent } from './greeting-title/greeting-title.component';
 import { MarketBoardInvestmentComponent } from './market-board-investment/market-board-investment.component';
 import { MarketBoardBitoptimizerComponent } from './market-board-bitoptimizer/market-board-bitoptimizer.component';
 import { UploadFilesComponent } from './upload-files/upload-files.component';
@@ -40,7 +39,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ButtSellBitoptimizerComponent,
     ButtDepositComponent,
     ButtWithdrawalComponent,
-    GreetingTitleComponent,
     MarketBoardInvestmentComponent,
     MarketBoardBitoptimizerComponent,
     UploadFilesComponent,
@@ -73,7 +71,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ButtSellBitoptimizerComponent,
     ButtDepositComponent,
     ButtWithdrawalComponent,
-    GreetingTitleComponent,
     UploadFilesComponent,
     UploadImagesComponent,
   ]
