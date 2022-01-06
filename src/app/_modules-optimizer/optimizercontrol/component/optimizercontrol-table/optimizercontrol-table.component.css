@@ -1,4 +1,37 @@
 
+.mat-card-header{
+  color:cornsilk;
+  background-color: rgb(140, 192, 87)   !important;
+  padding:5px !important;
+}
+
+.mat-card {
+  color:cornsilk;
+  background-color: rgb(194, 231, 157)   !important;
+  padding:5px !important;
+}
+
+.mat-card-content {
+  color:cornsilk;
+  background-color: rgb(128, 111, 80)   !important;
+  padding:5px !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  overflow-x: auto
+}
+
+.main-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:black;
+  background-color: rgb(128, 111, 80)   !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
+
 .mat-spinner {
   left: 50%;
   margin-left: -4em;
@@ -80,5 +113,3 @@ th.mat-column-position, td.mat-column-position {
 .mat-table-sticky-border-elem-left {
   border-right: 1px solid #e0e0e0;
 }
-
-

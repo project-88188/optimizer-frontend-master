@@ -26,7 +26,7 @@
         <div  class="form-group">
           <mat-form-field  appearance="fill">
             <mat-label>Price per unit in USD</mat-label>
-            <input matInput type="text"
+            <input matInput type="number"
             [(ngModel)]="form.unitprice" 
               required/>
           </mat-form-field>
@@ -35,7 +35,7 @@
         <div  class="form-group">
           <mat-form-field  appearance="fill">
             <mat-label>Total bitOptimizer in units</mat-label>
-            <input matInput type="text"
+            <input matInput type="number"
             [(ngModel)]="form.totalunits"
               required/>
           </mat-form-field>
@@ -44,7 +44,7 @@
           <div  class="form-group">
           <mat-form-field  appearance="fill">
             <mat-label>Amount in USD</mat-label>
-            <input matInput type="text"
+            <input matInput type="number"
             [(ngModel)]="form.unitprice*form.totalunits" 
             readonly/>
           </mat-form-field>

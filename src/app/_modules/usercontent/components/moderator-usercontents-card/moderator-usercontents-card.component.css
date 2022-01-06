@@ -1,0 +1,12 @@
+.edit-form {
+    max-width: 400px;
+    margin: auto;
+  }
+  .example-form-field {
+    width: 220px;
+  }
+
+  .mat-spinner {
+    left: 50%;
+    margin-left: -4em;
+  }
