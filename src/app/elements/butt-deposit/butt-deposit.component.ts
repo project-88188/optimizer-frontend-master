@@ -39,7 +39,9 @@ export class ButtDepositComponent implements OnInit {
         status:"created",
       }
   
-      this.elementsService.createtransection_deposit(data).subscribe(data => { });
+      this.elementsService.createtransection_deposit(data).subscribe(data => { 
+        console.log(data);
+      });
   
       this.submitted=true;
   

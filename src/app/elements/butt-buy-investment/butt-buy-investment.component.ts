@@ -36,9 +36,8 @@ export class ButtBuyInvestmentComponent implements OnInit {
     }
 
     this.elementsService.createtransection_buy_investment(data).subscribe(data => {
-       // if(data)
-       // console.log(data);
-      });
+      console.log(data);
+    });
 
     this.submitted=true;
 

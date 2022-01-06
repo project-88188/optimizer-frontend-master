@@ -35,12 +35,9 @@ export class ButtSellBitoptimizerComponent implements OnInit {
       unitprice:this.form.unitprice
     }
 
-    this.elementsService.createtransection_sell_bitoptimizer(data).subscribe(data =>
-      {
-        if(data)
-        console.log(data);
-      }
-      );
+    this.elementsService.createtransection_sell_bitoptimizer(data).subscribe(data =>{
+      console.log(data);
+    });
 
     this.submitted=true;
 

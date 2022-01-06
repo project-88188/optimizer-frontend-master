@@ -38,10 +38,8 @@ export class ButtBuyBitoptimizerComponent implements OnInit {
     }
 
     this.elementsService.createtransection_buy_bitoptimizer(data).subscribe(data => {
-      //  if(data)
-      //  console.log(data);
-      }
-      );
+        console.log(data);
+      });
 
     this.submitted=true;
 
