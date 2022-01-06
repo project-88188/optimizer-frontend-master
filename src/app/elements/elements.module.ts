@@ -8,8 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { ButtBuyBitoptimizerComponent } from './butt-buy-bitoptimizer/butt-buy-bitoptimizer.component';
 import { ButtBuyInvestmentComponent } from './butt-buy-investment/butt-buy-investment.component';
 import { ButtSellInvestmentComponent } from './butt-sell-investment/butt-sell-investment.component';
-import { ButtBuyProductComponent } from './butt-buy-product/butt-buy-product.component';
-import { ButtBuySolutionComponent } from './butt-buy-solution/butt-buy-solution.component';
 import { ButtSellBitoptimizerComponent } from './butt-sell-bitoptimizer/butt-sell-bitoptimizer.component';
 import { ButtDepositComponent } from './butt-deposit/butt-deposit.component';
 import { ButtWithdrawalComponent } from './butt-withdrawal/butt-withdrawal.component';
@@ -42,8 +40,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ButtBuyBitoptimizerComponent,
     ButtBuyInvestmentComponent,
     ButtSellInvestmentComponent,
-    ButtBuyProductComponent,
-    ButtBuySolutionComponent,
     ButtSellBitoptimizerComponent,
     ButtDepositComponent,
     ButtWithdrawalComponent,
@@ -80,8 +76,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ButtBuyBitoptimizerComponent,
     ButtBuyInvestmentComponent,
     ButtSellInvestmentComponent,
-    ButtBuyProductComponent,
-    ButtBuySolutionComponent,
     ButtSellBitoptimizerComponent,
     ButtDepositComponent,
     ButtWithdrawalComponent,

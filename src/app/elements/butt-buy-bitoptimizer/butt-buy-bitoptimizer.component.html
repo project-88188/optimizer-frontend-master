@@ -10,64 +10,64 @@
     <h5>::{{currentUserContent.username}}</h5>
   </mat-card-title>
   
-  <mat-card-content>
+    <mat-card-content>
+    
+        <form *ngIf="!submitted"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+        > 
   
-      <form *ngIf="!submitted"
-      name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm"
-      novalidate
-      > 
-
-      <div class="form-group p-2">
-        <p>bitOptimizer units: {{currentUserContent.bitOptimizer}}</p>
-      </div>
-
-      <div  class="form-group">
-        <mat-form-field class="example-form-field" appearance="fill">
-          <mat-label>Price per unit in USD</mat-label>
-          <input matInput type="text"
-          [(ngModel)]="form.unitprice" 
-            required/>
-        </mat-form-field>
-      </div>
-
-      <div  class="form-group">
-        <mat-form-field class="example-form-field" appearance="fill">
-          <mat-label>Total bitOptimizer in units</mat-label>
-          <input matInput type="text"
-          [(ngModel)]="form.totalunits"
-            required/>
-        </mat-form-field>
-      </div>
-
+        <div class="form-group p-2">
+          <p>bitOptimizer units: {{currentUserContent.bitOptimizer}}</p>
+        </div>
+  
         <div  class="form-group">
-        <mat-form-field class="example-form-field" appearance="fill">
-          <mat-label>Amount in USD</mat-label>
-          <input matInput type="text"
-          [(ngModel)]="form.unitprice*form.totalunits" 
-          readonly/>
-        </mat-form-field>
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Price per unit in USD</mat-label>
+            <input matInput type="text"
+            [(ngModel)]="form.unitprice" 
+              required/>
+          </mat-form-field>
         </div>
 
         <div  class="form-group">
-          <button mat-fab color="accent">
-            Submit
-          </button>
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Total bitOptimizer in units</mat-label>
+            <input matInput type="text"
+            [(ngModel)]="form.totalunits"
+              required/>
+          </mat-form-field>
         </div>
-        
-        <div *ngIf="submitted && successed"  class="form-group">
-            <p class="text-center">Buy bitOptimizer completed</p>
-        </div>
-        
-      </form>
+  
+          <div  class="form-group">
+          <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Amount in USD</mat-label>
+            <input matInput type="text"
+            [(ngModel)]="form.unitprice*form.totalunits" 
+            readonly/>
+          </mat-form-field>
+          </div>
+  
+          <div  class="form-group">
+            <button mat-fab color="accent">
+              Submit
+            </button>
+          </div>
           
-      <div *ngIf="submitted">
-        <mat-spinner class="loader"></mat-spinner>
-        <div class="p-2">
-          <p>Buy bitOptimizer {{form.totalunits}} units for {{currentUserContent.username}} amount ${{form.unitprice*form.totalunits}}.</p>
+          <div *ngIf="submitted && successed"  class="form-group">
+              <p class="text-center">Buy bitOptimizer completed</p>
+          </div>
+          
+        </form>
+            
+        <div *ngIf="submitted">
+          <mat-spinner class="loader"></mat-spinner>
+          <div class="p-2">
+            <p>Buy bitOptimizer {{form.totalunits}} units for {{currentUserContent.username}} amount ${{form.unitprice*form.totalunits}}.</p>
+          </div>
         </div>
-      </div>
-
-  </mat-card-content>
+  
+    </mat-card-content>
 </mat-card>
