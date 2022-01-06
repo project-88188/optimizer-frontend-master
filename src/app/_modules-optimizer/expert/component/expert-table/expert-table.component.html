@@ -24,7 +24,7 @@
 
         <section>
             <div class="p-3">
-                <input class="mtext-input text-left" 
+                <input class="m-text-input text-left" 
                 type="text" placeholder="Search a text" 
                 (input)="term$.next($any($event.target).value)" /> 
             </div>
@@ -38,7 +38,7 @@
             <button mat-icon-button color="accent" (click) ="previousPage()" >
               <img src="../../../../../assets/images/nav/baseline_chevron_left_black_18dp.png" />
             </button>
-            <input class="m-input text-center" 
+            <input class="m-page-input text-center" 
             [(ngModel)]="currentpageindex"
             (ngModelChange)="inputPageChanged($event)">
             <button mat-icon-button color="accent" (click)="nextPage()" >

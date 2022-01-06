@@ -1,14 +1,14 @@
 .mat-tab-group {
-  border: 2px solid rgb(248, 240, 248);
-  background-color:rgb(226, 153, 153);
+  border: 2px solid grey;
+  background-color:whitesmoke;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
 }
 
 .mat-tab {
-  border: 2px solid rgb(105, 103, 105);
-  background-color:rgb(228, 169, 169);
+  border: 2px solid grey;
+  background-color:whitesmoke;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
