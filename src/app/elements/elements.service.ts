@@ -28,10 +28,6 @@ export class ElementsService {
       
     };
 
-    console.log(JSON.stringify(httpOptions));
-    console.log(JSON.stringify(httpOptions.headers.get('Transection-Type')));
-    console.log(JSON.stringify(httpOptions.headers.get('x-access-token')));
-    
     return   this.http.post(ELEMENTS_API,transection,httpOptions);
   }
 
@@ -46,9 +42,6 @@ export class ElementsService {
       .append('Transection-Id', '-1')
     };
 
-    console.log(JSON.stringify(httpOptions));
-    console.log(JSON.stringify(httpOptions.headers.get('x-access-token')));
-    
    return  this.http.post(ELEMENTS_API,transection,httpOptions);
   }
 
