@@ -3,6 +3,7 @@
     <app-usercontent-card [currentUserContent]="currentUserContent"></app-usercontent-card>
   </mat-card-content>
 </mat-card>
+
 <mat-card class="p-3 mt-3">
   <mat-card-content>
     <mat-tab-group mat-align-tabs="center">
@@ -48,48 +49,24 @@
       </mat-tab>
 
       <mat-tab label="Buy Investment">
+          <mat-card class="p-3">
+            <mat-card-content>
+              <div class="main-div">
+                <app-butt-buy-investment [currentUserContent]="currentUserContent"></app-butt-buy-investment>
+              </div>
+            </mat-card-content>
+          </mat-card>
+      </mat-tab>
+
+      <mat-tab label="Sell Investment">
         <mat-card class="p-3">
           <mat-card-content>
             <div class="main-div">
-              <app-butt-buy-investment [currentUserContent]="currentUserContent"></app-butt-buy-investment>
+              <app-butt-sell-investment [currentUserContent]="currentUserContent"></app-butt-sell-investment>
             </div>
           </mat-card-content>
         </mat-card>
-    </mat-tab>
-
-    <mat-tab label="Sell Investment">
-      <mat-card class="p-3">
-        <mat-card-content>
-          <div class="main-div">
-            <app-butt-sell-investment [currentUserContent]="currentUserContent"></app-butt-sell-investment>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-tab>
-
-    <!--- 
-
-    <mat-tab label="Buy Product">
-      <mat-card class="p-3">
-        <mat-card-content>
-          <div class="main-div">
-            <app-butt-buy-product [currentUserContent]="currentUserContent"></app-butt-buy-product>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-tab>
-
-    <mat-tab label="Buy Solution">
-      <mat-card class="p-3">
-        <mat-card-content>
-          <div class="main-div">
-            <app-butt-buy-solution [currentUserContent]="currentUserContent"></app-butt-buy-solution>
-          </div>
-        </mat-card-content>
-      </mat-card>
-    </mat-tab>
-
-    --->
+      </mat-tab>
 
     </mat-tab-group>
   </mat-card-content>

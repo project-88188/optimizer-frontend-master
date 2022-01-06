@@ -100,8 +100,6 @@ export class ElementsService {
     
     };
 
-    console.log(httpOptions);
-    
     return    this.http.post(ELEMENTS_API,transection,httpOptions);
    }
    
@@ -112,8 +110,6 @@ export class ElementsService {
       .append('x-access-token',[''+this.tokenStorege.getToken()])
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
-     
-      
      
     };
     
@@ -128,7 +124,6 @@ export class ElementsService {
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
      
-      
     };
     
     return    this.http.get(ELEMENTS_API + 'market_buy_bitoptimizer',httpOptions);
@@ -141,7 +136,6 @@ export class ElementsService {
       .append('x-access-token',[''+this.tokenStorege.getToken()])
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
-     
      
     };
     
@@ -156,11 +150,9 @@ export class ElementsService {
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
     
-      
     };
     
     return    this.http.get(ELEMENTS_API + 'market_buy_investment',httpOptions);
    }
-
 
 }
