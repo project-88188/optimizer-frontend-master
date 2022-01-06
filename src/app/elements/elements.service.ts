@@ -24,8 +24,7 @@ export class ElementsService {
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
       .append('Transection-Type',['deposit'])
-      .append('Transection-Id', '-1')
-      
+     
     };
 
     return   this.http.post(ELEMENTS_API,transection,httpOptions);
@@ -39,7 +38,7 @@ export class ElementsService {
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
       .append('Transection-Type', ['withdrawal'])
-      .append('Transection-Id', '-1')
+    
     };
 
    return  this.http.post(ELEMENTS_API,transection,httpOptions);
@@ -53,7 +52,6 @@ export class ElementsService {
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
       .append('Transection-Type', ['buy_investment'])
-      .append('Transection-Id', '-1')
       
     };
     
@@ -68,7 +66,7 @@ export class ElementsService {
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
       .append('Transection-Type', ['sell_investment'])
-      .append('Transection-Id', '-1')
+    
       
     };
     
@@ -83,7 +81,7 @@ export class ElementsService {
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
       .append('Transection-Type', ['buy_bitoptimizer'])
-      .append('Transection-Id', '-1')
+     
      
     };
     
@@ -98,7 +96,7 @@ export class ElementsService {
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
       .append('Transection-Type', ['sell_bitoptimizer'])
-      .append('Transection-Id', '-1')
+     
     
     };
 
@@ -114,7 +112,7 @@ export class ElementsService {
       .append('x-access-token',[''+this.tokenStorege.getToken()])
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
-      .append('Transection-Id', '-1')
+     
       
      
     };
@@ -129,7 +127,7 @@ export class ElementsService {
       .append('x-access-token',[''+this.tokenStorege.getToken()])
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
-      .append('Transection-Id', '-1')
+     
       
     };
     
@@ -143,7 +141,7 @@ export class ElementsService {
       .append('x-access-token',[''+this.tokenStorege.getToken()])
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
-      .append('Transection-Id', '-1')
+     
      
     };
     
@@ -157,7 +155,7 @@ export class ElementsService {
       .append('x-access-token',[''+this.tokenStorege.getToken()])
       .append('Content-Type', ['application/json'])
       .append('Accept', ['application/json'])
-      .append('Transection-Id', '-1')
+    
       
     };
     
