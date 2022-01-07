@@ -3,12 +3,14 @@
   color:cornsilk;
   background-color: rgb(140, 192, 87)   !important;
   padding:5px !important;
+
 }
 
 .mat-card {
   color:cornsilk;
   background-color: rgb(194, 231, 157)   !important;
   padding:5px !important;
+
 }
 
 .mat-card-content {
@@ -19,6 +21,7 @@
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   overflow-x: auto
+
 }
 
 .main-div {
@@ -30,15 +33,18 @@
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
+
 }
 
 .mat-spinner {
   left: 50%;
   margin-left: -4em;
+
 }
 
 .mat-table {
   width:max-content;
+align-self: center;
 }
 
 .mat-header-cell, .mat-cell {
@@ -55,6 +61,7 @@
 
 .mat-header-row, .mat-row {
 display: table-row;
+
 }
 
 .m-page-input {

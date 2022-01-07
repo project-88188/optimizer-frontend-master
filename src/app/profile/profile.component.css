@@ -1,0 +1,13 @@
+.mat-card {
+    color:cornsilk;
+    background-color: goldenrod   !important;
+    padding:5px !important;
+  }
+  .mat-card-content {
+    color:cornsilk;
+    background-color: darkslategray   !important;
+    padding:5px !important;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+  }

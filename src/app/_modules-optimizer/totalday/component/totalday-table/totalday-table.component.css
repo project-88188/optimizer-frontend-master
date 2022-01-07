@@ -1,24 +1,27 @@
 
 .mat-card-header{
   color:cornsilk;
-  background-color: burlywood  !important;
+  background-color: rgb(140, 192, 87)   !important;
   padding:5px !important;
+
 }
 
 .mat-card {
   color:cornsilk;
-  background-color: burlywood   !important;
+  background-color: rgb(194, 231, 157)   !important;
   padding:5px !important;
+
 }
 
 .mat-card-content {
   color:cornsilk;
-  background-color: burlywood   !important;
+  background-color: rgb(128, 111, 80)   !important;
   padding:5px !important;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   overflow-x: auto
+
 }
 
 .main-div {
@@ -30,39 +33,38 @@
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
+
 }
 
 .mat-spinner {
   left: 50%;
   margin-left: -4em;
+
 }
 
 .mat-table {
   width:max-content;
+align-self: center;
 }
 
-.mat-cell,
-.mat-header-cell {
-word-wrap: initial;
-display: table-cell;
-padding: 0px 10px;
-line-break: unset;
-width: 100%;
-white-space: nowrap;
-overflow: hidden;
-vertical-align: middle;
+.mat-header-cell, .mat-cell {
+  word-wrap: initial;
+  display: table-cell;
+  padding: 0px 10px;
+  line-break: unset;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+
 }
 
-.mat-row,
-.mat-header-row {
+.mat-header-row, .mat-row {
 display: table-row;
+
 }
 
-.flex {
-  flex-shrink: inherit;
-}
-
-.m-input {
+.m-page-input {
   display: table-cell;
   font-size: 14px;
   width: 80px;
@@ -72,7 +74,7 @@ display: table-row;
   border-color:linen;
 }
 
-.mtext-input {
+.m-text-input {
   display: table-cell;
   font-size: 14px;
   border-width: 2px;
@@ -82,24 +84,11 @@ display: table-row;
 }
 
 .table-main-container {
-  min-height: 100px;
+  min-height: 200px;
   max-width: 100%;
   overflow: auto;
 }
 
-td.mat-column-star {
-  width: 20px;
-  padding-right: 8px;
-}
-
-th.mat-column-position, td.mat-column-position {
-  padding-left: 8px;
-}
-
-.mat-table-sticky-border-elem-right {
-  border-left: 1px solid #e0e0e0;
-}
-
-.mat-table-sticky-border-elem-left {
-  border-right: 1px solid #e0e0e0;
+.flex {
+  flex-shrink: inherit;
 }

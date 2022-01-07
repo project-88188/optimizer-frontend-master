@@ -1,3 +1,17 @@
+.mat-card {
+  color:blue;
+  background-color: goldenrod   !important;
+  padding:5px !important;
+}
+
+.mat-card-content {
+  color:darkslategray;
+  background-color: whitesmoke   !important;
+  padding:5px !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
 
 .mat-form-field {
   width: 95%;
