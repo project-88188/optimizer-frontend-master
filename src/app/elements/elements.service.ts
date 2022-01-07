@@ -11,10 +11,51 @@ const ELEMENTS_API = BASE_URL + '/server/transections/';
 })
 
 export class ElementsService {
-  read:any;
 
   constructor(private http: HttpClient,
     private tokenStorege:TokenStorageService) { }
+
+
+  create_empty(): Observable<any> {
+  
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', ['application/json'])
+      
+    };
+
+    return   this.http.get(ELEMENTS_API,httpOptions);
+  }
+
+
+  update(id:any,transection:any): Observable<any> {
+  
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', ['application/json'])
+     
+    };
+
+   // return this.http.put(`${baseUrl}/${id}`, data);
+    return   this.http.put(`${ELEMENTS_API}${id}`,transection,httpOptions);
+  }
+
+  read(id:any): Observable<any> {
+  
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', ['application/json'])
+     
+    };
+
+    return   this.http.get(`${ELEMENTS_API}${id}`,httpOptions);
+  }
 
   createtransection_deposit(transection:any): Observable<any> {
     
