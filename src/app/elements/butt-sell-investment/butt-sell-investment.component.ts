@@ -56,8 +56,14 @@ export class ButtSellInvestmentComponent implements OnInit {
       setTimeout(() => {
         this.submitted=false;
         this.successed=true;
-      }, 10000);
+        this.reloadPage();
+      }, 2000);
 
   }
 
+  reloadPage(): void {
+    setTimeout(() => {
+        window.location.reload();
+    }, 5000);
+  };
 }
