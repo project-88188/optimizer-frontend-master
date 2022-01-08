@@ -37,9 +37,30 @@ export class ButtWithdrawalComponent implements OnInit {
       status:"created"
     }
 
-    this.elementsService.createtransection_withdrawal(data).subscribe(data => {
-      console.log(data);
+
+    this.elementsService.create_empty().subscribe(value => { 
+
+      console.log(value);
+
+      const data:any = {
+        username:this.currentUserContent.username,
+        amount:this.form.amount,
+        paymentmethod:"PAYPAL",
+        paymentdetail:this.form.paypalaccount,
+        published:false,
+        transectionstatus:"created",
+        transectiontype:"withdrawal"
+      }
+  
+      this.elementsService.update(value.id,data).subscribe(count => { 
+        console.log(count)
+        if(count)
+          this.elementsService.read(value.id).subscribe(data => { 
+            console.log(data);
+          });
+      });
     });
+
 
     this.submitted=true;
 

@@ -30,17 +30,27 @@ export class ButtSellInvestmentComponent implements OnInit {
 
     this.form.amount=this.form.totalunits*this.form.unitprice;
 
-    const data:any = {
-      username:this.currentUserContent.username,
-      amount: this.form.amount,
-      totalunits:this.form.totalunits,
-      unitprice:this.form.unitprice
-    }
+    this.elementsService.create_empty().subscribe(value => { 
 
-    this.elementsService.createtransection_sell_investment(data).subscribe(data =>{
-      console.log(data);
+      console.log(value);
+
+      const data:any = {
+        username:this.currentUserContent.username,
+        amount: this.form.amount,
+        totalunits:this.form.totalunits,
+        unitprice:this.form.unitprice,
+        transectionstatus:"created",
+        transectiontype:"sell_investment"
+      }
+  
+      this.elementsService.update(value.id,data).subscribe(count => { 
+        console.log(count)
+        if(count)
+          this.elementsService.read(value.id).subscribe(data => { 
+            console.log(data);
+          });
+      });
     });
-
       this.submitted=true;
 
       setTimeout(() => {
