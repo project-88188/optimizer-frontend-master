@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { BASE_URL } from 'src/app/_providers/global-url';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
-const CONTENT_API = BASE_URL + '/usercontents/';
+const CONTENT_API = BASE_URL + '/server/contents/';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,7 @@ export class UsercontentService {
     return   this.http.post(`${CONTENT_API}find`,search,httpOptions);
   }
 
-  update(id:any,transection:any): Observable<any> {
+  update(id:any,usercontent:any): Observable<any> {
   
     const httpOptions = {
       headers:  new HttpHeaders()
@@ -51,7 +51,7 @@ export class UsercontentService {
      
     };
 
-    return   this.http.put(`${CONTENT_API}update/${id}`,transection,httpOptions);
+    return   this.http.put(`${CONTENT_API}update/${id}`,usercontent,httpOptions);
   }
   
 }

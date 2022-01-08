@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { BASE_URL } from '../_providers/global-url';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UsercontentService } from '../_modules/usercontent/services/usercontent.service';
-import { Usercontent } from '../_modules/usercontent/models/usercontent.model';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
@@ -27,6 +26,14 @@ export class ElementsService {
       _content.withdrawal=Number.parseFloat(_content.withdrawal)+Number.parseFloat(value.amount);
       userdata.content=JSON.stringify(_content);
       this.tokenStorege.saveUser(userdata);
+      //
+      const  resultcontent ={
+        balance:_content.balance,
+        withdrawal:_content.withdrawal,
+   }
+
+    this.userContent.update(_content.id,resultcontent).subscribe(()=>{});
+    //
 
     })
   }
@@ -40,6 +47,14 @@ export class ElementsService {
       _content.deposit=Number.parseFloat(_content.deposit)+Number.parseFloat(value.amount);
       userdata.content=JSON.stringify(_content);
       this.tokenStorege.saveUser(userdata);
+      //
+      const  resultcontent ={
+        balance:_content.balance,
+        deposit:_content.deposit,
+   }
+   
+   this.userContent.update(_content.id,resultcontent).subscribe(()=>{});
+   //
 
       })
   }
@@ -56,6 +71,15 @@ export class ElementsService {
       _content.investment=Number.parseFloat(_content.investment)+Number.parseFloat(value.totalunits);
       userdata.content=JSON.stringify(_content);
       this.tokenStorege.saveUser(userdata);
+     //
+     const  resultcontent ={
+      balance:_content.balance,
+      invested:_content.invested,
+      investment:_content.investment
+ }
+ 
+ this.userContent.update(_content.id,resultcontent).subscribe(()=>{});
+ //
 
     })
   }
@@ -69,7 +93,15 @@ export class ElementsService {
     _content.sold=Number.parseFloat(_content.sold)+Number.parseFloat(value.amount);
     _content.investment=Number.parseFloat(_content.investment)-Number.parseFloat(value.totalunits);
     userdata.content=JSON.stringify(_content);
-    this.tokenStorege.saveUser(userdata);
+     //
+     const  resultcontent ={
+      balance:_content.balance,
+      sold:_content.sold,
+      investment:_content.investment
+ }
+ 
+ this.userContent.update(_content.id,resultcontent).subscribe(()=>{});
+ //
 
   })
   }
@@ -86,7 +118,15 @@ export class ElementsService {
     _content.purchased=Number.parseFloat(_content.purchased)+Number.parseFloat(value.amount);
     _content.bitoptimizer=Number.parseFloat(_content.bitoptimizer)+Number.parseFloat(value.totalunits);
     userdata.content=JSON.stringify(_content);
-    this.tokenStorege.saveUser(userdata);
+     //
+     const  resultcontent ={
+      balance:_content.balance,
+      purchased:_content.purchased,
+      bitoptimizer:_content.bitoptimizer
+ }
+ 
+ this.userContent.update(_content.id,resultcontent).subscribe(()=>{});
+ //
 
   })
   }
@@ -101,6 +141,15 @@ export class ElementsService {
     _content.bitoptimizer=Number.parseFloat(_content.bitoptimizer)-Number.parseFloat(value.totalunits);
     userdata.content=JSON.stringify(_content);
     this.tokenStorege.saveUser(userdata);
+     //
+     const  resultcontent ={
+      balance:_content.balance,
+      sold:_content.sold,
+      bitoptimizer:_content.bitoptimizer
+ }
+ 
+ this.userContent.update(_content.id,resultcontent).subscribe(()=>{});
+ //
   
   })
   }
