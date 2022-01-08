@@ -14,9 +14,55 @@ export class ElementsService {
 
   constructor(private http: HttpClient,
     private tokenStorege:TokenStorageService) { }
+
+  withdawal(transection:any): any {
+    this.create(transection).subscribe(value => { 
+      console.log(value);
+          return value;
+    })
+  }
+
+  deposit(transection:any): any {
+      this.create(transection).subscribe(value => { 
+        console.log(value);
+        
+            return value;
+      })
+  }
+
+  buy_investment(transection:any): any {
+    
+    this.create(transection).subscribe(value => { 
+      console.log(value);
+          return value;
+    })
+  }
+
+  sell_investment(transection:any): any {
+    
+  this.create(transection).subscribe(value => { 
+    console.log(value);
+        return value;
+  })
+  }
+
+  buy_bitoptimizer(transection:any): any {
+    
+  this.create(transection).subscribe(value => { 
+    console.log(value);
+        return value;
+  })
+  }
+
+  sell_bitoptimizer(transection:any): any {
+    
+  this.create(transection).subscribe(value => { 
+    console.log(value);
+        return value;
+  })
+  }
  
   create_empty(): Observable<any> {
-  
     const httpOptions = {
       headers:  new HttpHeaders()
       .append('x-access-token',[''+this.tokenStorege.getToken()])
@@ -26,6 +72,18 @@ export class ElementsService {
     };
 
     return   this.http.get(ELEMENTS_API+'create',httpOptions);
+  }
+
+  create(transection:any): Observable<any> {
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', ['application/json'])
+      
+    };
+
+    return   this.http.post(ELEMENTS_API+'create',transection,httpOptions);
   }
 
   update(id:any,transection:any): Observable<any> {
@@ -41,7 +99,7 @@ export class ElementsService {
     return   this.http.put(`${ELEMENTS_API}update/${id}`,transection,httpOptions);
   }
 
-  fineByOk(id:any): Observable<any> {
+  fineByPk(id:any): Observable<any> {
   
     const httpOptions = {
       headers:  new HttpHeaders()
@@ -53,6 +111,21 @@ export class ElementsService {
 
     return   this.http.get(`${ELEMENTS_API}find/${id}`,httpOptions);
   }
+
+  delete(id:any): Observable<any> {
+  
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', ['application/json'])
+     
+    };
+
+    return   this.http.get(`${ELEMENTS_API}delete/${id}`,httpOptions);
+  }
+
+
 
    get_market_sell_bitoptimizer(): Observable<any> {
     

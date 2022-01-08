@@ -44,7 +44,7 @@ export class ButtSellBitoptimizerComponent implements OnInit {
       this.elementsService.update(value.id,data).subscribe(count => { 
         console.log(count)
         if(count)
-          this.elementsService.read(value.id).subscribe(data => { 
+          this.elementsService.fineByPk(value.id).subscribe(data => { 
             console.log(data);
           });
       });

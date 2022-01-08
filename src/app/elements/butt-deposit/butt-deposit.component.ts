@@ -32,33 +32,20 @@ export class ButtDepositComponent implements OnInit {
 
     if(this.tokenStorage.getToken())
     {
+      const data = {
+        username:this.currentUserContent.username,
+        amount:this.form.amount,
+        paymentmethod:"PAYPAL",
+        paymentdetail:this.form.paypalaccount,
+        published:false,
+        transectionstatus:"created",
+        transectiontype:"deposit"
+      }
 
+     const result = this.elementsService.deposit(data);
 
-      this.elementsService.create_empty().subscribe(value => { 
+     console.log(result);
 
-        console.log(value);
-
-        const data:any = {
-          username:this.currentUserContent.username,
-          amount:this.form.amount,
-          paymentmethod:"PAYPAL",
-          paymentdetail:this.form.paypalaccount,
-          published:false,
-          transectionstatus:"created",
-          transectiontype:"deposit"
-        }
-    
-        this.elementsService.update(value.id,data).subscribe(count => { 
-          console.log(count)
-          if(count)
-            this.elementsService.read(value.id).subscribe(data => { 
-              console.log(data);
-            });
-        });
-      });
-
-
-  
       this.submitted=true;
   
       setTimeout(() => {
