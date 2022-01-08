@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from '../_providers/global-url';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { UsercontentService } from '../_modules/usercontent/services/usercontent.service';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
@@ -13,10 +14,12 @@ const ELEMENTS_API = BASE_URL + '/server/transections/';
 export class ElementsService {
 
   constructor(private http: HttpClient,
+    private userContent:UsercontentService,
     private tokenStorege:TokenStorageService) { }
 
   withdawal(transection:any): any {
     this.create(transection).subscribe(value => { 
+
       console.log(value);
           return value;
     })
@@ -24,8 +27,10 @@ export class ElementsService {
 
   deposit(transection:any): any {
       this.create(transection).subscribe(value => { 
-        console.log(value);
         
+        this.tokenStorege.getUser()
+        console.log(value);
+
             return value;
       })
   }

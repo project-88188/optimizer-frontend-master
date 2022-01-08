@@ -2,9 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UsercontentRoutingModule } from './usercontent-routing.module';
-import { UsercontentDetailsComponent } from './components/usercontent-details/usercontent-details.component';
-import { UsercontentsListComponent } from './components/usercontents-list/usercontents-list.component';
-import { AddUsercontentComponent } from './components/add-usercontent/add-usercontent.component';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UsercontentCardComponent } from './components/usercontent-card/usercontent-card.component';
@@ -29,9 +26,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
-    UsercontentDetailsComponent,
-    UsercontentsListComponent,
-    AddUsercontentComponent,
     UsercontentCardComponent,
     ModeratorUsercontentsManagerComponent,
     ModeratorUsercontentsCardComponent,
@@ -60,9 +54,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   ]
   ,
   exports:[
-    UsercontentDetailsComponent,
-    UsercontentsListComponent,
-    AddUsercontentComponent,
     UsercontentCardComponent,
     ModeratorUsercontentsManagerComponent,
     ModeratorUsercontentsCardComponent,
