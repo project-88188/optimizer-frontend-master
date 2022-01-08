@@ -67,8 +67,6 @@ export class ElementsService {
     this.create(transection).subscribe(value => { 
       let  userdata=this.tokenStorege.getUser();
       let  _content=JSON.parse(userdata.content);
-      console.log(value);
-      console.log(_content)
       _content.balance=Number.parseFloat(_content.balance)-Number.parseFloat(value.amount);
       _content.invested=Number.parseFloat(_content.invested)+Number.parseFloat(value.amount);
       _content.investment=Number.parseFloat(_content.investment)+Number.parseFloat(value.totalunits);
@@ -116,8 +114,6 @@ export class ElementsService {
   this.create(transection).subscribe(value => { 
     let  userdata=this.tokenStorege.getUser();
     let  _content=JSON.parse(userdata.content);
-    console.log(value);
-    console.log(_content)
     _content.balance=Number.parseFloat(_content.balance)-Number.parseFloat(value.amount);
     _content.purchased=Number.parseFloat(_content.purchased)+Number.parseFloat(value.amount);
     _content.bitoptimizer=Number.parseFloat(_content.bitoptimizer)+Number.parseFloat(value.totalunits);
