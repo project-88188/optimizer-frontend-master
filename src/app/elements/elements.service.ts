@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { BASE_URL } from '../_providers/global-url';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UsercontentService } from '../_modules/usercontent/services/usercontent.service';
+import { Usercontent } from '../_modules/usercontent/models/usercontent.model';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
@@ -17,68 +18,93 @@ export class ElementsService {
     private userContent:UsercontentService,
     private tokenStorege:TokenStorageService) { }
 
-  withdawal(transection:any): any {
+  withdawal(transection:any) {
     this.create(transection).subscribe(value => { 
 
-      console.log(value);
-          return value;
+      let  userdata=this.tokenStorege.getUser();
+      let  _content=JSON.parse(userdata.content);
+      _content.balance=Number.parseFloat(_content.balance)-Number.parseFloat(value.amount);
+      _content.withdrawal=Number.parseFloat(_content.withdrawal)+Number.parseFloat(value.amount);
+      userdata.content=JSON.stringify(_content);
+      this.tokenStorege.saveUser(userdata);
+
     })
   }
 
-  deposit(transection:any): any {
+  deposit(transection:any) {
       this.create(transection).subscribe(value => { 
-        
-        this.tokenStorege.getUser()
-        console.log(value);
 
-            return value;
+      let  userdata=this.tokenStorege.getUser();
+      let  _content=JSON.parse(userdata.content);
+      _content.balance=Number.parseFloat(_content.balance)+Number.parseFloat(value.amount);
+      _content.deposit=Number.parseFloat(_content.deposit)+Number.parseFloat(value.amount);
+      userdata.content=JSON.stringify(_content);
+      this.tokenStorege.saveUser(userdata);
+
       })
   }
 
-  buy_investment(transection:any): any {
-    
+  buy_investment(transection:any) {
+
     this.create(transection).subscribe(value => { 
+      let  userdata=this.tokenStorege.getUser();
+      let  _content=JSON.parse(userdata.content);
       console.log(value);
-          return value;
+      console.log(_content)
+      _content.balance=Number.parseFloat(_content.balance)-Number.parseFloat(value.amount);
+      _content.invested=Number.parseFloat(_content.invested)+Number.parseFloat(value.amount);
+      _content.investment=Number.parseFloat(_content.investment)+Number.parseFloat(value.totalunits);
+      userdata.content=JSON.stringify(_content);
+      this.tokenStorege.saveUser(userdata);
+
     })
   }
 
-  sell_investment(transection:any): any {
-    
+  sell_investment(transection:any) {
+
   this.create(transection).subscribe(value => { 
-    console.log(value);
-        return value;
+    let  userdata=this.tokenStorege.getUser();
+    let  _content=JSON.parse(userdata.content);
+    _content.balance=Number.parseFloat(_content.balance)+Number.parseFloat(value.amount);
+    _content.sold=Number.parseFloat(_content.sold)+Number.parseFloat(value.amount);
+    _content.investment=Number.parseFloat(_content.investment)-Number.parseFloat(value.totalunits);
+    userdata.content=JSON.stringify(_content);
+    this.tokenStorege.saveUser(userdata);
+
   })
   }
 
-  buy_bitoptimizer(transection:any): any {
-    
+  buy_bitoptimizer(transection:any) {
+
+  
   this.create(transection).subscribe(value => { 
+    let  userdata=this.tokenStorege.getUser();
+    let  _content=JSON.parse(userdata.content);
     console.log(value);
-        return value;
+    console.log(_content)
+    _content.balance=Number.parseFloat(_content.balance)-Number.parseFloat(value.amount);
+    _content.purchased=Number.parseFloat(_content.purchased)+Number.parseFloat(value.amount);
+    _content.bitoptimizer=Number.parseFloat(_content.bitoptimizer)+Number.parseFloat(value.totalunits);
+    userdata.content=JSON.stringify(_content);
+    this.tokenStorege.saveUser(userdata);
+
   })
   }
 
-  sell_bitoptimizer(transection:any): any {
+  sell_bitoptimizer(transection:any) {
     
   this.create(transection).subscribe(value => { 
-    console.log(value);
-        return value;
+    let  userdata=this.tokenStorege.getUser();
+    let  _content=JSON.parse(userdata.content);
+    _content.balance=Number.parseFloat(_content.balance)+Number.parseFloat(value.amount);
+    _content.sold=Number.parseFloat(_content.sold)+Number.parseFloat(value.amount);
+    _content.bitoptimizer=Number.parseFloat(_content.bitoptimizer)-Number.parseFloat(value.totalunits);
+    userdata.content=JSON.stringify(_content);
+    this.tokenStorege.saveUser(userdata);
+  
   })
   }
  
-  create_empty(): Observable<any> {
-    const httpOptions = {
-      headers:  new HttpHeaders()
-      .append('x-access-token',[''+this.tokenStorege.getToken()])
-      .append('Content-Type', ['application/json'])
-      .append('Accept', ['application/json'])
-      
-    };
-
-    return   this.http.get(ELEMENTS_API+'create',httpOptions);
-  }
-
   create(transection:any): Observable<any> {
     const httpOptions = {
       headers:  new HttpHeaders()

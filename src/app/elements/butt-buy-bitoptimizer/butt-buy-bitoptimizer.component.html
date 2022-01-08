@@ -20,7 +20,7 @@
       > 
 
     <div class="form-group p-2">
-      <p>bitOptimizer units: {{currentUserContent.bitOptimizer}}</p>
+      <p>bitoptimizer units: {{currentUserContent.bitoptimizer}}</p>
     </div>
 
     <div  class="form-group">
@@ -34,7 +34,7 @@
 
     <div  class="form-group">
       <mat-form-field  appearance="fill">
-        <mat-label>Total bitOptimizer in units</mat-label>
+        <mat-label>Total bitoptimizer in units</mat-label>
         <input matInput type="number"
         [(ngModel)]="form.totalunits"
           required/>
@@ -49,7 +49,7 @@
       </div>
       
       <div *ngIf="submitted && successed"  class="form-group">
-          <p class="text-center">Buy bitOptimizer completed</p>
+          <p class="text-center">Buy bitoptimizer completed</p>
       </div>
       
     </form>
@@ -57,7 +57,7 @@
     <div *ngIf="submitted">
       <mat-spinner class="loader"></mat-spinner>
       <div class="p-2">
-        <p>Buy bitOptimizer {{form.totalunits}} units for {{currentUserContent.username}} amount ${{form.unitprice*form.totalunits}}.</p>
+        <p>Buy bitoptimizer {{form.totalunits}} units for {{currentUserContent.username}} amount ${{form.unitprice*form.totalunits}}.</p>
       </div>
     </div>
 

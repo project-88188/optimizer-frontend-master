@@ -28,28 +28,19 @@ export class ButtBuyInvestmentComponent implements OnInit {
  
     this.form.amount=this.form.totalunits*this.form.unitprice;
 
-    this.elementsService.create_empty().subscribe(value => { 
-
-      console.log(value);
-
       const data:any = {
         username:this.currentUserContent.username,
         amount: this.form.amount,
         totalunits:this.form.totalunits,
         unitprice:this.form.unitprice,
+        published:false,
         transectionstatus:"created",
         transectiontype:"buy_investment"
       }
-  
-      this.elementsService.update(value.id,data).subscribe(count => { 
-        console.log(count)
-        if(count)
-          this.elementsService.fineByPk(value.id).subscribe(data => { 
-            console.log(data);
-          });
-      });
-    });
 
+      const result = this.elementsService.buy_investment(data);
+  
+    
     this.submitted=true;
 
     setTimeout(() => {
@@ -63,7 +54,7 @@ export class ButtBuyInvestmentComponent implements OnInit {
   reloadPage(): void {
     setTimeout(() => {
         window.location.reload();
-    }, 5000);
+    }, 2000);
   };
 
 }

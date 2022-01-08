@@ -34,33 +34,12 @@ export class ButtWithdrawalComponent implements OnInit {
       paymentmethod:"PAYPAL",
       paymentdetail:this.form.paypalaccount,
       published:false,
-      status:"created"
+      status:"created",
+      transectionstatus:"created",
+      transectiontype:"deposit"
     }
 
-
-    this.elementsService.create_empty().subscribe(value => { 
-
-      console.log(value);
-
-      const data:any = {
-        username:this.currentUserContent.username,
-        amount:this.form.amount,
-        paymentmethod:"PAYPAL",
-        paymentdetail:this.form.paypalaccount,
-        published:false,
-        transectionstatus:"created",
-        transectiontype:"withdrawal"
-      }
-  
-      this.elementsService.update(value.id,data).subscribe(count => { 
-        console.log(count)
-        if(count)
-          this.elementsService.fineByPk(value.id).subscribe(data => { 
-            console.log(data);
-          });
-      });
-    });
-
+    const result = this.elementsService.withdawal(data);
 
     this.submitted=true;
 
@@ -75,7 +54,7 @@ export class ButtWithdrawalComponent implements OnInit {
   reloadPage(): void {
     setTimeout(() => {
         window.location.reload();
-    }, 5000);
+    }, 2000);
   };
 
 }

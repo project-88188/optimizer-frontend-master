@@ -44,7 +44,7 @@ export class ButtDepositComponent implements OnInit {
 
      const result = this.elementsService.deposit(data);
 
-     console.log(result);
+    // console.log(JSON.stringify(result));
 
       this.submitted=true;
   
@@ -61,7 +61,7 @@ export class ButtDepositComponent implements OnInit {
   reloadPage(): void {
     setTimeout(() => {
         window.location.reload();
-    }, 5000);
+    }, 2000);
   };
 
 }
