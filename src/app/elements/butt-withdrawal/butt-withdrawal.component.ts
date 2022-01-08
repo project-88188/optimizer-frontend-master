@@ -39,7 +39,7 @@ export class ButtWithdrawalComponent implements OnInit {
       transectiontype:"deposit"
     }
 
-    const result = this.elementsService.withdawal(data);
+    this.elementsService.withdawal(data);
 
     this.submitted=true;
 

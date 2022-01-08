@@ -38,9 +38,8 @@ export class ButtBuyInvestmentComponent implements OnInit {
         transectiontype:"buy_investment"
       }
 
-      const result = this.elementsService.buy_investment(data);
+    this.elementsService.buy_investment(data);
   
-    
     this.submitted=true;
 
     setTimeout(() => {

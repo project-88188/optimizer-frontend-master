@@ -37,7 +37,7 @@ export class ButtSellBitoptimizerComponent implements OnInit {
         transectiontype:"sell_bitoptimizer"
       }
   
-      const result = this.elementsService.sell_bitoptimizer(data);
+    this.elementsService.sell_bitoptimizer(data);
 
     this.submitted=true;
 

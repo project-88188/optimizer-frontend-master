@@ -17,6 +17,9 @@ export class ElementsService {
     private userContent:UsercontentService,
     private tokenStorege:TokenStorageService) { }
 
+
+    //#region BUTTON
+
   withdawal(transection:any) {
     this.create(transection).subscribe(value => { 
 
@@ -93,6 +96,7 @@ export class ElementsService {
     _content.sold=Number.parseFloat(_content.sold)+Number.parseFloat(value.amount);
     _content.investment=Number.parseFloat(_content.investment)-Number.parseFloat(value.totalunits);
     userdata.content=JSON.stringify(_content);
+    this.tokenStorege.saveUser(userdata);
      //
      const  resultcontent ={
       balance:_content.balance,
@@ -118,6 +122,7 @@ export class ElementsService {
     _content.purchased=Number.parseFloat(_content.purchased)+Number.parseFloat(value.amount);
     _content.bitoptimizer=Number.parseFloat(_content.bitoptimizer)+Number.parseFloat(value.totalunits);
     userdata.content=JSON.stringify(_content);
+    this.tokenStorege.saveUser(userdata);
      //
      const  resultcontent ={
       balance:_content.balance,
@@ -153,6 +158,10 @@ export class ElementsService {
   
   })
   }
+
+  //#endregion
+
+  //#region TRANSECTION
  
   create(transection:any): Observable<any> {
     const httpOptions = {
@@ -205,7 +214,10 @@ export class ElementsService {
     return   this.http.get(`${ELEMENTS_API}delete/${id}`,httpOptions);
   }
 
+  //#endregion
 
+
+  //#region MARKET
 
    get_market_sell_bitoptimizer(): Observable<any> {
     
@@ -259,4 +271,5 @@ export class ElementsService {
     return    this.http.get(ELEMENTS_API + 'marketbuy',httpOptions);
    }
 
+//#endregion
 }

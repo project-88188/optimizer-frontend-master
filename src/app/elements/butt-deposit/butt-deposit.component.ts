@@ -42,9 +42,7 @@ export class ButtDepositComponent implements OnInit {
         transectiontype:"deposit"
       }
 
-     const result = this.elementsService.deposit(data);
-
-    // console.log(JSON.stringify(result));
+      this.elementsService.deposit(data);
 
       this.submitted=true;
   

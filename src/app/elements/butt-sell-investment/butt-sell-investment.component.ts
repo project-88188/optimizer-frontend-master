@@ -40,7 +40,7 @@ export class ButtSellInvestmentComponent implements OnInit {
         transectiontype:"sell_investment"
       }
   
-      const result = this.elementsService.sell_investment(data);
+       this.elementsService.sell_investment(data);
 
       this.submitted=true;
 
