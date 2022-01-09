@@ -21,6 +21,7 @@ import { TransectionModule } from './_modules/transection/transection.module';
 import { UsercontentModule } from './_modules/usercontent/usercontent.module';
 import { UsermanagerModule } from './_modules/usermanager/usermanager.module';
 import { ElementsModule } from './elements/elements.module';
+
 import { CurrencyModule } from './_modules-optimizer/currency/currency.module';
 import { DepositModule } from './_modules-optimizer/deposit/deposit.module';
 import { ExpertModule } from './_modules-optimizer/expert/expert.module';
@@ -32,6 +33,7 @@ import { TestercontrolModule } from './_modules-optimizer/testercontrol/testerco
 import { TesterresultModule } from './_modules-optimizer/testerresult/testerresult.module';
 import { TotaldayModule } from './_modules-optimizer/totalday/totalday.module';
 import { TradingparameterModule } from './_modules-optimizer/tradingparameter/tradingparameter.module';
+
 import { TesterprogramModule } from './_modules-optimizer/testerprogram/testerprogram.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -68,6 +70,7 @@ import { MatButtonToggleModule} from '@angular/material/button-toggle';
     UsercontentModule,
     UsermanagerModule,
     ElementsModule,
+
     CurrencyModule,
     DepositModule,
     ExpertModule,
@@ -80,6 +83,7 @@ import { MatButtonToggleModule} from '@angular/material/button-toggle';
     TotaldayModule,
     TradingparameterModule,
     TesterprogramModule,
+    
     BrowserAnimationsModule,
     MatTabsModule,
     MatDividerModule,
