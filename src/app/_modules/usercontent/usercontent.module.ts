@@ -17,7 +17,6 @@ import { MatCommonModule} from '@angular/material/core';
 import { MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule} from '@angular/material/button';
-import { UsercontentDashboardComponent } from './components/usercontent-dashboard/usercontent-dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -30,7 +29,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ModeratorUsercontentsManagerComponent,
     ModeratorUsercontentsCardComponent,
     AdminUsercontentsCardComponent,
-    UsercontentDashboardComponent,
   
   ],
   imports: [
