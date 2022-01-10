@@ -35,12 +35,3 @@
   -webkit-border-radius: 4px;
 }
 
-.main-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(128, 111, 80)   !important;
-  border-radius: 4px;
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-}

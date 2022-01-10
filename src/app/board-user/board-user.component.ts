@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Usercontent } from '../_modules/usercontent/models/usercontent.model';
 import { TokenStorageService } from '../_services/token-storage.service';
 
+
 @Component({
   selector: 'app-board-user',
   templateUrl: './board-user.component.html',
@@ -10,6 +11,8 @@ import { TokenStorageService } from '../_services/token-storage.service';
 })
 
 export class BoardUserComponent implements OnInit {
+
+
   
   currentUserContent:Usercontent={};
   constructor(private tokenStorage:TokenStorageService) { }
@@ -17,6 +20,6 @@ export class BoardUserComponent implements OnInit {
   ngOnInit(): void {
     const read = this.tokenStorage.getUser().content;
     this.currentUserContent=JSON.parse(read);
+   
   }
-  
 }

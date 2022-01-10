@@ -7,6 +7,7 @@ import { ElementsService } from '../elements.service';
   templateUrl: './butt-withdrawal.component.html',
   styleUrls: ['./butt-withdrawal.component.css']
 })
+
 export class ButtWithdrawalComponent implements OnInit {
   form: any = {
     amount: null,

@@ -41,6 +41,7 @@ import { TesterresultModule } from '../_modules-optimizer/testerresult/testerres
 import { TotaldayModule } from '../_modules-optimizer/totalday/totalday.module';
 import { TradingparameterModule } from '../_modules-optimizer/tradingparameter/tradingparameter.module';
 import { TesterprogramModule } from '../_modules-optimizer/testerprogram/testerprogram.module';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 
 @NgModule({
@@ -89,6 +90,8 @@ import { TesterprogramModule } from '../_modules-optimizer/testerprogram/testerp
     TradingparameterModule,
     TesterprogramModule,
 
+    NgxPayPalModule
+
   ],
   exports :[
     FooterComponent,
@@ -102,6 +105,7 @@ import { TesterprogramModule } from '../_modules-optimizer/testerprogram/testerp
     UploadFilesComponent,
     UploadImagesComponent,
     OptimizeronthecloudComponent,
+  
   ]
 
 })

@@ -51,6 +51,7 @@ export class ElementsService {
       userdata.content=JSON.stringify(_content);
       this.tokenStorege.saveUser(userdata);
       //
+      //
       const  resultcontent ={
         balance:_content.balance,
         deposit:_content.deposit,

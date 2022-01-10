@@ -2,6 +2,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
+import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 
 @Component({
   selector: 'app-butt-deposit',
@@ -9,6 +10,10 @@ import { ElementsService } from '../elements.service';
   styleUrls: ['./butt-deposit.component.css']
 })
 export class ButtDepositComponent implements OnInit {
+
+  payPalConfig?: IPayPalConfig;
+
+  showSuccess = false;
 
   form: any = {
     amount: null,
@@ -25,7 +30,7 @@ export class ButtDepositComponent implements OnInit {
     private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
-
+    this.initConfig();
    }
 
   onSubmit() {
@@ -61,5 +66,69 @@ export class ButtDepositComponent implements OnInit {
         window.location.reload();
     }, 2000);
   };
+
+
+  initConfig(): void {
+    this.payPalConfig = {
+    currency: 'EUR',
+    clientId: 'sb',
+    createOrderOnClient: (data) => <ICreateOrderRequest>{
+      intent: 'CAPTURE',
+      purchase_units: [
+        {
+          amount: {
+            currency_code: 'EUR',
+            value: '9.99',
+            breakdown: {
+              item_total: {
+                currency_code: 'EUR',
+                value: '9.99'
+              }
+            }
+          },
+          items: [
+            {
+              name: 'Enterprise Subscription',
+              quantity: '1',
+              category: 'DIGITAL_GOODS',
+              unit_amount: {
+                currency_code: 'EUR',
+                value: '9.99',
+              },
+            }
+          ]
+        }
+      ]
+    },
+    advanced: {
+      commit: 'true'
+    },
+    style: {
+      label: 'paypal',
+      layout: 'vertical'
+    },
+    onApprove: (data, actions) => {
+      console.log('onApprove - transaction was approved, but not authorized', data, actions);
+   //   actions.order.get().then(details => {
+   //     console.log('onApprove - you can get full order details inside onApprove: ', details);
+    //  });
+    },
+    onClientAuthorization: (data) => {
+      console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
+      this.showSuccess = true;
+    },
+    onCancel: (data, actions) => {
+      console.log('OnCancel', data, actions);
+    },
+    onError: err => {
+      console.log('OnError', err);
+    },
+    onClick: (data, actions) => {
+      console.log('onClick', data, actions);
+    },
+  };
+  
+
+}
 
 }
