@@ -1,6 +1,7 @@
 import { Component,OnInit,Input }from '@angular/core'
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
+import { CLIENT_ID,SECRET } from 'src/app/_providers/paypal-config';
 
 
 @Component({
@@ -9,6 +10,8 @@ import { ElementsService } from '../elements.service';
   styleUrls: ['./butt-deposit.component.css']
 })
 export class ButtDepositComponent implements OnInit {
+
+  client_id=CLIENT_ID;
 
   form: any = {
     amount: null,
