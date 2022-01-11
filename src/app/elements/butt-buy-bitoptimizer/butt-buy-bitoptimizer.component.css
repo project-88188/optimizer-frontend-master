@@ -24,7 +24,9 @@
 }
 
 .mat-flat-button {
-  width:92%;
+  background-color: goldenrod   !important;
+  width:100%;
+  max-width:745px;
   height: 55;
   text-justify: auto;
 }
