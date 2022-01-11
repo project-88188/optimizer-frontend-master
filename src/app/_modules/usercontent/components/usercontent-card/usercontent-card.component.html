@@ -62,17 +62,22 @@
     
                     <div class="form-group">
                       <label><strong>bitoptimizer units: </strong></label>
-                      {{ currentUserContent.bitoptimizer }} [${{currentUserContent.bitoptimizer*0.5 }}]
+                      {{ currentUserContent.bitoptimizer -currentUserContent.bitoptimizeronmarket}}/{{currentUserContent.bitoptimizer }} [${{currentUserContent.bitoptimizer*0.5 }}]
                     </div>
           
                     <div class="form-group">
-                      <label><strong>Investment units: </strong></label>
-                      {{ currentUserContent.investment }} [${{currentUserContent.investment*1.05}}]
+                      <label><strong>Investment units: </strong></label> 
+                      {{currentUserContent.investment-currentUserContent.investmentonmarket}}/{{currentUserContent.investment }} [${{currentUserContent.investment*1.05}}]
                     </div>
           
                     <div class="form-group">
-                      <label><strong>Cash balance: $</strong></label>
-                      {{ currentUserContent.balance }}
+                      <label><strong>Cash balance: </strong></label>
+                      ${{ currentUserContent.cashbalance }}
+                    </div>
+
+                    <div class="form-group">
+                      <label><strong>Cash accure: </strong></label>
+                      ${{ currentUserContent.cashaccrue }}
                     </div>
     
                   </div>
@@ -90,28 +95,28 @@
                     <div *ngIf="currentUserContent">
 
                       <div class="form-group">
-                        <label><strong>Deposit: $</strong></label>
-                        {{ currentUserContent.deposit }}
+                        <label><strong>Deposit: </strong></label>
+                        ${{ currentUserContent.deposit }}
                       </div>
             
                       <div class="form-group">
-                        <label><strong>Dividen received: $</strong></label>
-                        {{ currentUserContent.dividenreceived }}
+                        <label><strong>Dividen received: </strong></label>
+                        ${{ currentUserContent.dividenreceived }}
                       </div>
             
                       <div class="form-group">
-                        <label><strong>Interest received: $</strong></label>
-                        {{ currentUserContent.interestreceived }}
+                        <label><strong>Interest received: </strong></label>
+                        ${{ currentUserContent.interestreceived }}
                       </div>
                       
                       <div class="form-group">
-                        <label><strong>Sold: $</strong></label>
-                        {{ currentUserContent.sold }}
+                        <label><strong>Sold: </strong></label>
+                        ${{ currentUserContent.sold }}
                       </div>
             
                       <div class="form-group">
-                        <label><strong>Earned: $</strong></label>
-                        {{ currentUserContent.earned }}
+                        <label><strong>Earned: </strong></label>
+                        ${{ currentUserContent.earned }}
                       </div>
       
                     </div>
@@ -129,18 +134,18 @@
                     <div *ngIf="currentUserContent">
                      
                       <div class="form-group">
-                        <label><strong>Withdrawal: $</strong></label>
-                        {{ currentUserContent.withdrawal }}
+                        <label><strong>Withdrawal: </strong></label>
+                        ${{ currentUserContent.withdrawal }}
                       </div>
             
                       <div class="form-group">
-                        <label><strong>Invested: $</strong></label>
-                        {{ currentUserContent.invested }}
+                        <label><strong>Invested: </strong></label>
+                        ${{ currentUserContent.invested }}
                       </div>
             
                       <div class="form-group">
-                        <label><strong>Purchased: $</strong></label>
-                        {{ currentUserContent.purchased }}
+                        <label><strong>Purchased: </strong></label>
+                        ${{ currentUserContent.purchased }}
                       </div>
             
                     </div>
