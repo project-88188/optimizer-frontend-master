@@ -10,10 +10,6 @@ import { ElementsService } from '../elements.service';
 })
 export class ButtDepositComponent implements OnInit {
 
-  
-
-  showSuccess = false;
-
   form: any = {
     amount: null,
     paypalaccount: this.tokenStorage.getUser().email
