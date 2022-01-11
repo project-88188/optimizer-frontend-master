@@ -25,17 +25,17 @@ export class ElementsService {
 
       let  userdata=this.tokenStorege.getUser();
       let  _content=JSON.parse(userdata.content);
-      _content.balance=Number.parseFloat(_content.balance)-Number.parseFloat(value.amount);
+      _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(value.amount);
       _content.withdrawal=Number.parseFloat(_content.withdrawal)+Number.parseFloat(value.amount);
 
-      if(_content.balance>=0)
+      if(_content.cashbalance>=0)
       {
         userdata.content=JSON.stringify(_content);
         this.tokenStorege.saveUser(userdata);
             
         const  resultcontent ={
-              balance:_content.balance,
-              withdrawal:_content.withdrawal,
+          cashbalance:_content.cashbalance,
+          withdrawal:_content.withdrawal,
           }
 
         this.userContent.update(_content.id,resultcontent).subscribe(()=>{
@@ -54,7 +54,7 @@ export class ElementsService {
 
       let  userdata=this.tokenStorege.getUser();
       let  _content=JSON.parse(userdata.content);
-      _content.balance=Number.parseFloat(_content.balance)+Number.parseFloat(value.amount);
+      _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(value.amount);
       _content.deposit=Number.parseFloat(_content.deposit)+Number.parseFloat(value.amount);
 
       
@@ -63,7 +63,7 @@ export class ElementsService {
       //
       //
       const  resultcontent ={
-        balance:_content.balance,
+        cashbalance:_content.cashbalance,
         deposit:_content.deposit,
       }
       
@@ -79,19 +79,19 @@ export class ElementsService {
     this.create(transection).subscribe(value => { 
       let  userdata=this.tokenStorege.getUser();
       let  _content=JSON.parse(userdata.content);
-      _content.balance=Number.parseFloat(_content.balance)-Number.parseFloat(value.amount);
-      _content.invested=Number.parseFloat(_content.invested)+Number.parseFloat(value.amount);
-      _content.investment=Number.parseFloat(_content.investment)+Number.parseFloat(value.totalunits);
+      _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(value.amount);
+    //  _content.invested=Number.parseFloat(_content.invested)+Number.parseFloat(value.amount);
+      _content.investmentonmarket=Number.parseFloat(_content.investmentonmarket)+Number.parseFloat(value.totalunits);
  
-      if(_content.balance>=0) { 
+      if(_content.cashbalance>=0) { 
 
         userdata.content=JSON.stringify(_content);
         this.tokenStorege.saveUser(userdata);
        //
        const  resultcontent ={
-        balance:_content.balance,
-        invested:_content.invested,
-        investment:_content.investment
+        cashbalance:_content.cashbalance,
+       // invested:_content.invested,
+        investmentonmarket:_content.investmentonmarket
         }
         
         this.userContent.update(_content.id,resultcontent).subscribe(()=>{
@@ -103,8 +103,6 @@ export class ElementsService {
         this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
       }
 
-
-
     })
 }
 
@@ -113,19 +111,19 @@ export class ElementsService {
   this.create(transection).subscribe(value => { 
     let  userdata=this.tokenStorege.getUser();
     let  _content=JSON.parse(userdata.content);
-    _content.balance=Number.parseFloat(_content.balance)+Number.parseFloat(value.amount);
-    _content.sold=Number.parseFloat(_content.sold)+Number.parseFloat(value.amount);
-    _content.investment=Number.parseFloat(_content.investment)-Number.parseFloat(value.totalunits);
+   // _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(value.amount);
+   // _content.sold=Number.parseFloat(_content.sold)+Number.parseFloat(value.amount);
+    _content.investmentonmarket=Number.parseFloat(_content.investmentonmarket)-Number.parseFloat(value.totalunits);
   
-    if(_content.investment>=0) { 
+    if(_content.investmentonmarket>=0) { 
 
       userdata.content=JSON.stringify(_content);
       this.tokenStorege.saveUser(userdata);
        //
        const  resultcontent ={
-        balance:_content.balance,
-        sold:_content.sold,
-        investment:_content.investment
+      //  cashbalance:_content.cashbalance,
+      //  sold:_content.sold,
+        investmentonmarket:_content.investmentonmarket
       }
       
       this.userContent.update(_content.id,resultcontent).subscribe(()=>{
@@ -149,19 +147,19 @@ export class ElementsService {
   this.create(transection).subscribe(value => { 
     let  userdata=this.tokenStorege.getUser();
     let  _content=JSON.parse(userdata.content);
-    _content.balance=Number.parseFloat(_content.balance)-Number.parseFloat(value.amount);
-    _content.purchased=Number.parseFloat(_content.purchased)+Number.parseFloat(value.amount);
-    _content.bitoptimizer=Number.parseFloat(_content.bitoptimizer)+Number.parseFloat(value.totalunits);
+    _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(value.amount);
+   // _content.purchased=Number.parseFloat(_content.purchased)+Number.parseFloat(value.amount);
+    _content.bitoptimizeronmarket=Number.parseFloat(_content.bitoptimizeronmarket)+Number.parseFloat(value.totalunits);
    
-    if(_content.balance>=0) { 
+    if(_content.cashbalance>=0) { 
 
       userdata.content=JSON.stringify(_content);
       this.tokenStorege.saveUser(userdata);
        //
        const  resultcontent ={
-        balance:_content.balance,
-        purchased:_content.purchased,
-        bitoptimizer:_content.bitoptimizer
+        cashbalance:_content.cashbalance,
+      //  purchased:_content.purchased,
+        bitoptimizeronmarket:_content.bitoptimizeronmarket
       }
       
       this.userContent.update(_content.id,resultcontent).subscribe(()=>{
@@ -183,19 +181,19 @@ export class ElementsService {
   this.create(transection).subscribe(value => { 
     let  userdata=this.tokenStorege.getUser();
     let  _content=JSON.parse(userdata.content);
-    _content.balance=Number.parseFloat(_content.balance)+Number.parseFloat(value.amount);
-    _content.sold=Number.parseFloat(_content.sold)+Number.parseFloat(value.amount);
-    _content.bitoptimizer=Number.parseFloat(_content.bitoptimizer)-Number.parseFloat(value.totalunits);
+   // _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(value.amount);
+   // _content.sold=Number.parseFloat(_content.sold)+Number.parseFloat(value.amount);
+    _content.bitoptimizeronmarket=Number.parseFloat(_content.bitoptimizeronmarket)-Number.parseFloat(value.totalunits);
 
-    if( _content.bitoptimizer>=0) { 
+    if( _content.bitoptimizeronmarket>=0) { 
 
       userdata.content=JSON.stringify(_content);
       this.tokenStorege.saveUser(userdata);
        //
        const  resultcontent ={
-        balance:_content.balance,
-        sold:_content.sold,
-        bitoptimizer:_content.bitoptimizer
+      //  cashbalance:_content.cashbalance,
+      //  sold:_content.sold,
+        bitoptimizeronmarket:_content.bitoptimizeronmarket
    }
    
    this.userContent.update(_content.id,resultcontent).subscribe(()=>{
