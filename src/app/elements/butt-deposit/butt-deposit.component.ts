@@ -1,27 +1,17 @@
-
-import { Component, OnInit,Input } from '@angular/core';
+import { Component,OnInit,Input }from '@angular/core'
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
-import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
-import { loadScript } from "@paypal/paypal-js";
-import { CLIENT_ID, SECRET} from "../../_providers/paypal-config"
 
-loadScript({ "client-id": CLIENT_ID })
-.then((paypal) => {
-    // start to use the PayPal JS SDK script
-})
-.catch((err) => {
-    console.error("failed to load the PayPal JS SDK script", err);
-});
 
 @Component({
   selector: 'app-butt-deposit',
   templateUrl: './butt-deposit.component.html',
   styleUrls: ['./butt-deposit.component.css']
 })
+
 export class ButtDepositComponent implements OnInit {
 
-  payPalConfig?: IPayPalConfig;
+  
 
   showSuccess = false;
 
