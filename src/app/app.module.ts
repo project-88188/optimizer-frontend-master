@@ -47,6 +47,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule} from '@angular/material/button';
 import { MatButtonToggleModule} from '@angular/material/button-toggle';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +58,7 @@ import { MatButtonToggleModule} from '@angular/material/button-toggle';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
+  
   ],
   imports: [
     BrowserModule,
@@ -94,6 +96,8 @@ import { MatButtonToggleModule} from '@angular/material/button-toggle';
     MatFormFieldModule,
     MatButtonModule,
     MatButtonToggleModule,
+
+    
 
   ],
   exports:[
