@@ -43,7 +43,7 @@ export class ElementsService {
         });
 
       } else {
-        this.updatestatus(value.id,{transectionstatus:'reject'}).subscribe(()=>{});
+        this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
       }
 
     })
@@ -95,12 +95,12 @@ export class ElementsService {
         }
         
         this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-          this.updatestatus(value.id,{transectionstatus:'processing'}).subscribe(()=>{});
+          this.updatestatus(value.id,{transectionstatus:'marketing'}).subscribe(()=>{});
         });
 
       } else {
 
-        this.updatestatus(value.id,{transectionstatus:'reject'}).subscribe(()=>{});
+        this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
       }
 
 
@@ -129,12 +129,12 @@ export class ElementsService {
       }
       
       this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-        this.updatestatus(value.id,{transectionstatus:'processing'}).subscribe(()=>{});
+        this.updatestatus(value.id,{transectionstatus:'marketing'}).subscribe(()=>{});
       });
 
         } else {
 
-          this.updatestatus(value.id,{transectionstatus:'reject'}).subscribe(()=>{});
+          this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
       }
   
 
@@ -165,12 +165,12 @@ export class ElementsService {
       }
       
       this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-        this.updatestatus(value.id,{transectionstatus:'processing'}).subscribe(()=>{});
+        this.updatestatus(value.id,{transectionstatus:'marketing'}).subscribe(()=>{});
       });
 
          } else {
 
-          this.updatestatus(value.id,{transectionstatus:'reject'}).subscribe(()=>{});
+          this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
       }
  
 
@@ -199,12 +199,12 @@ export class ElementsService {
    }
    
    this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-    this.updatestatus(value.id,{transectionstatus:'processing'}).subscribe(()=>{});
+    this.updatestatus(value.id,{transectionstatus:'marketing'}).subscribe(()=>{});
   });
 
     } else {
 
-      this.updatestatus(value.id,{transectionstatus:'reject'}).subscribe(()=>{});
+      this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
         
     }
 
