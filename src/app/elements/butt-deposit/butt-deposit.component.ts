@@ -2,9 +2,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
-<<<<<<< HEAD
-//import { loadScript } from "@paypal/paypal-js";
-=======
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { loadScript } from "@paypal/paypal-js";
 import { CLIENT_ID, SECRET} from "../../_providers/paypal-config"
@@ -16,7 +13,6 @@ loadScript({ "client-id": CLIENT_ID })
 .catch((err) => {
     console.error("failed to load the PayPal JS SDK script", err);
 });
->>>>>>> 422d2b7580b9de6d60a9ae8e08a5bf94a55973be
 
 @Component({
   selector: 'app-butt-deposit',
@@ -25,7 +21,8 @@ loadScript({ "client-id": CLIENT_ID })
 })
 export class ButtDepositComponent implements OnInit {
 
- 
+  payPalConfig?: IPayPalConfig;
+
   showSuccess = false;
 
   form: any = {
@@ -43,10 +40,7 @@ export class ButtDepositComponent implements OnInit {
     private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-=======
   
->>>>>>> 422d2b7580b9de6d60a9ae8e08a5bf94a55973be
    }
 
   onSubmit() {
@@ -83,8 +77,4 @@ export class ButtDepositComponent implements OnInit {
     }, 2000);
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 422d2b7580b9de6d60a9ae8e08a5bf94a55973be
 }
