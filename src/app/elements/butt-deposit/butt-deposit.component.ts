@@ -8,7 +8,6 @@ import { ElementsService } from '../elements.service';
   templateUrl: './butt-deposit.component.html',
   styleUrls: ['./butt-deposit.component.css']
 })
-
 export class ButtDepositComponent implements OnInit {
 
   
