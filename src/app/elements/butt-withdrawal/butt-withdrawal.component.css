@@ -22,3 +22,9 @@
   left: 50%;
   margin-left: -4em;
 }
+
+.mat-flat-button {
+  width:92%;
+  height: 55;
+  text-justify: auto;
+}
