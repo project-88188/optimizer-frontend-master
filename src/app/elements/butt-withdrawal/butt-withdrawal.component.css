@@ -25,8 +25,8 @@
 
 .mat-flat-button {
   background-color: goldenrod   !important;
+  color:black;
   width:100%;
   max-width:745px;
-  height: 55;
-  text-justify: auto;
+  height: 50;
 }
