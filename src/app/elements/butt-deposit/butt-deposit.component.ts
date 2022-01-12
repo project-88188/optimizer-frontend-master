@@ -80,7 +80,7 @@ export class ButtDepositComponent implements OnChanges {
         onApprove: (data, actions) => {
 
             actions.order.get().then(() => {
-              //  console.log('onApprove - you can get full order details inside onApprove: ');
+               // console.log('onApprove - you can get full order details inside onApproved');
             });
 
         },
@@ -102,7 +102,7 @@ export class ButtDepositComponent implements OnChanges {
 
                 let _new_method:any[] =[];
                 for(let i=0; i <this._paymentmethod.length; i++) {
-                   if(this._paymentmethod[i].detail!=data.payer.email_address) {
+                   if(this._paymentmethod[i].detail!=data.payer.email_address && this._paymentmethod[i].method=='paypal') {
                     _new_method.push({method:'paypal', detail:this._paymentmethod[i].detail});  }
                 }
 

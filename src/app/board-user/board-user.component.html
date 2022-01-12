@@ -7,7 +7,7 @@
 
 <mat-card class="p-3 mt-3">
   <mat-card-content>
-    <mat-tab-group mat-align-tabs="center" #tabGroup (selectedTabChange)="tabChanged($event)">
+    <mat-tab-group mat-align-tabs="center" #tabGroup (selectedTabChange)="tabChanged($event)"  [(selectedIndex)]="currTabIndex">
 
       <mat-tab label="Deposit" >
         <mat-card class="p-3">

@@ -12,7 +12,7 @@ export class AdminUsercontentsCardComponent implements OnInit {
   constructor(private contentStorageService: ContentStorageService) { }
 
   ngOnInit(): void {
-    this.currentUserContent =this.contentStorageService.getContent();
+  
     console.log(JSON.stringify(this.currentUserContent));
   }
 

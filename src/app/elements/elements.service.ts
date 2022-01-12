@@ -6,6 +6,8 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { UsercontentService } from '../_modules/usercontent/services/usercontent.service';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
+const PAYPAL_PAYMENT_API = BASE_URL + '/server/paypals/';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +20,21 @@ export class ElementsService {
     private tokenStorege:TokenStorageService) { }
 
 
+    withdrawal(transection:any) {
+
+
+        this.accesstoken().subscribe(data=>{
+          console.log(data);
+
+        });
+
+
+    }
+
+
     //#region Withdrawal
 
-  withdrawal(transection:any) {
+  withdrawal2(transection:any) {
     this.create(transection).subscribe(value => { 
 
       let  userdata=this.tokenStorege.getUser();
@@ -202,7 +216,7 @@ export class ElementsService {
 
   //#endregion
 
-  //#region TRANSECTION
+  //#region TRANSECTION_CREATE
  
   create(transection:any): Observable<any> {
     const httpOptions = {
@@ -215,6 +229,10 @@ export class ElementsService {
 
     return   this.http.post(ELEMENTS_API+'create',transection,httpOptions);
   }
+
+  //#endregion
+
+  //#region  TRANSECTION_UPDATE
 
   update(id:any,transection:any): Observable<any> {
   
@@ -229,6 +247,10 @@ export class ElementsService {
     return   this.http.put(`${ELEMENTS_API}update/${id}`,transection,httpOptions);
   }
 
+  //#endregion
+
+  //#region  TRANSECTION_UPDATESTATUS
+
   updatestatus(id:any,transection:any): Observable<any> {
   
     const httpOptions = {
@@ -242,6 +264,10 @@ export class ElementsService {
     return   this.http.put(`${ELEMENTS_API}updatestatus/${id}`,transection,httpOptions);
   }
 
+  //#endregion
+
+  //#region TRANSECTION_FIND_BYPK
+
   fineByPk(id:any): Observable<any> {
   
     const httpOptions = {
@@ -254,6 +280,10 @@ export class ElementsService {
 
     return   this.http.get(`${ELEMENTS_API}find/${id}`,httpOptions);
   }
+
+  //#endregion
+
+  //#region  TRAMSECTION_DELETE
 
   delete(id:any): Observable<any> {
   
@@ -270,6 +300,37 @@ export class ElementsService {
 
   //#endregion
 
+
+
+  //#region  PAYPAL_API
+  //app.get("/server/paypal/secrete",[
+
+  fakesecrete(transection:any): Observable<any> {
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', ['application/json'])
+      
+    };
+
+    return   this.http.get(PAYPAL_PAYMENT_API+'fakesecrete',httpOptions);
+  }
+
+  //app.get("/server/paypal/accesstoken",[
+    accesstoken(): Observable<any> {
+      const httpOptions = {
+        headers:  new HttpHeaders()
+        .append('x-access-token',[''+this.tokenStorege.getToken()])
+        .append('Content-Type', ['application/json'])
+        .append('Accept', ['application/json'])
+        
+      };
+  
+      return   this.http.get(PAYPAL_PAYMENT_API+'accesstoken',httpOptions);
+    }
+
+  //#endregion
 
   //#region MARKET
 
