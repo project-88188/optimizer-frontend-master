@@ -49,31 +49,6 @@ export class ElementsService {
     })
   }
 
-  deposit2(transection:any) {
-      this.create(transection).subscribe(value => { 
-
-      let  userdata=this.tokenStorege.getUser();
-      let  _content=JSON.parse(userdata.content);
-      _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(value.amount);
-      _content.deposit=Number.parseFloat(_content.deposit)+Number.parseFloat(value.amount);
-
-      
-      userdata.content=JSON.stringify(_content);
-      this.tokenStorege.saveUser(userdata);
-      //
-      //
-      const  resultcontent ={
-        cashbalance:_content.cashbalance,
-        deposit:_content.deposit,
-      }
-      
-     // this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-     //   this.updatestatus(value.id,{transectionstatus:'completed'}).subscribe(()=>{});
-    //  });
-   
-    })
-  }
-
   buy_investment(transection:any) {
 
     this.create(transection).subscribe(value => { 
