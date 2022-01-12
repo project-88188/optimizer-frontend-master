@@ -28,6 +28,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
+import {MatSelectModule} from '@angular/material/select';
 import { OptimizeronthecloudComponent } from './optimizeronthecloud/optimizeronthecloud.component';
 
 import { CurrencyModule } from '../_modules-optimizer/currency/currency.module';
@@ -76,6 +77,7 @@ import { NgxPayPalModule } from 'ngx-paypal';
     MatFormFieldModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatSelectModule,
 
     CurrencyModule,
     DepositModule,

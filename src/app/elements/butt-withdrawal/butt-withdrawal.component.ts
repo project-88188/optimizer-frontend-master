@@ -18,6 +18,8 @@ export class ButtWithdrawalComponent implements OnInit {
   @Input()
   currentUserContent: any;
 
+  public paypaloptions:any[] =[]
+
 
   submitted = false;
   successed = false;
@@ -25,7 +27,7 @@ export class ButtWithdrawalComponent implements OnInit {
     private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void { 
-
+    this.paypaloptions= JSON.parse(this.currentUserContent.paymentmethod);
   }
 
   onSubmit() {

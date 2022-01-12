@@ -23,7 +23,7 @@
     
                     <div class="form-group">
                       <label><strong>Status:</strong></label>
-                      {{ currentUserContent.published ? "Published" : "Pending" }}
+                      {{ currentUserContent.published>0 ? "Published" : "Pending" }}
                     </div>
 
                     <div class="form-group" *ngIf='currentUserContent.updatedAt'>

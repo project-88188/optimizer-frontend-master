@@ -27,16 +27,16 @@
           </mat-form-field>
         </div>
         
-  
-          <div  class="form-group">
-          <mat-form-field  appearance="fill">
+        <div  class="form-group">
+          <mat-form-field>
             <mat-label>PayPal account</mat-label>
-            <input matInput type="email" autocomplete="email"
-              [(ngModel)]="form.paypalaccount"
-              required/>
+            <mat-select id='paypaloptions'>
+              <mat-option *ngFor="let option of paypaloptions" [value]="option.detail" >
+              {{option.detail}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
-          </div>
-  
+        </div>
           <div  class="form-group">
             <button mat-flat-button>
               <h4> 

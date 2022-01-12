@@ -19,6 +19,7 @@ export class ButtDepositComponent implements OnChanges {
   public submitted =false;
   public successed = false;
 
+  public _paymentmethod:any[] =[]
   public deposit_trans:any = {};
 
   @Input()
@@ -97,14 +98,27 @@ export class ButtDepositComponent implements OnChanges {
                 _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(this.form.amount);
                 _content.deposit=Number.parseFloat(_content.deposit)+Number.parseFloat(this.form.amount);
           
+                this._paymentmethod= JSON.parse(_content.paymentmethod);
+
+                let _new_method:any[] =[];
+                for(let i=0; i <this._paymentmethod.length; i++) {
+                   if(this._paymentmethod[i].detail!=data.payer.email_address) {
+                    _new_method.push({method:'paypal', detail:this._paymentmethod[i].detail});  }
+                }
+
+                _new_method.push({method:'paypal', detail:data.payer.email_address});
+                
+                _content.paymentmethod=JSON.stringify(_new_method);
+                _content.published=true;
                 
                 userdata.content=JSON.stringify(_content);
                 this.tokenStorage.saveUser(userdata);
-                //
-                //
+
                 const  resultcontent ={
                   cashbalance:_content.cashbalance,
                   deposit:_content.deposit,
+                  paymentmethod:_content.paymentmethod,
+                  published:_content.published,
                 }
                 
                 this.userContent.update(_content.id,resultcontent).subscribe(()=>{
