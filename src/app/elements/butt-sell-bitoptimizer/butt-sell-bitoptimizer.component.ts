@@ -26,6 +26,13 @@ export class ButtSellBitoptimizerComponent implements OnInit {
 
   onSubmit() {
   
+
+    if(!this.form.totalunits)
+    return;
+
+    if(!this.form.unitprice)
+    return;
+
     this.form.amount=this.form.totalunits*this.form.unitprice;
       const data:any = {
         username:this.currentUserContent.username,

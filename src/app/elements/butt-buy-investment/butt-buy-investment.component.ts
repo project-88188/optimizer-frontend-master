@@ -25,6 +25,12 @@ export class ButtBuyInvestmentComponent implements OnInit {
   ngOnInit(): void { }
 
   onSubmit() {
+
+    if(!this.form.totalunits)
+    return;
+
+    if(!this.form.unitprice)
+    return;
  
     this.form.amount=this.form.totalunits*this.form.unitprice;
 
