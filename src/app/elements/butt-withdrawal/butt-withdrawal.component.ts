@@ -12,17 +12,17 @@ export class ButtWithdrawalComponent implements OnInit {
   
   form: any = {
     amount: null,
-    paypalaccount: this.tokenStorage.getUser().email
+    paypalaccount: null,
   };
 
   @Input()
   currentUserContent: any;
 
   public paypaloptions:any[] =[]
-
-
+ 
   submitted = false;
   successed = false;
+  
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService) { }
 
@@ -31,6 +31,12 @@ export class ButtWithdrawalComponent implements OnInit {
   }
 
   onSubmit() {
+
+    if(!this.form.paypalaccount)
+    return;
+   
+    if(!this.form.amount)
+    return;
 
     const data:any = {
       username:this.currentUserContent.username,

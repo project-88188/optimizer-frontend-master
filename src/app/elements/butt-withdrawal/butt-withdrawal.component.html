@@ -30,20 +30,19 @@
         <div  class="form-group">
           <mat-form-field>
             <mat-label>PayPal account</mat-label>
-            <mat-select id='paypaloptions'>
+            <mat-select  [(ngModel)]="form.paypalaccount">
               <mat-option *ngFor="let option of paypaloptions" [value]="option.detail" >
               {{option.detail}}
               </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
-          <div  class="form-group">
-            <button mat-flat-button>
-              <h4> 
-                <b class="text-center" >CONFIRM</b>
-              </h4>
-            </button>
-          </div>
+
+        <div  class="form-group p-2 mb-3">
+          <button mat-flat-button>
+            <h4> <b class="text-center" >CONFIRM</b> </h4>
+          </button>
+        </div>
           
           <div *ngIf="submitted && successed"  class="form-group">
               <p class="text-center">Withdrawal completed</p>
