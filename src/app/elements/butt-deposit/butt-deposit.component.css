@@ -14,7 +14,9 @@
 }
 
 .mat-form-field {
-  width: 95%;
+  width:100%;
+  min-width: 325px;
+  max-width:745px;
   align-content: center;
 }
 
@@ -27,6 +29,7 @@
   background-color: goldenrod   !important;
   color:blue;
   width:100%;
+  min-width: 325px;
   max-width:745px;
   height: 50;
 }
