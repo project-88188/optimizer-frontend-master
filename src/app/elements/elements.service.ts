@@ -18,9 +18,9 @@ export class ElementsService {
     private tokenStorege:TokenStorageService) { }
 
 
-    //#region BUTTON
+    //#region Withdrawal
 
-  withdawal(transection:any) {
+  withdrawal(transection:any) {
     this.create(transection).subscribe(value => { 
 
       let  userdata=this.tokenStorege.getUser();
@@ -48,6 +48,10 @@ export class ElementsService {
 
     })
   }
+
+  //#endregion
+
+  //#region  BUY_INVEST
 
   buy_investment(transection:any) {
 
@@ -80,6 +84,10 @@ export class ElementsService {
 
     })
 }
+
+//#endregion
+
+//#region SELL_INVEST
 
   sell_investment(transection:any) {
 
@@ -116,6 +124,10 @@ export class ElementsService {
 
 }
 
+//#endregion
+
+//#region BUY_INVEST
+
   buy_bitoptimizer(transection:any) {
 
   
@@ -150,6 +162,10 @@ export class ElementsService {
 
   })
   }
+
+  //#endregion
+
+  //#region SELL_BITOPT
 
   sell_bitoptimizer(transection:any) {
     
