@@ -27,6 +27,7 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
 import { OptimizeronthecloudComponent } from './optimizeronthecloud/optimizeronthecloud.component';
 
 import { CurrencyModule } from '../_modules-optimizer/currency/currency.module';
@@ -42,6 +43,7 @@ import { TotaldayModule } from '../_modules-optimizer/totalday/totalday.module';
 import { TradingparameterModule } from '../_modules-optimizer/tradingparameter/tradingparameter.module';
 import { TesterprogramModule } from '../_modules-optimizer/testerprogram/testerprogram.module';
 import { NgxPayPalModule } from 'ngx-paypal';
+
 
 @NgModule({
   declarations: [
@@ -104,7 +106,11 @@ import { NgxPayPalModule } from 'ngx-paypal';
     UploadImagesComponent,
     OptimizeronthecloudComponent,
   
+  ],
+  providers :[
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'fill'}}
   ]
+    
 
 })
 export class ElementsModule { }

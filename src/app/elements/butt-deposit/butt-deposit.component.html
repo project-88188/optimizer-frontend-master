@@ -1,9 +1,10 @@
 
 
 <mat-card class="p-2 m-4">
-<mat-card-title>
-  <h5>::{{currentUserContent.username}}</h5>
-</mat-card-title>
+  <mat-card-title>
+    <b class="text-center" >DEPOSIT</b>
+    <h5>::{{currentUserContent.username}}</h5>
+  </mat-card-title>
 
   <mat-card-content>
   
@@ -19,7 +20,7 @@
       </div>
 
       <div  class="form-group">
-        <mat-form-field  appearance="fill">
+        <mat-form-field>
           <mat-label>Deposit in USD amount</mat-label>
           <input matInput type="number" 
             [(ngModel)]="form.amount" 
@@ -28,22 +29,14 @@
       </div>
 
         <div  class="form-group">
-        <mat-form-field  appearance="fill">
+        <mat-form-field>
           <mat-label>PayPal account</mat-label>
-          <input matInput type="email" autocomplete="email"
+          <input matInput type="email" 
           [(ngModel)]="form.paypalaccount"
             required>
         </mat-form-field>
         </div>
 
-        <div  class="form-group">
-          <button mat-flat-button>
-            <h4>
-              Submit
-            </h4>
-          </button>
-        </div>
-        
         <div *ngIf="submitted && successed"  class="form-group">
             <p class="text-center">Deposit completed</p>
         </div>
@@ -61,5 +54,4 @@
 
   </mat-card-content>
 </mat-card>
-
 

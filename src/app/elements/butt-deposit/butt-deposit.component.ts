@@ -1,15 +1,16 @@
-import { Component,OnInit,Input }from '@angular/core'
+import { Component,Input,OnChanges, SimpleChanges }from '@angular/core'
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
 import { CLIENT_ID,SECRET } from 'src/app/_providers/paypal-config';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-butt-deposit',
   templateUrl: './butt-deposit.component.html',
   styleUrls: ['./butt-deposit.component.css']
 })
-export class ButtDepositComponent  {
+export class ButtDepositComponent implements OnChanges {
 
   client_id=CLIENT_ID;
   public payPalConfig?: IPayPalConfig;
@@ -22,14 +23,21 @@ export class ButtDepositComponent  {
 
   @Input()
     currentUserContent: any;
+  @Input()
+  tabChangedCount:Number =-1;
 
   result:any;
   submitted = false;
   successed = false;
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService) {
-      this.initConfig();
      }
+
+     changeLog: string[] = [];
+
+  ngOnChanges(): void {
+    this.initConfig();
+  }
 
   onSubmit() {
 
@@ -68,7 +76,7 @@ export class ButtDepositComponent  {
   private initConfig(): void {
     this.payPalConfig = {
     currency: 'EUR',
-    clientId: 'sb',
+    clientId: this.client_id,
     createOrderOnClient: (data) => <ICreateOrderRequest>{
       intent: 'CAPTURE',
       purchase_units: [
@@ -106,9 +114,9 @@ export class ButtDepositComponent  {
     },
     onApprove: (data, actions) => {
       console.log('onApprove - transaction was approved, but not authorized', data, actions);
-    //  actions.order.get().then(details => {
-     //   console.log('onApprove - you can get full order details inside onApprove: ', details);
-     // });
+      actions.order.get().then(() => {
+       console.log('onApprove - you can get full order details inside onApprove: ');
+      });
     },
     onClientAuthorization: (data) => {
       console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
