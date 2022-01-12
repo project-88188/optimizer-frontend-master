@@ -9,6 +9,7 @@ import { ElementsService } from '../elements.service';
 })
 
 export class ButtWithdrawalComponent implements OnInit {
+  
   form: any = {
     amount: null,
     paypalaccount: this.tokenStorage.getUser().email
