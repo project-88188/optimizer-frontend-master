@@ -1,9 +1,9 @@
 import { Component,Input,OnChanges }from '@angular/core'
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
-import { CLIENT_ID,SECRET } from 'src/app/_providers/paypal-config';
+import { CLIENT_ID } from 'src/app/_providers/paypal-config';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
-import { EmailValidator } from '@angular/forms';
+import { UsercontentService } from 'src/app/_modules/usercontent/services/usercontent.service';
 
 @Component({
   selector: 'app-butt-deposit',
@@ -18,8 +18,8 @@ export class ButtDepositComponent implements OnChanges {
   public showSuccess = false;
   public submitted =false;
   public successed = false;
-  public result:any;
 
+  public deposit_trans:any = {};
 
   @Input()
     currentUserContent:any = {};
@@ -27,12 +27,12 @@ export class ButtDepositComponent implements OnChanges {
    tabChangedCount:Number =-1;
 
    form: any = {
-    amount:Number,
-    paypalaccount:this.currentUserContent.paymentdetail
+    amount:Number
   };
  
 
   constructor(private elementsService:ElementsService,
+    private userContent:UsercontentService,
     private tokenStorage:TokenStorageService) {
      }
 
@@ -40,66 +40,21 @@ export class ButtDepositComponent implements OnChanges {
     this.initConfig();
   }
 
-  onSubmit() {
-
-    if(this.tokenStorage.getToken())
-    {
-      const orderRequest ={
-        "intent": "CAPTURE",
-        "purchase_units": [
-          {
-            "amount": {
-              "currency_code": "USD",
-              "value": "100.00"
-            }
-          }
-        ]
-      }
-
-      const data = {
-        username:this.currentUserContent.username,
-        amount:this.form.amount,
-        paymentmethod:"PAYPAL",
-        paymentdetail:this.form.paypalaccount,
-        published:false,
-        transectionstatus:"created",
-        transectiontype:"deposit"
-      }
-
-      this.elementsService.deposit(data);
-
-      this.submitted=true;
-  
-      setTimeout(() => {
-        this.submitted=false;
-        this.successed=true;
-        this.reloadPage();
-      }, 2000);
-  
-    }
-
-  }
-
-  reloadPage(): void {
-    setTimeout(() => {
-        window.location.reload();
-    }, 2000);
-  };
 
   private initConfig(): void {
     this.payPalConfig = {
-        currency: 'EUR',
+        currency: 'USD',
         clientId: this.client_id,
         createOrderOnClient: (data) => < ICreateOrderRequest > {
             intent: 'CAPTURE',
             purchase_units: [{
                 amount: {
-                    currency_code: 'EUR',
-                    value: '9.99',
+                    currency_code: 'USD',
+                    value: this.form.amount,
                     breakdown: {
                         item_total: {
-                            currency_code: 'EUR',
-                            value: '9.99'
+                            currency_code: 'USD',
+                            value: this.form.amount,
                         }
                     }
                 },
@@ -108,8 +63,8 @@ export class ButtDepositComponent implements OnChanges {
                     quantity: '1',
                     category: 'DIGITAL_GOODS',
                     unit_amount: {
-                        currency_code: 'EUR',
-                        value: '9.99',
+                        currency_code: 'USD',
+                        value: this.form.amount,
                     },
                 }]
             }]
@@ -122,30 +77,83 @@ export class ButtDepositComponent implements OnChanges {
             layout: 'vertical'
         },
         onApprove: (data, actions) => {
-            console.log('onApprove - transaction was approved, but not authorized', data, actions);
+
             actions.order.get().then(() => {
-                console.log('onApprove - you can get full order details inside onApprove: ');
+              //  console.log('onApprove - you can get full order details inside onApprove: ');
             });
 
         },
         onClientAuthorization: (data) => {
-            console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
-            this.showSuccess = true;
+        
+           if('COMPLETED'==data.status)
+           {
+            this.elementsService.update(this.deposit_trans.id,{
+              paymentdetail:data.payer.email_address,
+              transectionstatus:'completed'}).subscribe(()=>{
+
+                //
+                let  userdata=this.tokenStorage.getUser();
+                let  _content=JSON.parse(userdata.content);
+                _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(this.form.amount);
+                _content.deposit=Number.parseFloat(_content.deposit)+Number.parseFloat(this.form.amount);
+          
+                
+                userdata.content=JSON.stringify(_content);
+                this.tokenStorage.saveUser(userdata);
+                //
+                //
+                const  resultcontent ={
+                  cashbalance:_content.cashbalance,
+                  deposit:_content.deposit,
+                }
+                
+                this.userContent.update(_content.id,resultcontent).subscribe(()=>{
+                  this.showSuccess = true;
+                  this.reloadPage();
+                });
+                
+            });
+           }
+           
         },
         onCancel: (data, actions) => {
-            console.log('OnCancel', data, actions);
-         //   this.showCancel = true;
+
+          this.elementsService.updatestatus(this.deposit_trans.id,{transectionstatus:'canceled'}).subscribe(()=>{ });
 
         },
         onError: err => {
-            console.log('OnError', err);
-          //  this.showError = true;
+
+            this.elementsService.updatestatus(this.deposit_trans.id,{transectionstatus:'rejected'}).subscribe(()=>{});
+        
         },
         onClick: (data, actions) => {
-            console.log('onClick', data, actions);
-          //  this.resetStatus();
+          
+         const _request = {
+          username:this.currentUserContent.username,
+          amount:this.form.amount,
+          paymentmethod: data.fundingSource,
+          published:false,
+          transectionstatus:"created",
+          transectiontype:"deposit"
+        }
+
+        this.deposit_trans={ };
+
+        this.elementsService.create(_request).subscribe(value => { 
+          this.deposit_trans=value;
+         // console.log(this.deposit_trans);
+         // actions.resolve();
+       })
+  
         }
     };
   }
+
+
+  reloadPage(): void {
+    setTimeout(() => {
+        window.location.reload();
+    }, 2000);
+  };
 }
 

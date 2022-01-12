@@ -10,7 +10,7 @@
   
       <form *ngIf="!submitted"
       name="form"
-      (ngSubmit)="f.form.valid && onSubmit()"
+      (ngSubmit)="f.form.valid "
       #f="ngForm"
       novalidate
       > 
@@ -28,18 +28,10 @@
         </mat-form-field>
       </div>
 
-        <div  class="form-group">
-        <mat-form-field>
-          <mat-label>PayPal account</mat-label>
-          <input matInput type="email" 
-          [(ngModel)]="form.paypalaccount"
-            required>
-        </mat-form-field>
-        </div>
-
-        <div *ngIf="submitted && successed"  class="form-group">
-            <p class="text-center">Deposit completed</p>
-        </div>
+  
+      <div *ngIf="submitted && successed"  class="form-group">
+          <p class="text-center">Deposit completed</p>
+      </div>
         
       </form>
           

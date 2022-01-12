@@ -2,8 +2,7 @@
 import { Component, OnInit ,Output} from '@angular/core';
 import { Usercontent } from '../_modules/usercontent/models/usercontent.model';
 import { TokenStorageService } from '../_services/token-storage.service';
-import { ThemePalette} from '@angular/material/core';
-import { EventEmitter } from '@angular/core';
+import { MatTabChangeEvent } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-board-user',
@@ -14,6 +13,8 @@ import { EventEmitter } from '@angular/core';
 export class BoardUserComponent implements OnInit {
 
  
+ public tabChangedCount:Number =0;
+ 
   currentUserContent:Usercontent={};
   constructor(private tokenStorage:TokenStorageService) { }
 
@@ -23,8 +24,14 @@ export class BoardUserComponent implements OnInit {
    
   }
  
-  tabChangedCount:Number =0;
-  OnTabChanged(){
-   this.tabChangedCount= Number(this.tabChangedCount)+1;
-  }
+  
+
+  tabChanged = (tabChangeEvent: MatTabChangeEvent): void => {
+   //console.log('tabChangeEvent => ', tabChangeEvent); 
+  //  console.log('index => ', tabChangeEvent.index); 
+    if(tabChangeEvent.index==0){
+      this.tabChangedCount= Number(this.tabChangedCount)+1;
+    }
+}
+
 }

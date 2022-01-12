@@ -49,7 +49,7 @@ export class ElementsService {
     })
   }
 
-  deposit(transection:any) {
+  deposit2(transection:any) {
       this.create(transection).subscribe(value => { 
 
       let  userdata=this.tokenStorege.getUser();
@@ -67,9 +67,9 @@ export class ElementsService {
         deposit:_content.deposit,
       }
       
-      this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-        this.updatestatus(value.id,{transectionstatus:'completed'}).subscribe(()=>{});
-      });
+     // this.userContent.update(_content.id,resultcontent).subscribe(()=>{
+     //   this.updatestatus(value.id,{transectionstatus:'completed'}).subscribe(()=>{});
+    //  });
    
     })
   }
