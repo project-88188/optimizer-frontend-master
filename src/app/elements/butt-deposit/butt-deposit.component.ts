@@ -96,48 +96,54 @@ export class ButtDepositComponent implements OnChanges {
 
            if('COMPLETED'==data.status)
            {
-            this.elementsService.update(this.deposit_trans.id,{
-              paymentdetail:data.payer.email_address,
-              transectiontype:'deposit',
-              transectionstatus:'completed'}).subscribe(()=>{
-
+          
                 //
                 let  userdata=this.tokenStorage.getUser();
                 let  _content=JSON.parse(userdata.content);
                 _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(this.form.amount);
                 _content.deposit=Number.parseFloat(_content.deposit)+Number.parseFloat(this.form.amount);
+
+                if( _content.cashbalance &&  _content.deposit) {
+
+                  this._paymentmethod= JSON.parse(_content.paymentmethod);
+
+                  let _new_method:any[] =[];
+                  for(let i=0; i <this._paymentmethod.length; i++) {
+                     if(this._paymentmethod[i].detail!=data.payer.email_address && this._paymentmethod[i].method=='paypal') {
+                      _new_method.push({method:'paypal', detail:this._paymentmethod[i].detail});  }
+                  }
+                  
+  
+                  _new_method.push({method:'paypal', detail:data.payer.email_address});
+                  
+                  _content.paymentmethod=JSON.stringify(_new_method);
+  
+                  _content.published=true;
+                  
+                  userdata.content=JSON.stringify(_content);
+                  this.tokenStorage.saveUser(userdata);
+  
+                  const  resultcontent ={
+                    cashbalance:_content.cashbalance,
+                    deposit:_content.deposit,
+                    paymentmethod:_content.paymentmethod,
+                    published:_content.published,
+                  }
+                  
+                  this.userContent.update(_content.id,resultcontent).subscribe(()=>{
+                    
+                    this.elementsService.update(this.deposit_trans.id,{
+                      paymentdetail:data.payer.email_address,
+                      transectiontype:'deposit',
+                      transectionstatus:'completed'}).subscribe(()=>{});
+
+                    this.showSuccess = true;
+                    this.reloadPage();
+                    
+                  });
+
+                }
           
-                this._paymentmethod= JSON.parse(_content.paymentmethod);
-
-                let _new_method:any[] =[];
-                for(let i=0; i <this._paymentmethod.length; i++) {
-                   if(this._paymentmethod[i].detail!=data.payer.email_address && this._paymentmethod[i].method=='paypal') {
-                    _new_method.push({method:'paypal', detail:this._paymentmethod[i].detail});  }
-                }
-                
-
-                _new_method.push({method:'paypal', detail:data.payer.email_address});
-                
-                _content.paymentmethod=JSON.stringify(_new_method);
-
-                _content.published=true;
-                
-                userdata.content=JSON.stringify(_content);
-                this.tokenStorage.saveUser(userdata);
-
-                const  resultcontent ={
-                  cashbalance:_content.cashbalance,
-                  deposit:_content.deposit,
-                  paymentmethod:_content.paymentmethod,
-                  published:_content.published,
-                }
-                
-                this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-                  this.showSuccess = true;
-                 // this.reloadPage();
-                });
-                
-            });
            }
            
         },
@@ -171,10 +177,7 @@ export class ButtDepositComponent implements OnChanges {
         this.deposit_trans={ };
 
         this.elementsService.create(_request).subscribe(value => { 
-          this.deposit_trans=value;
-         // console.log(this.deposit_trans);
-         // actions.resolve();
-       })
+          this.deposit_trans=value;  })
   
         }
     };
