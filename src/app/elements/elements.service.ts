@@ -22,44 +22,116 @@ export class ElementsService {
 
 withdrawal(transection:any) {
 
-    this.payoutone(transection).subscribe(data=>{
+  this.create(transection).subscribe(value => { 
 
-      console.log(data.batch_header.payout_batch_id);
-      console.log(data.batch_header.batch_status);
-      console.log(data.httpStatusCode==201);
-    //  console.log(data);
+  //  console.log(value);
 
+    this.payoutone(value).subscribe(data=>{
+
+      if(data.batch_header.batch_status=='PENDING')
+      {
+        this.updatestatus(value.id,{transectionstatus:'pending'}).subscribe(()=>{});
+      }
+      
       setTimeout(() => {
         this.getpayout(data.batch_header.payout_batch_id).subscribe(data=>{
-          //amount,fee
-       //   console.log(data.batch_header.fees);
-       //   console.log(data.batch_header.amount);
-        //  console.log(data.httpStatusCode==200);
-        //  console.log(data.batch_header.batch_status);
-        
-      //   console.log(data.items);
+
+        //  let _fees=new Number(data.batch_header.fees);
+         // let _amount=new Number(data.batch_header.amount);
+
          let results:any[] = data.items;
          for(let i =0 ;i <results.length; i++)
          {
-          console.log(results[i]);
-          console.log(results[i].errors.name);
-          console.log(results[i].transaction_status);
-         }
+
+          if(results[i].transaction_status=='UNCLAIMED')
+          {
+            this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
+          }
+
+          if(results[i].transaction_status=='SUCCESS')
+          {
+
+            if(results[i].payout_item.amount.value && results[i].payout_item_fee.value)     {
+              
+              let  userdata=this.tokenStorege.getUser();
+              let  _content=JSON.parse(userdata.content);
+              _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(results[i].payout_item.amount.value);
+              _content.withdrawal=Number.parseFloat(_content.withdrawal)-Number.parseFloat(results[i].payout_item.amount.value);
+              _content.fees=Number.parseFloat(_content.fees)-Number.parseFloat(results[i].payout_item_fee.value);
+
+              if(_content.cashbalance && _content.withdrawal && _content.fees)   {
+
+                userdata.content=JSON.stringify(_content);
+                this.tokenStorege.saveUser(userdata);
+                const  resultcontent ={
+                  cashbalance:_content.cashbalance,
+                  withdrawal:_content.withdrawal,
+                  fees: _content.fees
+                  }
+                  
+                  this.userContent.update(_content.id,resultcontent).subscribe(()=>{ 
+                    this.updatestatus(value.id,{transectionstatus:'completed'}).subscribe(()=>{});
+                  });
+
+              }
+
+            }
+        
+          }
        
-        // console.log(data);
+         }
+
         });
 
     }, 5000);
 
     });
 
+  });
+
 }
 
 
-    //#region Withdrawal
   //#region  BUY_INVEST
 
-  buy_investment(transection:any) {
+  withdrawal2(transection:any): void {
+
+    this.create(transection).subscribe(value => { 
+      let  userdata=this.tokenStorege.getUser();
+      let  _content=JSON.parse(userdata.content);
+      _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(value.amount);
+    //  _content.invested=Number.parseFloat(_content.invested)+Number.parseFloat(value.amount);
+      _content.investmentonmarket=Number.parseFloat(_content.investmentonmarket)+Number.parseFloat(value.totalunits);
+ 
+      if(_content.cashbalance>=0) { 
+
+        userdata.content=JSON.stringify(_content);
+        this.tokenStorege.saveUser(userdata);
+       //
+       const  resultcontent ={
+        cashbalance:_content.cashbalance,
+       // invested:_content.invested,
+        investmentonmarket:_content.investmentonmarket
+        }
+        
+        this.userContent.update(_content.id,resultcontent).subscribe(()=>{
+          this.updatestatus(value.id,{transectionstatus:'marketing'}).subscribe(()=>{});
+        });
+
+      } else {
+
+        this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
+      }
+
+    })
+}
+
+//#endregion
+
+    
+  //#region  BUY_INVEST
+
+  buy_investment(transection:any): void {
 
     this.create(transection).subscribe(value => { 
       let  userdata=this.tokenStorege.getUser();
