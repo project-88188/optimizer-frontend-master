@@ -7,24 +7,24 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>qty</th>
-          <th>sell@$</th>
-          <th>buy@$</th>
-          <th>qty</th>
+          <th class="text-center">qty</th>
+          <th class="text-center">sell@$</th>
+          <th class="text-center">buy@$</th>
+          <th class="text-center">qty</th>
         </tr>
       </thead>
       <tbody > 
         <tr *ngFor="let sell of sells">
-          <th>{{sell.remainunits}}</th>
-          <th>{{sell.unitprice}}</th>
+          <th class="text-center">{{sell.remainunits}}</th>
+          <th class="text-center">{{sell.unitprice}}</th>
           <th></th>
           <th></th>
         </tr>
         <tr *ngFor="let buy of buys">
           <th></th>
           <th></th>
-          <th>{{buy.unitprice}}</th>
-          <th>{{buy.remainunits}}</th>
+          <th class="text-center">{{buy.unitprice}}</th>
+          <th class="text-center">{{buy.remainunits}}</th>
         </tr>
       </tbody>
     </table>

@@ -1,4 +1,8 @@
 .mat-card {
+  max-width:745px;
+  min-width: 155px;
+  margin-left: auto;
+  margin-right: auto;
   color:blue;
   background-color: goldenrod   !important;
   padding:5px !important;
@@ -13,10 +17,6 @@
   -webkit-border-radius: 4px;
 }
 
-.mat-form-field {
-  width: 95%;
-  align-content: center;
-}
 
 .loader {
   left: 50%;
