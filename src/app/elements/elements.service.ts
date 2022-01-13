@@ -19,7 +19,7 @@ export class ElementsService {
     private userContent:UsercontentService,
     private tokenStorege:TokenStorageService) { }
 
-    //#region WITHDRAWAL
+  //#region WITHDRAWAL
 
   withdrawal(transection2:any): void {
 
@@ -376,7 +376,6 @@ export class ElementsService {
   //#endregion
 
 
-
   //#region  PAYPAL_API
 
   fakesecrete(): Observable<any> {
@@ -391,90 +390,35 @@ export class ElementsService {
     return   this.http.get(PAYPAL_PAYMENT_API+'fakesecrete',httpOptions);
   }
     
-    payoutone(transection:any): Observable<any> {
+  payoutone(transection:any): Observable<any> {
 
-      const httpOptions = {
-        headers:  new HttpHeaders()
-        .append('x-access-token',[''+this.tokenStorege.getToken()])
-        .append('Content-Type', ['application/json'])
-        .append('Accept', ['application/json'])
-        
-      };
-  
-      return   this.http.post(PAYPAL_PAYMENT_API+'payoutone',transection,httpOptions);
-    }
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', ['application/json'])
+      
+    };
 
-    getpayout(payoutId:any) : Observable<any> {
+    return   this.http.post(PAYPAL_PAYMENT_API+'payoutone',transection,httpOptions);
+  }
 
-      const httpOptions = {
-        headers:  new HttpHeaders()
-        .append('x-access-token',[''+this.tokenStorege.getToken()])
-        .append('Content-Type', ['application/json'])
-        .append('Accept', ['application/json'])
-        
-      };
+  getpayout(payoutId:any) : Observable<any> {
 
-      return   this.http.post(PAYPAL_PAYMENT_API+'getpayout',{
-        payoutId:payoutId
-      },httpOptions);
+    const httpOptions = {
+      headers:  new HttpHeaders()
+      .append('x-access-token',[''+this.tokenStorege.getToken()])
+      .append('Content-Type', ['application/json'])
+      .append('Accept', ['application/json'])
+      
+    };
 
-    }
+    return   this.http.post(PAYPAL_PAYMENT_API+'getpayout',{
+      payoutId:payoutId
+    },httpOptions);
+
+  }
 
   //#endregion
 
-  //#region MARKET
-
-   get_market_sell_bitoptimizer(): Observable<any> {
-    
-    const httpOptions = {
-      headers:  new HttpHeaders()
-      .append('x-access-token',[''+this.tokenStorege.getToken()])
-      .append('Content-Type', ['application/json'])
-      .append('Accept', ['application/json'])
-     
-    };
-    
-    return    this.http.get(ELEMENTS_API + 'marketsell',httpOptions);
-   }
-
-   get_market_buy_bitoptimizer(): Observable<any> {
-    
-    const httpOptions = {
-      headers:  new HttpHeaders()
-      .append('x-access-token',[''+this.tokenStorege.getToken()])
-      .append('Content-Type', ['application/json'])
-      .append('Accept', ['application/json'])
-     
-    };
-    
-    return    this.http.get(ELEMENTS_API + 'marketbuy',httpOptions);
-   }
-
-   get_market_sell_investment(): Observable<any> {
-    
-    const httpOptions = {
-      headers:  new HttpHeaders()
-      .append('x-access-token',[''+this.tokenStorege.getToken()])
-      .append('Content-Type', ['application/json'])
-      .append('Accept', ['application/json'])
-     
-    };
-    
-    return    this.http.get(ELEMENTS_API + 'marketsell',httpOptions);
-   }
-
-   get_market_buy_investment(): Observable<any> {
-    
-    const httpOptions = {
-      headers:  new HttpHeaders()
-      .append('x-access-token',[''+this.tokenStorege.getToken()])
-      .append('Content-Type', ['application/json'])
-      .append('Accept', ['application/json'])
-    
-    };
-    
-    return    this.http.get(ELEMENTS_API + 'marketbuy',httpOptions);
-   }
-
-//#endregion
 }
