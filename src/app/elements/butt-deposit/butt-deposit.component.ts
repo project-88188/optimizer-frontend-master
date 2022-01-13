@@ -27,6 +27,9 @@ export class ButtDepositComponent implements OnChanges {
   @Input()
    tabChangedCount:Number =-1;
 
+   @Input()
+    currTapIndex:Number = -1;
+
    form: any = {
     amount:Number
   };
@@ -35,10 +38,15 @@ export class ButtDepositComponent implements OnChanges {
   constructor(private elementsService:ElementsService,
     private userContent:UsercontentService,
     private tokenStorage:TokenStorageService) {
+      this.initConfig();
      }
 
   ngOnChanges(): void {
-    this.initConfig();
+    if(!this.currTapIndex)
+    {
+      if(this.currTapIndex==0)
+      this.initConfig();
+    }
   }
 
 
@@ -132,12 +140,18 @@ export class ButtDepositComponent implements OnChanges {
         },
         onCancel: (data, actions) => {
 
-          this.elementsService.updatestatus(this.deposit_trans.id,{transectionstatus:'canceled'}).subscribe(()=>{ });
-
+          if(this.deposit_trans && this.deposit_trans.id)
+          {
+            this.elementsService.updatestatus(this.deposit_trans.id,{transectionstatus:'canceled'}).subscribe(()=>{ });
+          }
         },
         onError: err => {
-
+          
+          if(this.deposit_trans && this.deposit_trans.id)
+          {
             this.elementsService.updatestatus(this.deposit_trans.id,{transectionstatus:'rejected'}).subscribe(()=>{});
+          }
+           
         
         },
         onClick: (data, actions) => {

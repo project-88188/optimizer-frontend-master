@@ -20,51 +20,43 @@ export class ElementsService {
     private tokenStorege:TokenStorageService) { }
 
 
-    withdrawal(transection:any) {
+withdrawal(transection:any) {
 
+    this.payoutone(transection).subscribe(data=>{
 
-        this.accesstoken().subscribe(data=>{
-          console.log(data);
+      console.log(data.batch_header.payout_batch_id);
+      console.log(data.batch_header.batch_status);
+      console.log(data.httpStatusCode==201);
+    //  console.log(data);
 
+      setTimeout(() => {
+        this.getpayout(data.batch_header.payout_batch_id).subscribe(data=>{
+          //amount,fee
+       //   console.log(data.batch_header.fees);
+       //   console.log(data.batch_header.amount);
+        //  console.log(data.httpStatusCode==200);
+        //  console.log(data.batch_header.batch_status);
+        
+      //   console.log(data.items);
+         let results:any[] = data.items;
+         for(let i =0 ;i <results.length; i++)
+         {
+          console.log(results[i]);
+          console.log(results[i].errors.name);
+          console.log(results[i].transaction_status);
+         }
+       
+        // console.log(data);
         });
 
+    }, 5000);
 
-    }
+    });
+
+}
 
 
     //#region Withdrawal
-
-  withdrawal2(transection:any) {
-    this.create(transection).subscribe(value => { 
-
-      let  userdata=this.tokenStorege.getUser();
-      let  _content=JSON.parse(userdata.content);
-      _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(value.amount);
-      _content.withdrawal=Number.parseFloat(_content.withdrawal)+Number.parseFloat(value.amount);
-
-      if(_content.cashbalance>=0)
-      {
-        userdata.content=JSON.stringify(_content);
-        this.tokenStorege.saveUser(userdata);
-            
-        const  resultcontent ={
-          cashbalance:_content.cashbalance,
-          withdrawal:_content.withdrawal,
-          }
-
-        this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-          this.updatestatus(value.id,{transectionstatus:'completed'}).subscribe(()=>{});
-        });
-
-      } else {
-        this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
-      }
-
-    })
-  }
-
-  //#endregion
-
   //#region  BUY_INVEST
 
   buy_investment(transection:any) {
@@ -303,9 +295,8 @@ export class ElementsService {
 
 
   //#region  PAYPAL_API
-  //app.get("/server/paypal/secrete",[
 
-  fakesecrete(transection:any): Observable<any> {
+  fakesecrete(): Observable<any> {
     const httpOptions = {
       headers:  new HttpHeaders()
       .append('x-access-token',[''+this.tokenStorege.getToken()])
@@ -316,9 +307,9 @@ export class ElementsService {
 
     return   this.http.get(PAYPAL_PAYMENT_API+'fakesecrete',httpOptions);
   }
+    
+    payoutone(transection:any): Observable<any> {
 
-  //app.get("/server/paypal/accesstoken",[
-    accesstoken(): Observable<any> {
       const httpOptions = {
         headers:  new HttpHeaders()
         .append('x-access-token',[''+this.tokenStorege.getToken()])
@@ -327,7 +318,23 @@ export class ElementsService {
         
       };
   
-      return   this.http.get(PAYPAL_PAYMENT_API+'accesstoken',httpOptions);
+      return   this.http.post(PAYPAL_PAYMENT_API+'payoutone',transection,httpOptions);
+    }
+
+    getpayout(payoutId:any) : Observable<any> {
+
+      const httpOptions = {
+        headers:  new HttpHeaders()
+        .append('x-access-token',[''+this.tokenStorege.getToken()])
+        .append('Content-Type', ['application/json'])
+        .append('Accept', ['application/json'])
+        
+      };
+
+      return   this.http.post(PAYPAL_PAYMENT_API+'getpayout',{
+        payoutId:payoutId
+      },httpOptions);
+
     }
 
   //#endregion

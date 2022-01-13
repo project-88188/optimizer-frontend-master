@@ -41,12 +41,12 @@ export class ButtWithdrawalComponent implements OnInit {
     const data:any = {
       username:this.currentUserContent.username,
       amount:this.form.amount,
-      paymentmethod:"PAYPAL",
+      paymentmethod:"paypal",
       paymentdetail:this.form.paypalaccount,
       published:false,
       status:"created",
       transectionstatus:"created",
-      transectiontype:"deposit"
+      transectiontype:"withdrawal"
     }
 
     this.elementsService.withdrawal(data);
@@ -56,7 +56,7 @@ export class ButtWithdrawalComponent implements OnInit {
     setTimeout(() => {
       this.submitted=false;
       this.successed=true;
-      this.reloadPage();
+     // this.reloadPage();
     }, 2000);
 
   }
