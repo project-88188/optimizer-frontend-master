@@ -93,11 +93,12 @@ export class ButtDepositComponent implements OnChanges {
 
         },
         onClientAuthorization: (data) => {
-        
+
            if('COMPLETED'==data.status)
            {
             this.elementsService.update(this.deposit_trans.id,{
               paymentdetail:data.payer.email_address,
+              transectiontype:'deposit',
               transectionstatus:'completed'}).subscribe(()=>{
 
                 //
@@ -113,10 +114,12 @@ export class ButtDepositComponent implements OnChanges {
                    if(this._paymentmethod[i].detail!=data.payer.email_address && this._paymentmethod[i].method=='paypal') {
                     _new_method.push({method:'paypal', detail:this._paymentmethod[i].detail});  }
                 }
+                
 
                 _new_method.push({method:'paypal', detail:data.payer.email_address});
                 
                 _content.paymentmethod=JSON.stringify(_new_method);
+
                 _content.published=true;
                 
                 userdata.content=JSON.stringify(_content);
@@ -131,7 +134,7 @@ export class ButtDepositComponent implements OnChanges {
                 
                 this.userContent.update(_content.id,resultcontent).subscribe(()=>{
                   this.showSuccess = true;
-                  this.reloadPage();
+                 // this.reloadPage();
                 });
                 
             });
@@ -162,7 +165,7 @@ export class ButtDepositComponent implements OnChanges {
           paymentmethod: data.fundingSource,
           published:false,
           transectionstatus:"created",
-          transectiontype:"deposit"
+          transectiontype:'deposit',
         }
 
         this.deposit_trans={ };
