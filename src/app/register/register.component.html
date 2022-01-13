@@ -10,40 +10,38 @@
 
       <div  class="form-group p-2">
         <mat-form-field>
-          <mat-label>New username</mat-label>
+          <mat-label>New UserName</mat-label>
           <input matInput type="text"
-          placeholder="Enter new username."
-          autocomplete= "currentusername"
-          [(ngModel)]="form.username" 
-          [formControl]="username"
-          required>
-          <mat-error *ngIf="username.invalid">{{usernamegetErrorMessage()}}</mat-error>
+           [(ngModel)]="form.username"
+           required
+           minlength="6"
+           #username="ngModel"
+           >
         </mat-form-field>
       </div>
 
       <div  class="form-group p-2">
-          <mat-form-field>
-            <mat-label>New password</mat-label>
-            <input matInput type="password"
-            placeholder="Enter new password."
-            autocomplete= "currentpassword"
-            [(ngModel)]="form.password" 
-            [formControl]="password"
-            required>
-            <mat-error *ngIf="password.invalid">{{passwordgetErrorMessage()}}</mat-error>
-          </mat-form-field>
-        </div>
+        <mat-form-field>
+          <mat-label>New Password</mat-label>
+          <input matInput type="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+           >
+        </mat-form-field>
+      </div>
 
         <div  class="form-group p-2">
           <mat-form-field>
             <mat-label>Confirm new password</mat-label>
             <input matInput type="password"
             placeholder="Confirm new password."
-            autocomplete= "currentpassword"
             [(ngModel)]="confirmpassword"
-            [formControl]="passwordVerify"
-            required>
-            <mat-error>{{verifypasswordgetErrorMessage()}}</mat-error>
+            required
+            #confirm="ngModel"
+            >
+            
           </mat-form-field>
         </div>
 
@@ -51,12 +49,12 @@
           <mat-form-field>
             <mat-label>New email</mat-label>
             <input matInput type="text"
-            autocomplete= "currentemail"
             placeholder="pat@example.com"
             [(ngModel)]="form.email" 
-            [formControl]="email"
-            required>
-            <mat-error *ngIf="email.invalid">{{emailgetErrorMessage()}}</mat-error>
+            required
+            #email="ngModel"
+            >
+
           </mat-form-field>
         </div>
     
@@ -68,17 +66,33 @@
             >
           </mat-form-field>
         </div>
-  
+
+        <div  class="form-group p-2">
+          <div class="alert alert-danger" role="alert"  *ngIf="username.errors">
+            <div *ngIf="username.errors.required">New Username is required</div>
+            <div *ngIf="username.errors.minlength">New Username must be at least 6 characters </div>
+          </div>
+        </div>
+
+        <div  class="form-group p-2">
+          <div class="alert alert-danger"  role="alert" *ngIf="password.errors && !username.errors"> 
+            <div *ngIf="password.errors.required">New Password is required</div>
+            <div *ngIf="password.errors.minlength">New Password must be at least 6 characters</div>
+          </div>
+        </div>
+
         <div  class="form-group p-2 mb-2">
           <button mat-flat-button>
             <h4> <b class="text-center" >Sign Up</b> </h4>
           </button>
         </div>
-
-
-        <div class="alert alert-warning"  role="alert" *ngIf="isSignUpFailed">
-          Signup failed!<br />{{ errorMessage }}
+     
+        <div  class="form-group p-2">
+          <div class="alert alert-warning"  role="alert" *ngIf="isSignUpFailed">
+            Signup failed!<br />{{ errorMessage }}
+          </div>
         </div>
+ 
 
       </form>
     

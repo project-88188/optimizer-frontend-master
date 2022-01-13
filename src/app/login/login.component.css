@@ -24,7 +24,7 @@
 
 .mat-form-field {
   width:100%;
-  max-width:250px;
+  max-width:320px;
   min-width: 155px;
   align-content: center;
 }
@@ -35,7 +35,7 @@
   background-color: rgb(87, 85, 81)   !important;
   color:black;
   width:100%;
-  max-width:250px;
+  max-width:320px;
   min-width: 155px;
   height:60px;
 }

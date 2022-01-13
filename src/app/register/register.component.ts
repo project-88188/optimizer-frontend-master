@@ -30,52 +30,6 @@ export class RegisterComponent implements OnInit {
     private tokenStorage: TokenStorageService,
     private router: Router) {}
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-  emailgetErrorMessage() {
-    this.email.setValue(this.form.email);
-    if (this.email.hasError('required')) {
-      return 'You must enter a value'; 
-    }
-    return this.email.hasError('email') ? 'Not a valid email' : '';
-  }
-
-  password = new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]);
-  passwordgetErrorMessage() {
-    this.password.setValue(this.form.password);
-    if (this.password.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    if (this.password.hasError('maxLength')) {
-      return 'Length is more than (20) charactor';
-    }
-    return this.password.hasError('minLength') ? 'Length is less than (6) charactor' : '';
-  }
-  
-  passwordVerify  = new FormControl('',[Validators.required]);
-  verifypasswordgetErrorMessage() {
-    this.passwordVerify.setValue(this.confirmpassword);
-    if (this.username.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    return (this.passwordVerify.value==this.form.password)? '': 'Verify password is fail';
-  }
-
-  username = new FormControl('', [Validators.required, Validators.minLength(6),Validators.maxLength(20)]);
-  usernamegetErrorMessage() {
-    this.username.setValue(this.form.username);
-    if (this.username.hasError('required')) {
-      return 'You must enter a value';
-    }
-
-    if (this.username.hasError('maxLength')) {
-      return 'Length is more than (20) charactor';
-    }
-
-    return this.username.hasError('minLength') ? 'Length is less than (6) charactor' : '';
-  }
-
   ngOnInit(): void {
 
   }
