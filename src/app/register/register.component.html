@@ -1,15 +1,16 @@
 
   <mat-card>
     <mat-card-content>
-      <div class="card card-container">
+    
 
-      <img id="profile-img"  src="./../../assets/images/avatar/avatar_2x.png"  class="profile-img-card"/>
+      <img id="profile-img"  src="./../../assets/images/avatar/avatar_2x.png"  class="image-profiile"/>
 
       <form  *ngIf="!isSuccessful" name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm" novalidate>
 
-        <mat-form-field class="example-form-field" appearance="fill">
+      <div  class="form-group p-2">
+        <mat-form-field>
           <mat-label>New username</mat-label>
           <input matInput type="text"
           placeholder="Enter new username."
@@ -20,52 +21,70 @@
           <mat-error *ngIf="username.invalid">{{usernamegetErrorMessage()}}</mat-error>
         </mat-form-field>
 
-        <mat-form-field class="example-form-field" appearance="fill">
-          <mat-label>New password</mat-label>
-          <input matInput type="password"
-          placeholder="Enter new password."
-          autocomplete= "currentpassword"
-          [(ngModel)]="form.password" 
-          [formControl]="password"
-          required>
-          <mat-error *ngIf="password.invalid">{{passwordgetErrorMessage()}}</mat-error>
-        </mat-form-field>
+      </div>
 
-        <mat-form-field class="example-form-field" appearance="fill">
-          <mat-label>Confirm new password</mat-label>
-          <input matInput type="password"
-          placeholder="Confirm new password."
-          autocomplete= "currentpassword"
-          [(ngModel)]="confirmpassword"
-          [formControl]="passwordVerify"
-          required>
-          <mat-error>{{verifypasswordgetErrorMessage()}}</mat-error>
-        </mat-form-field>
 
-        <mat-form-field class="example-form-field" appearance="fill">
-          <mat-label>New email</mat-label>
-          <input matInput type="text"
-          autocomplete= "currentemail"
-          placeholder="pat@example.com"
-          [(ngModel)]="form.email" 
-          [formControl]="email"
-          required>
-          <mat-error *ngIf="email.invalid">{{emailgetErrorMessage()}}</mat-error>
-        </mat-form-field>
 
-        <mat-form-field class="example-form-field" appearance="fill">
-          <mat-label>Promotion Code</mat-label>
-          <input matInput type="text"
-          [(ngModel)]="form.supervisorname"
-          >
-        </mat-form-field>
+      <div  class="form-group p-2">
+          <mat-form-field>
+            <mat-label>New password</mat-label>
+            <input matInput type="password"
+            placeholder="Enter new password."
+            autocomplete= "currentpassword"
+            [(ngModel)]="form.password" 
+            [formControl]="password"
+            required>
+            <mat-error *ngIf="password.invalid">{{passwordgetErrorMessage()}}</mat-error>
+          </mat-form-field>
+  
 
-        <div class="form-group" *ngIf="!username.invalid && !email.invalid 
-        && !password.invalid && !passwordVerify.invalid && confirmpassword==form.password">
-          <button mat-fab color="accent">
-            Sign Up
+        </div>
+
+  
+        <div  class="form-group p-2">
+          <mat-form-field>
+            <mat-label>Confirm new password</mat-label>
+            <input matInput type="password"
+            placeholder="Confirm new password."
+            autocomplete= "currentpassword"
+            [(ngModel)]="confirmpassword"
+            [formControl]="passwordVerify"
+            required>
+            <mat-error>{{verifypasswordgetErrorMessage()}}</mat-error>
+          </mat-form-field>
+
+        </div>
+    
+
+        <div  class="form-group p-2">
+          <mat-form-field>
+            <mat-label>New email</mat-label>
+            <input matInput type="text"
+            autocomplete= "currentemail"
+            placeholder="pat@example.com"
+            [(ngModel)]="form.email" 
+            [formControl]="email"
+            required>
+            <mat-error *ngIf="email.invalid">{{emailgetErrorMessage()}}</mat-error>
+          </mat-form-field>
+        </div>
+    
+
+        <div  class="form-group p-2">
+          <mat-form-field>
+            <mat-label>Promotion Code</mat-label>
+            <input matInput type="text"
+            [(ngModel)]="form.supervisorname"
+            >
+          </mat-form-field>
+        </div>
+  
+        <div  class="form-group p-2 mb-2">
+          <button mat-flat-button>
+            <h4> <b class="text-center" >Sign Up</b> </h4>
           </button>
         </div>
+
 
         <div class="alert alert-warning"  role="alert" *ngIf="isSignUpFailed">
           Signup failed!<br />{{ errorMessage }}
@@ -76,6 +95,6 @@
         <div class="alert alert-success"  role="alert" *ngIf="isSuccessful">
           Your registration is successful!
         </div>
-      </div>
+     
     </mat-card-content>
   </mat-card>

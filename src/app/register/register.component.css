@@ -1,36 +1,51 @@
-label {
-  display: block;
-  margin-top: 10px;
+.mat-card-header{
+  color:black;
+  background-color: rgb(140, 192, 87)   !important;
+  padding:5px !important;
 }
 
-.card-container.card {
-  max-width: 400px !important;
-  padding: 40px 40px;
+.mat-card {
+  color:black;
+  background-color: rgb(194, 231, 157)   !important;
+  padding:5px !important;
 }
 
-.card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+.mat-card-content {
+  color:black;
+  font-size: large;
+  background-color: rgb(153, 146, 133)   !important;
+  padding:50px !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
 }
 
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
+.image-profiile {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width:200px;
+  padding:5px !important;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
 }
 
-.example-form-field {
-  width: 220px;
+.mat-form-field {
+  width:100%;
+  max-width:745px;
+  min-width: 155px;
+  align-content: center;
+}
+
+.mat-flat-button {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(87, 85, 81)   !important;
+  color:black;
+  width:100%;
+  max-width:745px;
+  min-width: 155px;
+  height:50px;
 }
