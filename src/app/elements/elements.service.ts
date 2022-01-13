@@ -19,163 +19,126 @@ export class ElementsService {
     private userContent:UsercontentService,
     private tokenStorege:TokenStorageService) { }
 
+    //#region WITHDRAWAL
 
-withdrawal(transection2:any) {
+  withdrawal(transection2:any): void {
 
-  //statting transection status is create
-  this.create(transection2).subscribe(value => { 
+    //statting transection status is create
+    this.create(transection2).subscribe(value => { 
 
-    const transectionId=value.id;
-    console.log(value);
+      const transectionId=value.id;
+      console.log(value);
 
-    if(value.amount)
-    {
-      let  userdata=this.tokenStorege.getUser();  //<-----------------
-      let  _content=JSON.parse(userdata.content);
-      // test cash balance
-      _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(value.amount);
-      // if pass then go..
-      if(_content.cashbalance  && _content.cashbalance >0 )   {
-  
-        userdata.content=JSON.stringify(_content);
-        this.tokenStorege.saveUser(userdata);  //<-----------------
-        const  resultcontent ={
-          cashbalance:_content.cashbalance,   }
-        this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-             //<----------------- withdrawal from server status transection is processing
-           this.updatestatus(transectionId,{transectionstatus:'processing'}).subscribe(()=>{
+      if(value.amount)
+      {
+        let  userdata=this.tokenStorege.getUser();  //<-----------------
+        let  _content=JSON.parse(userdata.content);
+        // test cash balance
+        _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(value.amount);
+        // if pass then go..
+        if(_content.cashbalance  && _content.cashbalance >0 )   {
+    
+          userdata.content=JSON.stringify(_content);
+          this.tokenStorege.saveUser(userdata);  //<-----------------
+          const  resultcontent ={
+            cashbalance:_content.cashbalance,   }
+          this.userContent.update(_content.id,resultcontent).subscribe(()=>{
+              //<----------------- withdrawal from server status transection is processing
+            this.updatestatus(transectionId,{transectionstatus:'processing'}).subscribe(()=>{
 
-            // then starting pay out
-            this.payoutone(value).subscribe(data=>{
-              // then transection status is pending
-              if(data.batch_header.batch_status=='PENDING')
-              {
-                this.updatestatus(transectionId,{transectionstatus:'pending'}).subscribe(()=>{});
-              }
-              //waiting
-              setTimeout(() => {
-                //see results
-                this.getpayout(data.batch_header.payout_batch_id).subscribe(data=>{
-        
-                 let results:any[] = data.items;
-                 for(let i =0 ;i <results.length; i++)
-                 {
-                  //case status unclaim return money then rejected
-                  if(results[i].transaction_status=='UNCLAIMED')
+              // then starting pay out
+              this.payoutone(value).subscribe(data=>{
+                // then transection status is pending
+                if(data.batch_header.batch_status=='PENDING')
+                {
+                  this.updatestatus(transectionId,{transectionstatus:'pending'}).subscribe(()=>{});
+                }
+                //waiting
+                setTimeout(() => {
+                  //see results
+                  this.getpayout(data.batch_header.payout_batch_id).subscribe(data=>{
+          
+                  let results:any[] = data.items;
+                  for(let i =0 ;i <results.length; i++)
                   {
-                    console.log(transectionId);
-                    this.updatestatus(transectionId,{transectionstatus:'rejected'}).subscribe(()=>{
-
-                      let  userdata=this.tokenStorege.getUser(); //<-----------------
-                        let  _content=JSON.parse(userdata.content);
-                        _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(value.amount);
-
-                        if(_content.cashbalance)   {
-
-                            userdata.content=JSON.stringify(_content);
-                            this.tokenStorege.saveUser(userdata); //<-----------------
-
-                            const  resultcontent ={
-                              cashbalance:_content.cashbalance,   }
-
-                            this.userContent.update(_content.id,resultcontent).subscribe(()=>{ });
-
-                        }
-                    });
-
-                  }
-                  //case status success then go completed
-                  if(results[i].transaction_status=='SUCCESS')
-                  {
-        
-                    if(results[i].payout_item.amount.value && results[i].payout_item_fee.value)     {
+                    //case status unclaim return money then rejected
+                    if(results[i].transaction_status=='UNCLAIMED')
+                    {
+                      console.log(transectionId);
+                      this.updatestatus(transectionId,{transectionstatus:'rejected'}).subscribe(()=>{
 
                         let  userdata=this.tokenStorege.getUser(); //<-----------------
-                        let  _content=JSON.parse(userdata.content);
-                        _content.withdrawal=Number.parseFloat(_content.withdrawal)-Number.parseFloat(results[i].payout_item.amount.value);
-                        _content.fees=Number.parseFloat(_content.fees)-Number.parseFloat(results[i].payout_item_fee.value);
+                          let  _content=JSON.parse(userdata.content);
+                          _content.cashbalance=Number.parseFloat(_content.cashbalance)+Number.parseFloat(value.amount);
 
-                        if(_content.withdrawal && _content.fees)   {
+                          if(_content.cashbalance)   {
 
-                                userdata.content=JSON.stringify(_content);
-                                this.tokenStorege.saveUser(userdata); //<-----------------
+                              userdata.content=JSON.stringify(_content);
+                              this.tokenStorege.saveUser(userdata); //<-----------------
 
-                                const  resultcontent ={
-                                withdrawal:_content.withdrawal,
-                                fees: _content.fees
-                                }
+                              const  resultcontent ={
+                                cashbalance:_content.cashbalance,   }
 
-                                this.userContent.update(_content.id,resultcontent).subscribe(()=>{  //<-----------------
-                               console.log(transectionId);
-                                this.updatestatus(transectionId,{transectionstatus:'completed'}).subscribe(()=>{});
-                                });
+                              this.userContent.update(_content.id,resultcontent).subscribe(()=>{ });
 
-                        }
+                          }
+                      });
+
+                    }
+                    //case status success then go completed
+                    if(results[i].transaction_status=='SUCCESS')
+                    {
+          
+                      if(results[i].payout_item.amount.value && results[i].payout_item_fee.value)     {
+
+                          let  userdata=this.tokenStorege.getUser(); //<-----------------
+                          let  _content=JSON.parse(userdata.content);
+                          _content.withdrawal=Number.parseFloat(_content.withdrawal)-Number.parseFloat(results[i].payout_item.amount.value);
+                          _content.fees=Number.parseFloat(_content.fees)-Number.parseFloat(results[i].payout_item_fee.value);
+
+                          if(_content.withdrawal && _content.fees)   {
+
+                                  userdata.content=JSON.stringify(_content);
+                                  this.tokenStorege.saveUser(userdata); //<-----------------
+
+                                  const  resultcontent ={
+                                  withdrawal:_content.withdrawal,
+                                  fees: _content.fees
+                                  }
+
+                                  this.userContent.update(_content.id,resultcontent).subscribe(()=>{  //<-----------------
+                                console.log(transectionId);
+                                  this.updatestatus(transectionId,{transectionstatus:'completed'}).subscribe(()=>{});
+                                  });
+
+                          }
+                      }
+                  
                     }
                 
                   }
-               
-                 }
-        
-                });
-        
-            }, 5000);
-        
+          
+                  });
+          
+              }, 5000);
+          
+              });
+
             });
-
-           });
-          });
-  
-      }
-      else
-      {
-        this.updatestatus(transectionId,{transectionstatus:'rejected'}).subscribe(()=>{});
-      }
-    }
-
-  });
-
-}
-
-
-  //#region  BUY_INVEST
-
-  withdrawal2(transection:any): void {
-
-   
-
-    this.create(transection).subscribe(value => { 
-      let  userdata=this.tokenStorege.getUser();
-      let  _content=JSON.parse(userdata.content);
-      _content.cashbalance=Number.parseFloat(_content.cashbalance)-Number.parseFloat(value.amount);
-    //  _content.invested=Number.parseFloat(_content.invested)+Number.parseFloat(value.amount);
-      _content.investmentonmarket=Number.parseFloat(_content.investmentonmarket)+Number.parseFloat(value.totalunits);
- 
-      if(_content.cashbalance>=0) { 
-
-        userdata.content=JSON.stringify(_content);
-        this.tokenStorege.saveUser(userdata);
-       //
-       const  resultcontent ={
-        cashbalance:_content.cashbalance,
-       // invested:_content.invested,
-        investmentonmarket:_content.investmentonmarket
+            });
+    
         }
-        
-        this.userContent.update(_content.id,resultcontent).subscribe(()=>{
-          this.updatestatus(value.id,{transectionstatus:'marketing'}).subscribe(()=>{});
-        });
-
-      } else {
-
-        this.updatestatus(value.id,{transectionstatus:'rejected'}).subscribe(()=>{});
+        else
+        {
+          this.updatestatus(transectionId,{transectionstatus:'rejected'}).subscribe(()=>{});
+        }
       }
 
-    })
-}
+    });
 
-//#endregion
+  }
 
+  //#endregion
     
   //#region  BUY_INVEST
 

@@ -147,6 +147,16 @@
                         <label><strong>Purchased: </strong></label>
                         ${{ currentUserContent.purchased }}
                       </div>
+
+                      <div class="form-group">
+                        <label><strong>Paid out: </strong></label>
+                        ${{ currentUserContent.paidout }}
+                      </div>
+
+                      <div class="form-group">
+                        <label><strong>Fees: </strong></label>
+                        ${{ currentUserContent.fees }}
+                      </div>
             
                     </div>
                     <div *ngIf="!currentUserContent">
