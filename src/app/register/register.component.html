@@ -2,7 +2,6 @@
   <mat-card>
     <mat-card-content>
     
-
       <img id="profile-img"  src="./../../assets/images/avatar/avatar_2x.png"  class="image-profiile"/>
 
       <form  *ngIf="!isSuccessful" name="form"
@@ -20,10 +19,7 @@
           required>
           <mat-error *ngIf="username.invalid">{{usernamegetErrorMessage()}}</mat-error>
         </mat-form-field>
-
       </div>
-
-
 
       <div  class="form-group p-2">
           <mat-form-field>
@@ -36,11 +32,8 @@
             required>
             <mat-error *ngIf="password.invalid">{{passwordgetErrorMessage()}}</mat-error>
           </mat-form-field>
-  
-
         </div>
 
-  
         <div  class="form-group p-2">
           <mat-form-field>
             <mat-label>Confirm new password</mat-label>
@@ -52,9 +45,7 @@
             required>
             <mat-error>{{verifypasswordgetErrorMessage()}}</mat-error>
           </mat-form-field>
-
         </div>
-    
 
         <div  class="form-group p-2">
           <mat-form-field>
@@ -69,7 +60,6 @@
           </mat-form-field>
         </div>
     
-
         <div  class="form-group p-2">
           <mat-form-field>
             <mat-label>Promotion Code</mat-label>
