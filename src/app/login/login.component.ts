@@ -11,17 +11,12 @@ import { TokenStorageService } from '../_services/token-storage.service';
 })
 export class LoginComponent implements OnInit {
 
-//  @Output()
-//ngSubmit: EventEmitter;
-
-//@Input()
-//currentUserContent: any;
-
   form: any = {
     username: null,
     password: null
   };
   
+
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -33,6 +28,7 @@ export class LoginComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit(): void {
+   
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
@@ -42,10 +38,12 @@ export class LoginComponent implements OnInit {
     {
       this.isLoggedIn = false;
       this.roles = [];
+    
     }
   }
 
   onSubmit(): void {
+
     const { username, password } = this.form;
 
     this.authService.login(username, password).subscribe(
@@ -59,6 +57,7 @@ export class LoginComponent implements OnInit {
 
         console.log(data.message);
         this.reloadUser();
+      
         
       },
       err => {
@@ -66,6 +65,7 @@ export class LoginComponent implements OnInit {
 
         console.log(this.errorMessage);
         this.isLoginFailed = true;
+      
       }
     );
   }
