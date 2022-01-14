@@ -1,12 +1,5 @@
 
-.mat-card {
-  color:black;
-  background-color: rgb(194, 231, 157)   !important;
-  padding:5px !important;
-}
-
 .mat-card-content {
- 
   color:black;
   font-size: large;
   background-color: rgb(153, 146, 133)   !important;
