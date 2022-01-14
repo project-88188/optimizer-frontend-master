@@ -1,81 +1,66 @@
 <mat-card>
   <mat-card-content>
-   
-      
     <img id="profile-img"  src="./../../assets/images/avatar/avatar_2x.png"  class="image-profiile"/>
 
+    <form *ngIf="!isLoggedIn"  #f="ngForm"  name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+     novalidate
+    >
 
-      <form
-        *ngIf="!isLoggedIn"
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
-      >
+              <div  class="form-group">
+                <mat-form-field>
+                  <mat-label>UserName</mat-label>
+                  <input matInput type="text" name="username" ngModel require minlength="6" #username="ngModel"
+                  [(ngModel)]="form.username"
+                  >
+                </mat-form-field>
+              </div>
+          
 
-      <div  class="form-group p-2">
-        <mat-form-field>
-          <mat-label>UserName</mat-label>
-          <input matInput type="text"
-           autocomplete= "currentusername"
-           [(ngModel)]="form.username"
-           required
-           minlength="6"
-           #username="ngModel"
-           >
-        </mat-form-field>
-      </div>
-  
-
-      <div  class="form-group p-2">
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput type="password"
-          autocomplete= "currentpassword"
-          [(ngModel)]="form.password"
-          required
-          minlength="6"
-          #password="ngModel"
-           >
-        </mat-form-field>
-      </div>
+              <div  class="form-group">
+                <mat-form-field>
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" name="password" ngModel require minlength="6" #password="ngModel"
+                  [(ngModel)]="form.password"
+                  >
+                </mat-form-field>
+              </div>
 
 
-      <div  class="form-group p-2">
-        <div class="alert alert-danger" role="alert"  *ngIf="username.errors">
-          <div *ngIf="username.errors.required">Username is required</div>
-          <div *ngIf="username.errors.minlength">Username must be at least 6 characters </div>
-        </div>
-      </div>
-   
+              <div  class="form-group">
+                <div class="alert alert-danger" role="alert"  *ngIf="!username.valid">
+                  <div >Username must be at least 6 characters </div>
+                </div>
+              </div>
+          
 
-      <div  class="form-group p-2">
-        <div class="alert alert-danger"   role="alert" *ngIf="password.errors && !username.errors"> 
-          <div *ngIf="password.errors.required">Password is required</div>
-          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
-        </div>
-      </div>
-  
+              <div  class="form-group">
+                <div class="alert alert-danger"   role="alert" *ngIf="username.valid && !password.valid"> 
+                  <div >Password must be at least 6 characters</div>
+                </div>
+              </div>
+          
 
-      <div  class="form-group p-2 mb-2">
-        <button mat-flat-button>
-          <h4> <b class="text-center" >Login</b> </h4>
-        </button>
-      </div>
+              <div  class="form-group">
+                <button mat-flat-button>
+                  <h4> <b class="text-center" >Login</b> </h4>
+                </button>
+              </div>
 
-      <div  class="form-group p-2">
-        <div class="alert alert-danger"  role="alert"  *ngIf="f.submitted && isLoginFailed">
-          Login failed: {{ errorMessage }}
-        </div>
-        <div class="alert alert-success"  role="alert"  *ngIf="f.submitted && !isLoginFailed">
-          Login failed: {{ errorMessage }}
-        </div>
-      </div>
+              <div  class="form-group">
+                <div class="alert alert-danger"  role="alert"  *ngIf="f.submitted && isLoginFailed">
+                  Login failed: {{ errorMessage }}
+                </div>
+                <div class="alert alert-success"  role="alert"  *ngIf="f.submitted && !isLoginFailed">
+                  Login failed: {{ errorMessage }}
+                </div>
+              </div>
 
-      </form>
-        <div class="alert alert-success"  role="alert" *ngIf="isLoggedIn">
-          Logged in as {{ roles }}.
-        </div>
+    </form>
+
+    <div class="alert alert-success"  role="alert" *ngIf="isLoggedIn">
+      Logged in as {{ roles }}.
+    </div>
   </mat-card-content>
 </mat-card>
 

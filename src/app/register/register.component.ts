@@ -13,13 +13,14 @@ import { TokenStorageService } from '../_services/token-storage.service';
 export class RegisterComponent implements OnInit {
 
   form: any = {
-    username: null,// new FormControl('', [Validators.required, Validators.email]),
-    email: null,//new FormControl('', [Validators.required, Validators.minLength(5),Validators.maxLength(20)]),
-    password: null,// FormControl('', [Validators.required, Validators.minLength(5),Validators.maxLength(20)]),
+    username: null,
+    email: null,
+    password: null,
+    confirmpassword:null,
     supervisorname:null
   };
 
-  confirmpassword:any;
+ 
   isSuccessful = false;
   isSignUpFailed = false;
 
@@ -36,6 +37,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
 
+   
     const { username, email, password, supervisorname } = this.form;
     
     this.authService.register(username, email, password, supervisorname).subscribe(

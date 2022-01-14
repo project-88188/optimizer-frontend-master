@@ -1,104 +1,97 @@
 
   <mat-card>
     <mat-card-content>
-    
       <img id="profile-img"  src="./../../assets/images/avatar/avatar_2x.png"  class="image-profiile"/>
 
-      <form  *ngIf="!isSuccessful" name="form"
+      <form  *ngIf="!isSuccessful"  #f="ngForm"  name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
-      #f="ngForm" novalidate>
+      novalidate
+      >
 
-      <div  class="form-group p-2">
-        <mat-form-field>
-          <mat-label>New UserName</mat-label>
-          <input matInput type="text"
-           [(ngModel)]="form.username"
-           required
-           minlength="6"
-           #username="ngModel"
-           >
-        </mat-form-field>
-      </div>
+                  <div  class="form-group">
+                    <mat-form-field>
+                      <mat-label>New UserName</mat-label>
+                        <input matInput type="text" name="username" ngModel require minlength="6" #username="ngModel"
+                        placeholder="Enter new username."
+                        [(ngModel)]="form.username"
+                        >
+                    </mat-form-field>
+                  </div>
 
-      <div  class="form-group p-2">
-        <mat-form-field>
-          <mat-label>New Password</mat-label>
-          <input matInput type="password"
-          [(ngModel)]="form.password"
-          required
-          minlength="6"
-          #password="ngModel"
-           >
-        </mat-form-field>
-      </div>
+                  <div  class="form-group">
+                    <mat-form-field>
+                      <mat-label>New Password</mat-label>
+                      <input matInput type="password" name="password" ngModel require minlength="6" #password="ngModel"
+                      placeholder="Enter new password."
+                      [(ngModel)]="form.password"
+                        >
+                    </mat-form-field>
+                  </div>
 
-        <div  class="form-group p-2">
-          <mat-form-field>
-            <mat-label>Confirm new password</mat-label>
-            <input matInput type="password"
-            placeholder="Confirm new password."
-            [(ngModel)]="confirmpassword"
-            required
-            #confirm="ngModel"
-            >
-            
-          </mat-form-field>
-        </div>
+                  <div  class="form-group">
+                    <mat-form-field>
+                      <mat-label>Confirm new password</mat-label>
+                      <input matInput type="password" name="confirmpassword" ngModel require minlength="6" #confirmpassword="ngModel"
+                      placeholder="Confirm new password."
+                      >
+                    </mat-form-field>
+                  </div>
 
-        <div  class="form-group p-2">
-          <mat-form-field>
-            <mat-label>New email</mat-label>
-            <input matInput type="text"
-            placeholder="pat@example.com"
-            [(ngModel)]="form.email" 
-            required
-            #email="ngModel"
-            >
+                  <div  class="form-group">
+                    <mat-form-field>
+                      <mat-label>New email</mat-label>
+                      <input matInput type="text" name="email" ngModel require  #email="ngModel"
+                      placeholder="pat@example.com"
+                      [(ngModel)]="form.email" 
+                      >
+                    </mat-form-field>
+                  </div>
 
-          </mat-form-field>
-        </div>
-    
-        <div  class="form-group p-2">
-          <mat-form-field>
-            <mat-label>Promotion Code</mat-label>
-            <input matInput type="text"
-            [(ngModel)]="form.supervisorname"
-            >
-          </mat-form-field>
-        </div>
+                  <div  class="form-group">
+                    <mat-form-field>
+                      <mat-label>Promotion Code</mat-label>
+                      <input matInput type="text"
+                      placeholder="Enter promotion code or keep empty"
+                      [(ngModel)]="form.supervisorname"
+                      >
+                    </mat-form-field>
+                  </div>
 
-        <div  class="form-group p-2">
-          <div class="alert alert-danger" role="alert"  *ngIf="username.errors">
-            <div *ngIf="username.errors.required">New Username is required</div>
-            <div *ngIf="username.errors.minlength">New Username must be at least 6 characters </div>
-          </div>
-        </div>
+                  <div  class="form-group">
+                    <div class="alert alert-danger" role="alert"  *ngIf="!username.valid">
+                      <div >New Username must be at least 6 characters </div>
+                    </div>
+                  </div>
 
-        <div  class="form-group p-2">
-          <div class="alert alert-danger"  role="alert" *ngIf="password.errors && !username.errors"> 
-            <div *ngIf="password.errors.required">New Password is required</div>
-            <div *ngIf="password.errors.minlength">New Password must be at least 6 characters</div>
-          </div>
-        </div>
+                  <div  class="form-group">
+                    <div class="alert alert-danger"  role="alert" *ngIf="username.valid && !password.valid"> 
+                      <div >New Password must be at least 6 characters</div>
+                    </div>
+                  </div>
 
-        <div  class="form-group p-2 mb-2">
-          <button mat-flat-button>
-            <h4> <b class="text-center" >Sign Up</b> </h4>
-          </button>
-        </div>
-     
-        <div  class="form-group p-2">
-          <div class="alert alert-warning"  role="alert" *ngIf="isSignUpFailed">
-            Signup failed!<br />{{ errorMessage }}
-          </div>
-        </div>
+                  <div  class="form-group">
+                    <div class="alert alert-danger"  role="alert" *ngIf="username.valid && password.valid && password.value && confirmpassword.value!=password.value"> 
+                      <div >New confirm password is not match!</div>
+                    </div>
+                  </div>
+
+                  <div  class="form-group">
+                  <button mat-flat-button>
+                    <h4> <b class="text-center" >Sign Up</b> </h4>
+                  </button>
+                  </div>
+
+                  <div  class="form-group">
+                  <div class="alert alert-warning"  role="alert" *ngIf="isSignUpFailed">
+                    Signup failed!<br />{{ errorMessage }}
+                  </div>
+                  </div>
  
 
       </form>
     
-        <div class="alert alert-success"  role="alert" *ngIf="isSuccessful">
-          Your registration is successful!
-        </div>
-     
+      <div class="alert alert-success"  role="alert" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
     </mat-card-content>
   </mat-card>
