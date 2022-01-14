@@ -37,6 +37,12 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
 
+    if(this.form.confirmpassword!=this.form.password)
+    {
+      console.log('Fail! Confirmpassword is not match!');
+      return;
+    }
+
    
     const { username, email, password, supervisorname } = this.form;
     

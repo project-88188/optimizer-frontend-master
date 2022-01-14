@@ -33,6 +33,7 @@
                       <mat-label>Confirm new password</mat-label>
                       <input matInput type="password" name="confirmpassword" ngModel require minlength="6" #confirmpassword="ngModel"
                       placeholder="Confirm new password."
+                      [(ngModel)]="form.confirmpassword"
                       >
                     </mat-form-field>
                   </div>
