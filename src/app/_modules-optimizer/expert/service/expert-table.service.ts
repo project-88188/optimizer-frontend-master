@@ -9,7 +9,7 @@ export interface DataApi {
   total_count: number;
 }
 
-const API_URL = OPTIMIZER_URL + '/api/experts/';
+const API_URL = OPTIMIZER_URL + '/server/experts/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

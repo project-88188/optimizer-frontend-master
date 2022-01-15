@@ -9,7 +9,7 @@ export interface DataApi {
   total_count: number;
 }
 
-const API_URL = OPTIMIZER_URL + '/api/currencies/';
+const API_URL = OPTIMIZER_URL + '/server/currencies/';
 
 
 @Injectable({

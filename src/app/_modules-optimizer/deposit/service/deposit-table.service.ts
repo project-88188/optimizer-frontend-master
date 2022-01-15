@@ -9,7 +9,7 @@ export interface DataApi {
   total_count: number;
 }
 
-const API_URL = OPTIMIZER_URL + '/api/deposits/';
+const API_URL = OPTIMIZER_URL + '/server/deposits/';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
