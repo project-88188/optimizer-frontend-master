@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { BASE_URL } from 'src/app/_providers/global-url';
 import { SortDirection } from "@angular/material/sort";
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
- 
+import { GithubApi } from '../components/table-user-transection/table-user-transection.component'; 
 
 const baseUrl = BASE_URL + '/server/table/transections';
 
@@ -33,5 +33,9 @@ export class TransectionService {
 
     return this.http.get<DataApi>(baseUrl+`/table/search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
  }
+
+ getSampleData(sort: string, order: SortDirection, page: number, q: string): Observable<GithubApi> {
+  return this.http.get<GithubApi>(`https://api.github.com/search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}`);
+}
 
 }

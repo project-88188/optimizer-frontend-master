@@ -1,9 +1,10 @@
-import { Component,Input,OnChanges }from '@angular/core'
+import { Component,Input,OnChanges,ViewChild }from '@angular/core'
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../elements.service';
 import { CLIENT_ID } from 'src/app/_providers/paypal-config';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { UsercontentService } from 'src/app/_modules/usercontent/services/usercontent.service';
+import { NgxCaptchaModule,ReCaptcha2Component} from 'ngx-captcha';
 
 @Component({
   selector: 'app-butt-deposit',
@@ -42,6 +43,7 @@ export class ButtDepositComponent implements OnChanges {
      }
 
   ngOnChanges(): void {
+
     if(!this.currTapIndex)
     {
       if(this.currTapIndex==0)

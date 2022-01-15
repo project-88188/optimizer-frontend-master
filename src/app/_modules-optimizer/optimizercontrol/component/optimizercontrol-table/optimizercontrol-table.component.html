@@ -52,44 +52,4 @@
         </div>
 
     </mat-card-content>
-
-    <mat-card-footer class="p-3">
-
-      <section>
-        <div class="p-3">
-            <input class="m-text-input text-left" 
-            type="text" placeholder="Search a text" 
-            (input)="term$.next($any($event.target).value)" /> 
-        </div>
-    </section>
-              
-    <section>
-      <div class="p-3">
-        <button mat-icon-button color="accent" (click) ="firstPage()">
-          <img src="../../../../../assets/images/nav/baseline_first_page_black_18dp.png" />
-        </button>
-        <button mat-icon-button color="accent" (click) ="previousPage()" >
-          <img src="../../../../../assets/images/nav/baseline_chevron_left_black_18dp.png" />
-        </button>
-        <input class="m-page-input text-center" 
-        [(ngModel)]="currentpageindex"
-        (ngModelChange)="inputPageChanged($event)">
-        <button mat-icon-button color="accent" (click)="nextPage()" >
-          <img src="../../../../../assets/images/nav/baseline_chevron_right_black_18dp.png" />
-        </button>
-        <button mat-icon-button color="accent" (click)="lastPage()">
-          <img src="../../../../../assets/images/nav/baseline_last_page_black_18dp.png" />
-        </button>
-        </div>
-    </section>
-    
-            <mat-paginator hidden="true"
-            [length]="resultsLength"
-            [pageSize]="12"
-            [pageSizeOptions]="[5, 10, 30]" 
-            aria-label="Select page">
-            </mat-paginator>
-        
-        </mat-card-footer>
-        
 </mat-card>

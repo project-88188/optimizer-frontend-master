@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+
 import { UsermanagerRoutingModule } from './usermanager-routing.module';
 import { AdminUsersManagerComponent } from './components/admin-users-manager/admin-users-manager.component';
 import { AdminModeratorsManagerComponent } from './components/admin-moderators-manager/admin-moderators-manager.component';

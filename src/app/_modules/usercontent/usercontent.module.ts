@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+
 import { UsercontentRoutingModule } from './usercontent-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -9,7 +14,6 @@ import { ModeratorUsercontentsManagerComponent } from './components/moderator-us
 import { ModeratorUsercontentsCardComponent } from './components/moderator-usercontents-card/moderator-usercontents-card.component';
 import { AdminUsercontentsCardComponent } from './components/admin-usercontents-card/admin-usercontents-card.component';
 
-import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule} from '@angular/material/divider';
 import { MatTabsModule} from '@angular/material/tabs';
 import { MatInputModule} from '@angular/material/input';

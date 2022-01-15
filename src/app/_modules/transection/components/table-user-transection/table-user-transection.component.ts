@@ -7,6 +7,18 @@ import { startWith, switchMap, catchError, map, debounceTime, distinctUntilChang
 import { TransectionService } from '../../services/transection.service';
 
 
+export interface GithubApi {
+  items: GithubIssue[];
+  total_count: number;
+}
+
+export interface GithubIssue {
+  created_at: string;
+  number: string;
+  state: string;
+  title: string;
+}
+
 @Component({
   selector: 'app-table-user-transection',
   templateUrl: './table-user-transection.component.html',
@@ -14,8 +26,8 @@ import { TransectionService } from '../../services/transection.service';
 })
 export class TableUserTransectionComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['Name'];
-  data: any[] = [];
+  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
+  data: GithubIssue[] = [];
   @ViewChild(MatSort) sort!: MatSort;
   term$ = new BehaviorSubject<string>('');
   resultsLength = 0;
@@ -31,7 +43,7 @@ export class TableUserTransectionComponent implements AfterViewInit {
       .pipe(
         startWith({}),
         switchMap((searchTerm) => {
-          return this.transService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
+          return this.transService!.getSampleData(this.sort.active, this.sort.direction, this.paginator.pageIndex, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
             .pipe(catchError(() => of(null)));
         }),
         map(data => {
@@ -42,10 +54,6 @@ export class TableUserTransectionComponent implements AfterViewInit {
           this.resultsLength = data.total_count;
           return data.items;
         })
-        ).subscribe(data => {
-          this.data = data
-          console.log(JSON.stringify(data));
-        });
+      ).subscribe(data => this.data = data);
   }
-
 }

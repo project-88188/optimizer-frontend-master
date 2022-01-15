@@ -7,14 +7,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 
 import { TableUserTransectionComponent } from './components/table-user-transection/table-user-transection.component';
-import { TableModulatorTransectionComponent } from './components/table-modulator-transection/table-modulator-transection.component';
-import { TableAdminTransectionComponent } from './components/table-admin-transection/table-admin-transection.component';
 
 @NgModule({
   declarations: [
     TableUserTransectionComponent,
-    TableModulatorTransectionComponent,
-    TableAdminTransectionComponent
+   
   ],
   imports: [
     CommonModule,
@@ -25,8 +22,7 @@ import { TableAdminTransectionComponent } from './components/table-admin-transec
   ],
   exports: [
     TableUserTransectionComponent,
-    TableModulatorTransectionComponent,
-    TableAdminTransectionComponent
+  
   ]
 })
 
