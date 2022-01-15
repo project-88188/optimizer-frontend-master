@@ -8,7 +8,6 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MyCustomPaginatorIntl } from 'src/app/_providers/mycustom-international';
 
 @NgModule({
   declarations: [
@@ -26,6 +25,6 @@ import { MyCustomPaginatorIntl } from 'src/app/_providers/mycustom-international
   exports:[
     TotaldayTableComponent
   ],
-  providers: [{provide: MatPaginatorIntl, useClass: MyCustomPaginatorIntl}],
+ 
 })
 export class TotaldayModule { }

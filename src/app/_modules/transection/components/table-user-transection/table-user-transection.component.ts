@@ -24,6 +24,7 @@ export class TableUserTransectionComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     
+    console.log(' ngAfterViewInit() {');
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
@@ -42,7 +43,10 @@ export class TableUserTransectionComponent implements AfterViewInit {
           this.resultsLength = data.total_count;
           return data.items;
         })
-      ).subscribe(data => this.data = data);
+      ).subscribe(data => {
+        this.data = data
+        console.log(data);
+      });
   }
 
 }

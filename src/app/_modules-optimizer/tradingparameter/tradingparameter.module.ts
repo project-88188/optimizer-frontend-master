@@ -6,12 +6,11 @@ import { TradingparameterTableComponent } from './component/tradingparameter-tab
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
-import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatIconModule} from '@angular/material/icon';
-import { MatButtonModule} from '@angular/material/button';
-import { MyCustomPaginatorIntl } from 'src/app/_providers/mycustom-international';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -24,15 +23,12 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     MatSortModule,
     MatCardModule,
     MatPaginatorModule,
-    MatIconModule,
-    MatButtonModule,
     MatProgressSpinnerModule,
-    FormsModule,
-    ReactiveFormsModule,
+    FormsModule
   ],
   exports:[
     TradingparameterTableComponent
   ],
-  providers: [{provide: MatPaginatorIntl, useClass: MyCustomPaginatorIntl}],
+  
 })
 export class TradingparameterModule { }
