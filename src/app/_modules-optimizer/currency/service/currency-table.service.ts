@@ -11,10 +11,6 @@ export interface DataApi {
 
 const API_URL = OPTIMIZER_URL + '/api/currencies/';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 
 @Injectable({
   providedIn: 'root'

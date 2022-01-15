@@ -3,15 +3,15 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { BehaviorSubject, merge, of } from 'rxjs';
 import { startWith, switchMap, catchError, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { CurrencyTableService } from '../../service/currency-table.service';
+import { TransectionService } from '../../services/transection.service';
 
 
 @Component({
-  selector: 'app-currency-table',
-  templateUrl: './currency-table.component.html',
-  styleUrls: ['./currency-table.component.css']
+  selector: 'app-table-admin-transection',
+  templateUrl: './table-admin-transection.component.html',
+  styleUrls: ['./table-admin-transection.component.css']
 })
-export class CurrencyTableComponent implements AfterViewInit {
+export class TableAdminTransectionComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['Name'];
   data: any[] = [];
@@ -20,9 +20,10 @@ export class CurrencyTableComponent implements AfterViewInit {
   resultsLength = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private symbolService:CurrencyTableService) { }
+  constructor(private transService:TransectionService) { }
 
   ngAfterViewInit() {
+    
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
@@ -30,7 +31,7 @@ export class CurrencyTableComponent implements AfterViewInit {
       .pipe(
         startWith({}),
         switchMap((searchTerm) => {
-          return this.symbolService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
+          return this.transService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
             .pipe(catchError(() => of(null)));
         }),
         map(data => {
@@ -43,5 +44,6 @@ export class CurrencyTableComponent implements AfterViewInit {
         })
       ).subscribe(data => this.data = data);
   }
+
 
 }

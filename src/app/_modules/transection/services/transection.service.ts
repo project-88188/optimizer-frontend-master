@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BASE_URL } from 'src/app/_providers/global-url';
+import { SortDirection } from "@angular/material/sort";
 
-const baseUrl = BASE_URL + '/transections';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
+const baseUrl = BASE_URL + '/server/transections';
+
+export interface DataApi {
+  items:any[];
+  total_count: number;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +18,10 @@ const httpOptions = {
 export class TransectionService {
 
   constructor(private http: HttpClient) { }
+
+  getData(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+    return this.http.get<DataApi>(baseUrl+`search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`);
+ }
 
   getAll(params: any): Observable<any> {
     return this.http.get<any>(baseUrl, { params });
