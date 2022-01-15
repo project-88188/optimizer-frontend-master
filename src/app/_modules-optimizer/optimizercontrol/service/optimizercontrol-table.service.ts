@@ -23,8 +23,8 @@ export class OptimizercontrolTableService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getData(sort: string, order: SortDirection, page: number, q: string): Observable<DataApi> {
-    return this.httpClient.get<DataApi>(API_URL+`search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}`);
+  getData(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+    return this.httpClient.get<DataApi>(API_URL+`search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`);
  }
  
 }

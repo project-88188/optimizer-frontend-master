@@ -35,7 +35,7 @@ export class TesterresultTableComponent  implements AfterViewInit {
       .pipe(
         startWith({}),
         switchMap((searchTerm) => {
-          return this.symbolService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
+          return this.symbolService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
             .pipe(catchError(() => of(null)));
         }),
         map(data => {
