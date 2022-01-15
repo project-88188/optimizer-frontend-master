@@ -6,6 +6,7 @@ import { BehaviorSubject, merge, of } from 'rxjs';
 import { startWith, switchMap, catchError, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { TransectionService } from '../../services/transection.service';
 
+
 @Component({
   selector: 'app-table-user-transection',
   templateUrl: './table-user-transection.component.html',
@@ -23,10 +24,8 @@ export class TableUserTransectionComponent implements AfterViewInit {
   constructor(private transService:TransectionService) { }
 
   ngAfterViewInit() {
-    
-    console.log(' ngAfterViewInit() {');
     // If the user changes the sort order, reset back to the first page.
-    this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
+  //  this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
     merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page)
       .pipe(
@@ -41,12 +40,13 @@ export class TableUserTransectionComponent implements AfterViewInit {
           }
 
           this.resultsLength = data.total_count;
+          console.log(JSON.stringify(data));
           return data.items;
         })
-      ).subscribe(data => {
-        this.data = data
-        console.log(data);
-      });
+        ).subscribe(data => {
+          this.data = data
+          console.log(JSON.stringify(data));
+        });
   }
 
 }

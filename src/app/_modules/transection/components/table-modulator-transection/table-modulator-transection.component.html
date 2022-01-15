@@ -1,24 +1,48 @@
 
-<mat-card class="flex">
+<mat-card class="example-card">
+    <mat-card-title>Mat DataTable</mat-card-title>
     <mat-card-content>
+        <input type="text" placeholder="Search a text" (input)="term$.next($any($event.target).value)" /> Term-
+        {{term$|async}}
+        <div class="example-container mat-elevation-z8">
+            <div class="example-table-container">
+                <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="created"
+                    matSortDisableClear matSortDirection="desc">
+                    <!------
+                                 
+                    <ng-container matColumnDef="number">
+                        <th mat-header-cell *matHeaderCellDef>#</th>
+                        <td mat-cell *matCellDef="let row">{{row.number}}</td>
+                    </ng-container>
 
-        <table mat-table [dataSource]="data" class="table" matSort matSortActive="created"
-        matSortDisableClear matSortDirection="desc">
+                   
+                    <ng-container matColumnDef="title">
+                        <th mat-header-cell *matHeaderCellDef>Title</th>
+                        <td mat-cell *matCellDef="let row">{{row.title}}</td>
+                    </ng-container>
 
-        <!-- SymbolName Column -->
-        <ng-container matColumnDef="Name">
-            <th mat-header-cell *matHeaderCellDef>CURRENCIES</th>
-            <td mat-cell *matCellDef="let row">{{row.currencyName}}</td>
-        </ng-container>
+                
+                    <ng-container matColumnDef="state">
+                        <th mat-header-cell *matHeaderCellDef>State</th>
+                        <td mat-cell *matCellDef="let row">{{row.state}}</td>
+                    </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-        
-            
+                  
+                    <ng-container matColumnDef="created">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Created
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.created_at | date}}</td>
+                    </ng-container>
+                        -------->
+    
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+            <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results">
+            </mat-paginator>
+        </div>
     </mat-card-content>
-
-    <mat-paginator  aria-label="Select page">
-    </mat-paginator>
-
 </mat-card>
