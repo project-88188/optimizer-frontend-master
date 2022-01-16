@@ -33,7 +33,7 @@ import { SymbolTableComponent } from './symbol-table/symbol-table.component';
     TotaldayTableComponent,
     TradingparameterTableComponent,
     PeriodTableComponent,
-    SymbolTableComponent
+    SymbolTableComponent,
   ],
   imports: [
     
@@ -53,7 +53,9 @@ import { SymbolTableComponent } from './symbol-table/symbol-table.component';
     ProgramTableComponent,
     TestresultTableComponent,
     TotaldayTableComponent,
-    TradingparameterTableComponent
+    TradingparameterTableComponent,
+    PeriodTableComponent,
+    SymbolTableComponent,
   ]
 })
 
