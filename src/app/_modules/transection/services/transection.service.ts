@@ -22,7 +22,7 @@ export class TransectionService {
   constructor(private http: HttpClient,
     private tokenStorage:TokenStorageService) { }
 
-  getData(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+  getData( username:string, sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
 
     const _httpOptions = {
       headers:  new HttpHeaders()
@@ -32,11 +32,7 @@ export class TransectionService {
      
     };
 
-    return this.http.get<DataApi>(baseUrl+`/table/search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+    return this.http.get<DataApi>(baseUrl+`/table/search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
  }
-
- getSampleData(sort: string, order: SortDirection, page: number, q: string): Observable<GithubApi> {
-  return this.http.get<GithubApi>(`https://api.github.com/search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}`);
-}
 
 }
