@@ -73,8 +73,6 @@ import { TablesOptimizerModule } from './tables-optimizer/tables-optimizer.modul
     MatButtonModule,
     MatButtonToggleModule,
 
- 
-    
   ],
   exports:[
 

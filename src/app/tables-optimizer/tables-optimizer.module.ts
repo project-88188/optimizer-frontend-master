@@ -11,6 +11,11 @@ import { TestresultTableComponent } from './testresult-table/testresult-table.co
 import { TotaldayTableComponent } from './totalday-table/totalday-table.component';
 import { TradingparameterTableComponent } from './tradingparameter-table/tradingparameter-table.component';
 
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 @NgModule({
@@ -26,7 +31,15 @@ import { TradingparameterTableComponent } from './tradingparameter-table/trading
     TotaldayTableComponent,
     TradingparameterTableComponent
   ],
-  exports:[
+  imports: [
+    
+    CommonModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatTableModule,
+    MatSortModule,
+  ],
+  exports: [
     CurrencyTableComponent,
     DepositTableComponent,
     ExpertTableComponent,
@@ -37,9 +50,7 @@ import { TradingparameterTableComponent } from './tradingparameter-table/trading
     TestresultTableComponent,
     TotaldayTableComponent,
     TradingparameterTableComponent
-  ],
-  imports: [
-    CommonModule
   ]
 })
+
 export class TablesOptimizerModule { }

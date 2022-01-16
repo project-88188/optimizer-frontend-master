@@ -28,7 +28,7 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { OptimizeronthecloudComponent } from './optimizeronthecloud/optimizeronthecloud.component';
 
 import { NgxPayPalModule } from 'ngx-paypal';

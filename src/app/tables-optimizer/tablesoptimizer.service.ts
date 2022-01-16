@@ -1,8 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs";
-import { GithubApi } from "./table/table.component";
 import { SortDirection } from "@angular/material/sort";
+
+export interface GithubApi {
+  items: GithubIssue[];
+  total_count: number;
+}
+
+export interface GithubIssue {
+  created_at: string;
+  number: string;
+  state: string;
+  title: string;
+}
 
 @Injectable({
   providedIn: 'root'
