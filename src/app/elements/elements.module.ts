@@ -31,18 +31,6 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
 import {MatSelectModule} from '@angular/material/select';
 import { OptimizeronthecloudComponent } from './optimizeronthecloud/optimizeronthecloud.component';
 
-import { CurrencyModule } from '../_modules-optimizer/currency/currency.module';
-import { DepositModule } from '../_modules-optimizer/deposit/deposit.module';
-import { ExpertModule } from '../_modules-optimizer/expert/expert.module';
-import { LeverageModule } from '../_modules-optimizer/leverage/leverage.module';
-import { OptimizercontrolModule } from '../_modules-optimizer/optimizercontrol/optimizercontrol.module';
-import { PeriodModule } from '../_modules-optimizer/period/period.module';
-import { SymbolModule } from '../_modules-optimizer/symbol/symbol.module';
-import { TestercontrolModule } from '../_modules-optimizer/testercontrol/testercontrol.module';
-import { TesterresultModule } from '../_modules-optimizer/testerresult/testerresult.module';
-import { TotaldayModule } from '../_modules-optimizer/totalday/totalday.module';
-import { TradingparameterModule } from '../_modules-optimizer/tradingparameter/tradingparameter.module';
-import { TesterprogramModule } from '../_modules-optimizer/testerprogram/testerprogram.module';
 import { NgxPayPalModule } from 'ngx-paypal';
 
 
@@ -78,20 +66,6 @@ import { NgxPayPalModule } from 'ngx-paypal';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-
-    CurrencyModule,
-    DepositModule,
-    ExpertModule,
-    LeverageModule,
-    OptimizercontrolModule,
-    PeriodModule,
-    SymbolModule,
-    TestercontrolModule,
-    TesterresultModule,
-    TotaldayModule,
-    TradingparameterModule,
-    TesterprogramModule,
-
     NgxPayPalModule,
 
   ],
