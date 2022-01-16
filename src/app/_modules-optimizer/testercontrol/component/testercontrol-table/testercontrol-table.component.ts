@@ -5,7 +5,6 @@ import { BehaviorSubject, merge, of } from 'rxjs';
 import { startWith, switchMap, catchError, map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { TestercontrolTableService } from '../../service/testercontrol-table.service';
 
-//$ npm install --save @angular/material @angular/cdk @angular/animations
 
 @Component({
   selector: 'app-testercontrol-table',
@@ -36,7 +35,7 @@ export class TestercontrolTableComponent  implements AfterViewInit {
 
     merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page).subscribe(data=>{
 
-      this.transService!.getData(this.currentUserContent.username,this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
+      this.symbolService!.getData(this.currentUserContent.username,this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
         (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(values=>{
        
           this.data=values.items;

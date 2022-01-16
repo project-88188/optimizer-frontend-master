@@ -8,6 +8,7 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 export interface DataApi {
   items:any[];
   total_count: number;
+  message:string;
 }
 
 const API_URL = OPTIMIZER_URL + '/server/totaldays/';
