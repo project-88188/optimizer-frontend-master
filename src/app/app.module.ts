@@ -22,19 +22,6 @@ import { UsercontentModule } from './_modules/usercontent/usercontent.module';
 import { UsermanagerModule } from './_modules/usermanager/usermanager.module';
 import { ElementsModule } from './elements/elements.module';
 
-import { CurrencyModule } from './_modules-optimizer/currency/currency.module';
-import { DepositModule } from './_modules-optimizer/deposit/deposit.module';
-import { ExpertModule } from './_modules-optimizer/expert/expert.module';
-import { LeverageModule } from './_modules-optimizer/leverage/leverage.module';
-import { OptimizercontrolModule } from './_modules-optimizer/optimizercontrol/optimizercontrol.module';
-import { PeriodModule } from './_modules-optimizer/period/period.module';
-import { SymbolModule } from './_modules-optimizer/symbol/symbol.module';
-import { TestercontrolModule } from './_modules-optimizer/testercontrol/testercontrol.module';
-import { TesterresultModule } from './_modules-optimizer/testerresult/testerresult.module';
-import { TotaldayModule } from './_modules-optimizer/totalday/totalday.module';
-import { TradingparameterModule } from './_modules-optimizer/tradingparameter/tradingparameter.module';
-
-import { TesterprogramModule } from './_modules-optimizer/testerprogram/testerprogram.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatTabsModule} from '@angular/material/tabs';
@@ -46,6 +33,7 @@ import { MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatButtonModule} from '@angular/material/button';
 import { MatButtonToggleModule} from '@angular/material/button-toggle';
+import { TablesOptimizerModule } from './tables-optimizer/tables-optimizer.module';
 
 
 @NgModule({
@@ -72,20 +60,8 @@ import { MatButtonToggleModule} from '@angular/material/button-toggle';
     UsercontentModule,
     UsermanagerModule,
     ElementsModule,
+    TablesOptimizerModule, 
 
-    CurrencyModule,
-    DepositModule,
-    ExpertModule,
-    LeverageModule,
-    OptimizercontrolModule,
-    PeriodModule,
-    SymbolModule,
-    TestercontrolModule,
-    TesterresultModule,
-    TotaldayModule,
-    TradingparameterModule,
-    TesterprogramModule,
-    
     BrowserAnimationsModule,
     MatTabsModule,
     MatDividerModule,
@@ -97,8 +73,8 @@ import { MatButtonToggleModule} from '@angular/material/button-toggle';
     MatButtonModule,
     MatButtonToggleModule,
 
+ 
     
-
   ],
   exports:[
 
