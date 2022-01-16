@@ -31,6 +31,7 @@ export class TableUserTransectionComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   term$ = new BehaviorSubject<string>('');
   resultsLength = 0;
+  resultsMessage ='';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   @Input()
@@ -55,8 +56,14 @@ export class TableUserTransectionComponent implements AfterViewInit {
           }
 
           this.resultsLength = data.total_count;
+          this.resultsMessage = data.message;
           return data.items;
         })
-      ).subscribe(data => this.data = data);
+      ).subscribe(data => {
+        this.data = data;
+        console.log(data);
+        console.log(this.resultsLength);
+        console.log(this.resultsMessage);
+      });
   }
 }

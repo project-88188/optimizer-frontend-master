@@ -11,6 +11,7 @@ const baseUrl = BASE_URL + '/server/transections';
 export interface DataApi {
   items:any[];
   total_count: number;
+  message:string;
 }
 
 @Injectable({
