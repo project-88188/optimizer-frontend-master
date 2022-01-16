@@ -6,45 +6,57 @@
 
             <mat-card class="col-sm p-3">
               <mat-card-title>
-                <h4>Status</h4>
+                <h4 class="text-center">Status</h4>
               </mat-card-title>
               <mat-card-content>
                   <div *ngIf="currentUserContent">
 
-                    <div class="form-group">
-                      <label><strong>User name: </strong></label>
-                      {{ currentUserContent.username }}
-                    </div>
-            
-                    <div class="form-group" *ngIf='currentUserContent.moderatorname && currentUserContent.moderatorname!="" '>
-                      <label><strong>Moderator name: </strong></label>
-                      {{ currentUserContent.moderatorname }}
-                    </div>
-    
-                    <div class="form-group">
-                      <label><strong>Status:</strong></label>
-                      {{ currentUserContent.published ? "Published" : "Pending" }}
-                    </div>
-
-                    <div class="form-group" *ngIf='currentUserContent.updatedAt'>
-                      <label><strong>Created:</strong></label>
-                      {{ currentUserContent.createdAt }}
-                    </div>
-          
-                    <div class="form-group" *ngIf='currentUserContent.createdAt'>
-                      <label><strong>Updated:</strong></label>
-                      {{ currentUserContent.updatedAt }}
-                    </div>
-
-                    <div class="form-group" *ngIf='currentUserContent.time'>
-                      <label><strong>Time:</strong></label>
-                      {{ currentUserContent.time }}
-                    </div>
-
-                    <div class="form-group" *ngIf='currentUserContent.count'>
-                      <label><strong>Count:</strong></label>
-                      {{ currentUserContent.count }}
-                    </div>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th class="text-begin">User name:</th>
+                          <th class="text-begin">{{ currentUserContent.username }}</th>
+                          <th></th>
+                        </tr>
+                        <tr *ngIf='currentUserContent.moderatorname && currentUserContent.moderatorname!="" '>
+                          <th class="text-begin">Moderator name:</th>
+                          <th class="text-begin">{{ currentUserContent.moderatorname }}</th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                          <th class="text-begin">Status:</th>
+                          <th class="text-begin">{{ currentUserContent.published>0 ? "Published" : "Pending" }}</th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                          <th class="text-begin">Created:</th>
+                          <th class="text-begin">{{ currentUserContent.createdAt }}</th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                          <th class="text-begin">Updated:</th>
+                          <th class="text-begin">{{ currentUserContent.updatedAt.toString() }}</th>
+                          <th></th>
+                        </tr>
+                        <tr *ngIf='currentUserContent.time'>
+                          <th class="text-begin">Time:</th>
+                          <th class="text-begin">{{ currentUserContent.time }}</th>
+                          <th></th>
+                        </tr>
+                        <tr  *ngIf='currentUserContent.count'>
+                          <th class="text-begin">Count:</th>
+                          <th class="text-begin">{{ currentUserContent.count }}</th>
+                          <th></th>
+                        </tr>
+                      </tbody>
+                    </table>
 
                   </div>
                   <div *ngIf="!currentUserContent">
@@ -55,25 +67,42 @@
           
             <mat-card class="col-sm  p-3">
               <mat-card-title>
-                <h4>Assets</h4>
+                <h4 class="text-center">Assets</h4>
               </mat-card-title>
               <mat-card-content>
                   <div *ngIf="currentUserContent">
-    
-                    <div class="form-group">
-                      <label><strong>bitoptimizer units: </strong></label>
-                      {{ currentUserContent.bitoptimizer }} [${{currentUserContent.bitoptimizer*0.5 }}]
-                    </div>
-          
-                    <div class="form-group">
-                      <label><strong>Investment units: </strong></label>
-                      {{ currentUserContent.investment }} [${{currentUserContent.investment*1.05}}]
-                    </div>
-          
-                    <div class="form-group">
-                      <label><strong>Cash balance: $</strong></label>
-                      {{ currentUserContent.balance }}
-                    </div>
+
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th></th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th class="text-end">bitoptimizer units:</th>
+                          <th class="text-begin ">{{ currentUserContent.bitoptimizer + currentUserContent.bitoptimizeronmarket}}/{{currentUserContent.bitoptimizer }} [${{currentUserContent.bitoptimizer*0.5 }}]</th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                          <th class="text-end">Investment units:</th>
+                          <th class="text-begin">{{currentUserContent.investment + currentUserContent.investmentonmarket}}/{{currentUserContent.investment }} [${{currentUserContent.investment*1.05}}]</th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                          <th class="text-end">Cash balance:</th>
+                          <th class="text-begin">${{ currentUserContent.cashbalance }}</th>
+                          <th></th>
+                        </tr>
+                        <tr>
+                          <th class="text-end">Accurebalance:</th>
+                          <th class="text-begin"> ${{ currentUserContent.cashaccrue }}</th>
+                          <th></th>
+                        </tr>
+                      </tbody>
+                    </table>
     
                   </div>
                   <div *ngIf="!currentUserContent">
@@ -84,35 +113,48 @@
 
             <mat-card class="col-sm  p-3">
               <mat-card-title>
-                <h4>Operation In</h4>
+                <h4 class="text-center">Operation In</h4>
               </mat-card-title>
                 <mat-card-content>
                     <div *ngIf="currentUserContent">
 
-                      <div class="form-group">
-                        <label><strong>Deposit: $</strong></label>
-                        {{ currentUserContent.deposit }}
-                      </div>
-            
-                      <div class="form-group">
-                        <label><strong>Dividen received: $</strong></label>
-                        {{ currentUserContent.dividenreceived }}
-                      </div>
-            
-                      <div class="form-group">
-                        <label><strong>Interest received: $</strong></label>
-                        {{ currentUserContent.interestreceived }}
-                      </div>
-                      
-                      <div class="form-group">
-                        <label><strong>Sold: $</strong></label>
-                        {{ currentUserContent.sold }}
-                      </div>
-            
-                      <div class="form-group">
-                        <label><strong>Earned: $</strong></label>
-                        {{ currentUserContent.earned }}
-                      </div>
+
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th class="text-end">Deposit:</th>
+                            <th class="text-begin ">${{ currentUserContent.deposit }}</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <th class="text-end">Dividen received:</th>
+                            <th class="text-begin">${{ currentUserContent.dividenreceived }}</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <th class="text-end">Interest received:</th>
+                            <th class="text-begin">$${{ currentUserContent.interestreceived }}</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <th class="text-end">Sold:</th>
+                            <th class="text-begin">${{ currentUserContent.sold }}</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <th class="text-end">Earned:</th>
+                            <th class="text-begin">${{ currentUserContent.earned }}</th>
+                            <th></th>
+                          </tr>
+                        </tbody>
+                      </table>
       
                     </div>
                     <div *ngIf="!currentUserContent">
@@ -123,26 +165,48 @@
 
             <mat-card class="col-sm  p-3">
               <mat-card-title>
-                <h4>Operation Out</h4>
+                <h4 class="text-center">Operation Out</h4>
               </mat-card-title>
                 <mat-card-content>
                     <div *ngIf="currentUserContent">
-                     
-                      <div class="form-group">
-                        <label><strong>Withdrawal: $</strong></label>
-                        {{ currentUserContent.withdrawal }}
-                      </div>
-            
-                      <div class="form-group">
-                        <label><strong>Invested: $</strong></label>
-                        {{ currentUserContent.invested }}
-                      </div>
-            
-                      <div class="form-group">
-                        <label><strong>Purchased: $</strong></label>
-                        {{ currentUserContent.purchased }}
-                      </div>
-            
+
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th class="text-end">Withdrawal:</th>
+                            <th class="text-begin ">${{ currentUserContent.withdrawal }}</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <th class="text-end">Invested:</th>
+                            <th class="text-begin">${{ currentUserContent.invested }}</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <th class="text-end">Purchased:</th>
+                            <th class="text-begin">${{ currentUserContent.purchased }}</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <th class="text-end">Paid out:</th>
+                            <th class="text-begin">${{ currentUserContent.paidout  }}</th>
+                            <th></th>
+                          </tr>
+                          <tr>
+                            <th class="text-end">Fees:</th>
+                            <th class="text-begin">${{ currentUserContent.fees  }}</th>
+                            <th></th>
+                          </tr>
+                        </tbody>
+                      </table>
+                    
                     </div>
                     <div *ngIf="!currentUserContent">
                       <mat-spinner></mat-spinner>

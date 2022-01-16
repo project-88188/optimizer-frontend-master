@@ -1,79 +1,54 @@
-
-<mat-card class="p-3">
-  <mat-card-content>
+<mat-divider></mat-divider>
+<mat-card>
     <app-usercontent-card [currentUserContent]="currentUserContent"></app-usercontent-card>
-  </mat-card-content>
 </mat-card>
-
-<mat-card class="p-3 mt-3">
-  <mat-card-content>
+<mat-divider></mat-divider>
+<mat-card>
     <mat-tab-group mat-align-tabs="center" #tabGroup (selectedTabChange)="tabChanged($event)"  [(selectedIndex)]="currTabIndex">
 
       <mat-tab label="Deposit" >
-        <mat-card class="p-3">
-          <mat-card-content >
-          
-              <app-butt-deposit [currentUserContent]="currentUserContent" [tabChangedCount]="tabChangedCount" [currTapIndex]='currTabIndex'></app-butt-deposit>
-          
-          </mat-card-content>
+        <mat-card>
+          <app-butt-deposit [currentUserContent]="currentUserContent" [tabChangedCount]="tabChangedCount" [currTapIndex]='currTabIndex'></app-butt-deposit>
         </mat-card>
       </mat-tab>
 
       <mat-tab label="Withdrawal">
-        <mat-card class="p-3">
-          <mat-card-content>
-         
-              <app-butt-withdrawal [currentUserContent]="currentUserContent"></app-butt-withdrawal>
-         
-          </mat-card-content>
+        <mat-card>
+          <app-butt-withdrawal [currentUserContent]="currentUserContent"></app-butt-withdrawal>
         </mat-card>
       </mat-tab>
 
       <mat-tab label="Buy bitoptimizer">
-        <mat-card class="p-3">
-          <mat-card-content>
-          
-              <app-butt-buy-bitoptimizer [currentUserContent]="currentUserContent"></app-butt-buy-bitoptimizer>
-           
-          </mat-card-content>
+        <mat-card>
+          <app-butt-buy-bitoptimizer [currentUserContent]="currentUserContent"></app-butt-buy-bitoptimizer>
         </mat-card>
       </mat-tab>
 
       <mat-tab label="Sell bitoptimizer">
-        <mat-card class="p-3">
-          <mat-card-content>
-          
-              <app-butt-sell-bitoptimizer [currentUserContent]="currentUserContent"></app-butt-sell-bitoptimizer>
-          
-          </mat-card-content>
+        <mat-card>
+          <app-butt-sell-bitoptimizer [currentUserContent]="currentUserContent"></app-butt-sell-bitoptimizer>
         </mat-card>
       </mat-tab>
 
       <mat-tab label="Buy Investment">
-          <mat-card class="p-3">
-            <mat-card-content>
-            
-                <app-butt-buy-investment [currentUserContent]="currentUserContent"></app-butt-buy-investment>
-            
-            </mat-card-content>
+        <mat-card>
+            <app-butt-buy-investment [currentUserContent]="currentUserContent"></app-butt-buy-investment>
           </mat-card>
       </mat-tab>
 
       <mat-tab label="Sell Investment">
-        <mat-card class="p-3">
-          <mat-card-content>
-          
-              <app-butt-sell-investment [currentUserContent]="currentUserContent"></app-butt-sell-investment>
-           
-          </mat-card-content>
+        <mat-card>
+          <app-butt-sell-investment [currentUserContent]="currentUserContent"></app-butt-sell-investment>
         </mat-card>
       </mat-tab>
 
     </mat-tab-group>
-
-  </mat-card-content>
-
 </mat-card>
+ <mat-divider></mat-divider>
+<mat-card>
+  <app-table-user-transection [currentUserContent]="currentUserContent"></app-table-user-transection>
+</mat-card>
+<mat-divider></mat-divider>
 
 
 

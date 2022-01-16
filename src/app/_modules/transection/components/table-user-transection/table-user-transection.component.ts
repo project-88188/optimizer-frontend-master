@@ -1,5 +1,5 @@
 
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { BehaviorSubject, merge, of } from 'rxjs';
@@ -33,6 +33,9 @@ export class TableUserTransectionComponent implements AfterViewInit {
   resultsLength = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  @Input()
+  currentUserContent: any;
+
   constructor(private transService:TransectionService) { }
 
   ngAfterViewInit() {
@@ -43,7 +46,7 @@ export class TableUserTransectionComponent implements AfterViewInit {
       .pipe(
         startWith({}),
         switchMap((searchTerm) => {
-          return this.transService!.getSampleData(this.sort.active, this.sort.direction, this.paginator.pageIndex, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
+          return this.transService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
             .pipe(catchError(() => of(null)));
         }),
         map(data => {

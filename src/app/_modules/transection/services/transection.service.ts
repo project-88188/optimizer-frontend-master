@@ -6,7 +6,7 @@ import { SortDirection } from "@angular/material/sort";
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { GithubApi } from '../components/table-user-transection/table-user-transection.component'; 
 
-const baseUrl = BASE_URL + '/server/table/transections';
+const baseUrl = BASE_URL + '/server/transections';
 
 export interface DataApi {
   items:any[];

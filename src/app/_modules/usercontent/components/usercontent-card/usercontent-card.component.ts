@@ -12,7 +12,7 @@ export class UsercontentCardComponent implements OnInit {
 
     @Input()
     currentUserContent: any;
-
+    
     ngOnInit(): void {
 
       setTimeout(() => {

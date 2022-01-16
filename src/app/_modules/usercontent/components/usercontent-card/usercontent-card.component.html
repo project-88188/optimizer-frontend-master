@@ -1,222 +1,220 @@
 
 <mat-card>
-  <mat-card-content>
-      <div class="container-fluid text-start">
-          <div class="row">
+  <div class="container-fluid text-start">
+      <div class="row">
 
-            <mat-card class="col-sm p-3">
-              <mat-card-title>
-                <h4 class="text-center">Status</h4>
-              </mat-card-title>
-              <mat-card-content>
-                  <div *ngIf="currentUserContent">
+        <mat-card class="col-sm">
+          <mat-card-title>
+            <div class="text-center">Status</div>
+          </mat-card-title>
+          <mat-card-content>
+              <div *ngIf="currentUserContent">
 
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th class="text-begin">User name:</th>
-                          <th class="text-begin">{{ currentUserContent.username }}</th>
-                          <th></th>
-                        </tr>
-                        <tr *ngIf='currentUserContent.moderatorname && currentUserContent.moderatorname!="" '>
-                          <th class="text-begin">Moderator name:</th>
-                          <th class="text-begin">{{ currentUserContent.moderatorname }}</th>
-                          <th></th>
-                        </tr>
-                        <tr>
-                          <th class="text-begin">Status:</th>
-                          <th class="text-begin">{{ currentUserContent.published>0 ? "Published" : "Pending" }}</th>
-                          <th></th>
-                        </tr>
-                        <tr>
-                          <th class="text-begin">Created:</th>
-                          <th class="text-begin">{{ currentUserContent.createdAt }}</th>
-                          <th></th>
-                        </tr>
-                        <tr>
-                          <th class="text-begin">Updated:</th>
-                          <th class="text-begin">{{ currentUserContent.updatedAt }}</th>
-                          <th></th>
-                        </tr>
-                        <tr *ngIf='currentUserContent.time'>
-                          <th class="text-begin">Time:</th>
-                          <th class="text-begin">{{ currentUserContent.time }}</th>
-                          <th></th>
-                        </tr>
-                        <tr  *ngIf='currentUserContent.count'>
-                          <th class="text-begin">Count:</th>
-                          <th class="text-begin">{{ currentUserContent.count }}</th>
-                          <th></th>
-                        </tr>
-                      </tbody>
-                    </table>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-begin">User name:</th>
+                      <th class="text-begin">{{ currentUserContent.username }}</th>
+                      <th></th>
+                    </tr>
+                    <tr *ngIf='currentUserContent.moderatorname && currentUserContent.moderatorname!="" '>
+                      <th class="text-begin">Moderator name:</th>
+                      <th class="text-begin">{{ currentUserContent.moderatorname }}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-begin">Status:</th>
+                      <th class="text-begin">{{ currentUserContent.published>0 ? "Published" : "Pending" }}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-begin">Created:</th>
+                      <th class="text-begin">{{ currentUserContent.createdAt }}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-begin">Updated:</th>
+                      <th class="text-begin">{{ currentUserContent.updatedAt.toString() }}</th>
+                      <th></th>
+                    </tr>
+                    <tr *ngIf='currentUserContent.time'>
+                      <th class="text-begin">Time:</th>
+                      <th class="text-begin">{{ currentUserContent.time }}</th>
+                      <th></th>
+                    </tr>
+                    <tr  *ngIf='currentUserContent.count'>
+                      <th class="text-begin">Count:</th>
+                      <th class="text-begin">{{ currentUserContent.count }}</th>
+                      <th></th>
+                    </tr>
+                  </tbody>
+                </table>
 
-                  </div>
-                  <div *ngIf="!currentUserContent">
-                    <mat-spinner></mat-spinner>
-                  </div>
-              </mat-card-content>
-            </mat-card>
-          
-            <mat-card class="col-sm  p-3">
-              <mat-card-title>
-                <h4 class="text-center">Assets</h4>
-              </mat-card-title>
-              <mat-card-content>
-                  <div *ngIf="currentUserContent">
-
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th></th>
-                          <th></th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th class="text-end">bitoptimizer units:</th>
-                          <th class="text-begin ">{{ currentUserContent.bitoptimizer + currentUserContent.bitoptimizeronmarket}}/{{currentUserContent.bitoptimizer }} [${{currentUserContent.bitoptimizer*0.5 }}]</th>
-                          <th></th>
-                        </tr>
-                        <tr>
-                          <th class="text-end">Investment units:</th>
-                          <th class="text-begin">{{currentUserContent.investment + currentUserContent.investmentonmarket}}/{{currentUserContent.investment }} [${{currentUserContent.investment*1.05}}]</th>
-                          <th></th>
-                        </tr>
-                        <tr>
-                          <th class="text-end">Cash balance:</th>
-                          <th class="text-begin">${{ currentUserContent.cashbalance }}</th>
-                          <th></th>
-                        </tr>
-                        <tr>
-                          <th class="text-end">Accurebalance:</th>
-                          <th class="text-begin"> ${{ currentUserContent.cashaccrue }}</th>
-                          <th></th>
-                        </tr>
-                      </tbody>
-                    </table>
-    
-                  </div>
-                  <div *ngIf="!currentUserContent">
-                    <mat-spinner></mat-spinner>
-                  </div>
-              </mat-card-content>
-            </mat-card>
-
-            <mat-card class="col-sm  p-3">
-              <mat-card-title>
-                <h4 class="text-center">Operation In</h4>
-              </mat-card-title>
-                <mat-card-content>
-                    <div *ngIf="currentUserContent">
-
-
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th class="text-end">Deposit:</th>
-                            <th class="text-begin ">${{ currentUserContent.deposit }}</th>
-                            <th></th>
-                          </tr>
-                          <tr>
-                            <th class="text-end">Dividen received:</th>
-                            <th class="text-begin">${{ currentUserContent.dividenreceived }}</th>
-                            <th></th>
-                          </tr>
-                          <tr>
-                            <th class="text-end">Interest received:</th>
-                            <th class="text-begin">$${{ currentUserContent.interestreceived }}</th>
-                            <th></th>
-                          </tr>
-                          <tr>
-                            <th class="text-end">Sold:</th>
-                            <th class="text-begin">${{ currentUserContent.sold }}</th>
-                            <th></th>
-                          </tr>
-                          <tr>
-                            <th class="text-end">Earned:</th>
-                            <th class="text-begin">${{ currentUserContent.earned }}</th>
-                            <th></th>
-                          </tr>
-                        </tbody>
-                      </table>
+              </div>
+              <div *ngIf="!currentUserContent">
+                <mat-spinner></mat-spinner>
+              </div>
+          </mat-card-content>
+        </mat-card>
       
-                    </div>
-                    <div *ngIf="!currentUserContent">
-                      <mat-spinner></mat-spinner>
-                    </div>
-                </mat-card-content>
-            </mat-card>
+        <mat-card class="col-sm">
+          <mat-card-title>
+            <div class="text-center">Assets</div>
+          </mat-card-title>
+          <mat-card-content>
+              <div *ngIf="currentUserContent">
 
-            <mat-card class="col-sm  p-3">
-              <mat-card-title>
-                <h4 class="text-center">Operation Out</h4>
-              </mat-card-title>
-                <mat-card-content>
-                    <div *ngIf="currentUserContent">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-end">bitoptimizer units:</th>
+                      <th class="text-begin ">{{ currentUserContent.bitoptimizer + currentUserContent.bitoptimizeronmarket}}/{{currentUserContent.bitoptimizer }} [${{currentUserContent.bitoptimizer*0.5 }}]</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-end">Investment units:</th>
+                      <th class="text-begin">{{currentUserContent.investment + currentUserContent.investmentonmarket}}/{{currentUserContent.investment }} [${{currentUserContent.investment*1.05}}]</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-end">Cash balance:</th>
+                      <th class="text-begin">${{ currentUserContent.cashbalance }}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-end">Accurebalance:</th>
+                      <th class="text-begin"> ${{ currentUserContent.cashaccrue }}</th>
+                      <th></th>
+                    </tr>
+                  </tbody>
+                </table>
 
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th class="text-end">Withdrawal:</th>
-                            <th class="text-begin ">${{ currentUserContent.withdrawal }}</th>
-                            <th></th>
-                          </tr>
-                          <tr>
-                            <th class="text-end">Invested:</th>
-                            <th class="text-begin">${{ currentUserContent.invested }}</th>
-                            <th></th>
-                          </tr>
-                          <tr>
-                            <th class="text-end">Purchased:</th>
-                            <th class="text-begin">${{ currentUserContent.purchased }}</th>
-                            <th></th>
-                          </tr>
-                          <tr>
-                            <th class="text-end">Paid out:</th>
-                            <th class="text-begin">${{ currentUserContent.paidout  }}</th>
-                            <th></th>
-                          </tr>
-                          <tr>
-                            <th class="text-end">Fees:</th>
-                            <th class="text-begin">${{ currentUserContent.fees  }}</th>
-                            <th></th>
-                          </tr>
-                        </tbody>
-                      </table>
-                    
-                    </div>
-                    <div *ngIf="!currentUserContent">
-                      <mat-spinner></mat-spinner>
-                    </div>
-                </mat-card-content>
-            </mat-card>
-    
-          </div>
+              </div>
+              <div *ngIf="!currentUserContent">
+                <mat-spinner></mat-spinner>
+              </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-sm">
+          <mat-card-title>
+            <div class="text-center">Operation in</div>
+          </mat-card-title>
+            <mat-card-content>
+                <div *ngIf="currentUserContent">
+
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th class="text-end">Deposit:</th>
+                        <th class="text-begin ">${{ currentUserContent.deposit }}</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <th class="text-end">Dividen received:</th>
+                        <th class="text-begin">${{ currentUserContent.dividenreceived }}</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <th class="text-end">Interest received:</th>
+                        <th class="text-begin">$${{ currentUserContent.interestreceived }}</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <th class="text-end">Sold:</th>
+                        <th class="text-begin">${{ currentUserContent.sold }}</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <th class="text-end">Earned:</th>
+                        <th class="text-begin">${{ currentUserContent.earned }}</th>
+                        <th></th>
+                      </tr>
+                    </tbody>
+                  </table>
+  
+                </div>
+                <div *ngIf="!currentUserContent">
+                  <mat-spinner></mat-spinner>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-sm">
+          <mat-card-title>
+            <div class="text-center">Operation out</div>
+          </mat-card-title>
+            <mat-card-content>
+                <div *ngIf="currentUserContent">
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th class="text-end">Withdrawal:</th>
+                        <th class="text-begin ">${{ currentUserContent.withdrawal }}</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <th class="text-end">Invested:</th>
+                        <th class="text-begin">${{ currentUserContent.invested }}</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <th class="text-end">Purchased:</th>
+                        <th class="text-begin">${{ currentUserContent.purchased }}</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <th class="text-end">Paid out:</th>
+                        <th class="text-begin">${{ currentUserContent.paidout  }}</th>
+                        <th></th>
+                      </tr>
+                      <tr>
+                        <th class="text-end">Fees:</th>
+                        <th class="text-begin">${{ currentUserContent.fees  }}</th>
+                        <th></th>
+                      </tr>
+                    </tbody>
+                  </table>
+                
+                </div>
+                <div *ngIf="!currentUserContent">
+                  <mat-spinner></mat-spinner>
+                </div>
+            </mat-card-content>
+        </mat-card>
+
       </div>
-  </mat-card-content>
+  </div>
 </mat-card>
 
 

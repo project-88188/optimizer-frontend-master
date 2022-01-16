@@ -1,10 +1,12 @@
-<mat-card class="example-card">
-    <mat-card-title>Mat DataTable</mat-card-title>
+<mat-card>
+    <mat-card-title>Transections</mat-card-title>
     <mat-card-content>
         <input type="text" placeholder="Search a text" (input)="term$.next($any($event.target).value)" /> Term-
         {{term$|async}}
-        <div class="example-container mat-elevation-z8">
-            <div class="example-table-container">
+    </mat-card-content>
+    <mat-card-content>
+        <div class="mat-elevation-z8">
+           
                 <table mat-table [dataSource]="data" class="example-table" matSort matSortActive="created"
                     matSortDisableClear matSortDirection="desc">
                     <!-- Number Column -->
@@ -36,8 +38,8 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
-            </div>
-            <mat-paginator [length]="resultsLength" [pageSize]="30" aria-label="Select page of GitHub search results">
+           
+            <mat-paginator [length]="resultsLength" [pageSize]="5" aria-label="Select page of GitHub search results">
             </mat-paginator>
         </div>
     </mat-card-content>

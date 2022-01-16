@@ -19,6 +19,7 @@ import { TableUserTransectionComponent } from './components/table-user-transecti
     MatCardModule,
     MatTableModule,
     MatSortModule,
+    
   ],
   exports: [
     TableUserTransectionComponent,

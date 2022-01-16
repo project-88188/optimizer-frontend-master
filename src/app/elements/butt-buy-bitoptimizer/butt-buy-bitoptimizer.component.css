@@ -1,13 +1,15 @@
-.mat-card {
-  color:blue;
-  background-color: goldenrod   !important;
+.mat-card-header{
+  color:black;
+  font-size: large;
+  background-color: rgb(153, 146, 133)   !important;
   padding:5px !important;
 }
 
 .mat-card-content {
-  color:darkslategray;
-  background-color: whitesmoke   !important;
-  padding:5px !important;
+  color:black;
+  font-size: large;
+  background-color: rgb(153, 146, 133)   !important;
+  padding:50px !important;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
@@ -26,11 +28,12 @@
 }
 
 .mat-flat-button {
-  background-color: goldenrod   !important;
-  color:blue;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(87, 85, 81)   !important;
+  color:black;
   width:100%;
-  max-width:745px;
+  max-width:320px;
   min-width: 155px;
-  height: 50;
-  
+  height:60px;
 }

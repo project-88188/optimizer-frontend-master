@@ -103,7 +103,7 @@ import { MatButtonToggleModule} from '@angular/material/button-toggle';
   exports:[
 
   ],
-  providers: [authInterceptorProviders],
+//  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

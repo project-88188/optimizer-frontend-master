@@ -14,24 +14,26 @@
   -webkit-border-radius: 4px;
 }
 
-.mat-card-header{
-  color:cornsilk;
-  background-color: rgb(140, 192, 87)   !important;
-  padding:5px !important;
+.mat-card {
+  color:black;
+  font-size: large;
+  background-color: rgb(153, 146, 133)   !important;
+  padding:2px !important;
 }
 
-.mat-card {
-  color:cornsilk;
-  background-color: rgb(194, 231, 157)   !important;
+.mat-card-header{
+  color:black;
+  font-size: large;
+  background-color: rgb(153, 146, 133)   !important;
   padding:5px !important;
 }
 
 .mat-card-content {
-  color:cornsilk;
-  background-color: rgb(128, 111, 80)   !important;
-  padding:5px !important;
+  color:black;
+  font-size: large;
+  background-color: rgb(153, 146, 133)   !important;
+  padding:50px !important;
   border-radius: 4px;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
 }
-

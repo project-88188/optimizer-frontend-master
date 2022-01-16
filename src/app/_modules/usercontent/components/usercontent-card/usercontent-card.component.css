@@ -1,12 +1,18 @@
-.edit-form {
-    max-width: 400px;
-    margin: auto;
-  }
-  .example-form-field {
-    width: 220px;
-  }
 
-  .mat-spinner {
-    left: 50%;
-    margin-left: -4em;
-  }
+
+.mat-card-header{
+  color:black;
+  font-size: large;
+  background-color: rgb(153, 146, 133)   !important;
+  padding:5px !important;
+}
+
+.mat-card-content {
+  color:black;
+  font-size: large;
+  background-color: rgb(153, 146, 133)   !important;
+  padding:50px !important;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
