@@ -30,7 +30,7 @@ export class TableUserTransectionComponent implements AfterViewInit {
   data: GithubIssue[] = [];
   @ViewChild(MatSort) sort!: MatSort;
   term$ = new BehaviorSubject<string>('');
-  resultsLength = 0;
+  resultsLength = 2000;
   resultsMessage ='';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -40,30 +40,17 @@ export class TableUserTransectionComponent implements AfterViewInit {
   constructor(private transService:TransectionService) { }
 
   ngAfterViewInit() {
+
+    
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-    merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page)
-      .pipe(
-        startWith({}),
-        switchMap((searchTerm) => {
-          return this.transService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
-            .pipe(catchError(() => of(null)));
-        }),
-        map(data => {
-          if (data === null) {
-            return [];
-          }
-
-          this.resultsLength = data.total_count;
-          this.resultsMessage = data.message;
-          return data.items;
-        })
-      ).subscribe(data => {
-        this.data = data;
-        console.log(data);
-        console.log(this.resultsLength);
-        console.log(this.resultsMessage);
-      });
+    merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page).subscribe(()=>{
+      this.transService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
+        (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(data=>{
+          console.log(data);
+        });
+    });
+    
   }
 }
