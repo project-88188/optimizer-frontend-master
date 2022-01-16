@@ -15,6 +15,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
+import { PeriodTableComponent } from './period-table/period-table.component';
+import { SymbolTableComponent } from './symbol-table/symbol-table.component';
 
 
 
@@ -29,7 +31,9 @@ import { MatTableModule } from '@angular/material/table';
     ProgramTableComponent,
     TestresultTableComponent,
     TotaldayTableComponent,
-    TradingparameterTableComponent
+    TradingparameterTableComponent,
+    PeriodTableComponent,
+    SymbolTableComponent
   ],
   imports: [
     
