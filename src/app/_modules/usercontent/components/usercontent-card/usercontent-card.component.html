@@ -36,12 +36,12 @@
                     </tr>
                     <tr>
                       <th class="text-begin">Created:</th>
-                      <th class="text-begin">{{ currentUserContent.createdAt }}</th>
+                      <th class="text-begin">{{ currentUserContent.createdAt | date }}</th>
                       <th></th>
                     </tr>
                     <tr>
                       <th class="text-begin">Updated:</th>
-                      <th class="text-begin">{{ currentUserContent.updatedAt.toString() }}</th>
+                      <th class="text-begin">{{ currentUserContent.updatedAt | date }}</th>
                       <th></th>
                     </tr>
                     <tr *ngIf='currentUserContent.time'>
