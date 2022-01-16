@@ -11,14 +11,14 @@ export interface DataApi {
   message:string;
 }
 
-const API_URL = OPTIMIZER_URL + '/server/symbols/';
+const  baseUrl = OPTIMIZER_URL + '/server/symbols/';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SymbolTableService {
 
-  constructor(private httpClient: HttpClient,
+  constructor(private http: HttpClient,
     private tokenStorage:TokenStorageService) { }
 
   getData(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
@@ -30,7 +30,10 @@ export class SymbolTableService {
       .append('Accept', ['application/json'])
      
     };
-    return this.httpClient.get<DataApi>(API_URL+`search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+
+
+     let username='chaiya';
+    return this.http.get<DataApi>(baseUrl+`/table/search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
  }
 
 }

@@ -11,7 +11,7 @@ export interface DataApi {
   message:string;
 }
 
-const API_URL = OPTIMIZER_URL + '/server/periods/';
+const baseUrl= OPTIMIZER_URL + '/server/periods/';
 
 
 @Injectable({
@@ -19,7 +19,7 @@ const API_URL = OPTIMIZER_URL + '/server/periods/';
 })
 export class PeriodTableService {
 
-  constructor(private httpClient: HttpClient,
+  constructor(private http: HttpClient,
     private tokenStorage:TokenStorageService) { }
 
   getData(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
@@ -32,7 +32,8 @@ export class PeriodTableService {
      
     };
 
-    return this.httpClient.get<DataApi>(API_URL+`search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+    let username='chaiya';
+    return this.http.get<DataApi>(baseUrl+`/table/search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
  }
  
 }

@@ -24,7 +24,7 @@ export class CurrencyTableComponent implements AfterViewInit {
   @Input()
   currentUserContent: any;
 
-  constructor(private symbolService:CurrencyTableService) { }
+  constructor(private currencyTableService:CurrencyTableService) { }
 
   ngAfterViewInit() {
 
@@ -35,7 +35,7 @@ export class CurrencyTableComponent implements AfterViewInit {
 
     merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page).subscribe(data=>{
 
-      this.transService!.getData(this.currentUserContent.username,this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
+      this.currencyTableService!.getData(this.currentUserContent.username,this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
         (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(values=>{
        
           this.data=values.items;
