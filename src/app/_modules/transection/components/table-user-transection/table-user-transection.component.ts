@@ -27,10 +27,10 @@ export interface GithubIssue {
 export class TableUserTransectionComponent implements AfterViewInit {
 
   displayedColumns: string[] = ['created', 'state', 'number', 'title'];
-  data: GithubIssue[] = [];
+  data:any[] = [];
   @ViewChild(MatSort) sort!: MatSort;
   term$ = new BehaviorSubject<string>('');
-  resultsLength = 2000;
+  resultsLength = 0;
   resultsMessage ='';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
