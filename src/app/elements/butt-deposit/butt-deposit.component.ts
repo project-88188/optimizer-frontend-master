@@ -28,8 +28,8 @@ export class ButtDepositComponent implements OnChanges {
   @Input()
    tabChangedCount:Number =-1;
 
-   @Input()
-    currTapIndex:Number = -1;
+  @Input()
+  currTapIndex:Number = -1;
 
    form: any = {
     amount:Number
@@ -44,7 +44,7 @@ export class ButtDepositComponent implements OnChanges {
 
   ngOnChanges(): void {
 
-    if(!this.currTapIndex)
+    if(this.currTapIndex)
     {
       if(this.currTapIndex==0)
       this.initConfig();
