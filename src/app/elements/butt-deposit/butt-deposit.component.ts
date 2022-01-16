@@ -44,11 +44,11 @@ export class ButtDepositComponent implements OnChanges {
 
   ngOnChanges(): void {
 
-    if(this.currTapIndex)
-    {
+   // if(this.currTapIndex)
+  //  {
       if(this.currTapIndex==0)
       this.initConfig();
-    }
+   // }
   }
 
 
