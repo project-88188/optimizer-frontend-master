@@ -1,4 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { UsercontentService } from 'src/app/_modules/usercontent/services/usercontent.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { PayoutService } from '../payout.service';
 
 @Component({
@@ -22,7 +24,9 @@ export class ButtWithdrawalComponent implements OnInit {
   submitted = false;
   successed = false;
   
-  constructor(private payoutService:PayoutService) { }
+  constructor(private payoutService:PayoutService,
+    private contentService:UsercontentService,
+    private tokenStorage:TokenStorageService) { }
 
   ngOnInit(): void { 
     this.paypaloptions= JSON.parse(this.currentUserContent.paymentmethod);
@@ -36,7 +40,8 @@ export class ButtWithdrawalComponent implements OnInit {
     if(!this.form.amount)
     return;
 
-    const data:any = {
+    const data = {
+      contentid:this.currentUserContent.id,
       username:this.currentUserContent.username,
       amount:this.form.amount,
       paymentmethod:"paypal",
@@ -44,17 +49,18 @@ export class ButtWithdrawalComponent implements OnInit {
       published:false,
       status:"created",
       type:"withdrawal",
-      comment:'processwithdrawal.'
     }
 
     this.payoutService.processwithdrawal(data);
 
     this.submitted=true;
 
+
+
     setTimeout(() => {
-      this.submitted=false;
-      this.successed=true;
-    //  this.reloadPage();
+       this.submitted=false;
+       this.successed=true;
+       this.reloadPage();
     }, 2000);
 
   }

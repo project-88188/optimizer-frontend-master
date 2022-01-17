@@ -168,6 +168,7 @@ export class ButtDepositComponent implements OnChanges {
         onClick: (data, actions) => {
           
          const _request = {
+          contentid:this.currentUserContent.id,
           username:this.currentUserContent.username,
           amount:this.form.amount,
           paymentmethod: data.fundingSource,
