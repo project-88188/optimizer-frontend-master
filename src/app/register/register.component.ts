@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     email: null,
     password: null,
     confirmpassword:null,
-    supervisorname:null
+    supervisorkey:null
   };
 
  
@@ -44,9 +44,9 @@ export class RegisterComponent implements OnInit {
     }
 
    
-    const { username, email, password, supervisorname } = this.form;
+    const { username, email, password, supervisorkey } = this.form;
     
-    this.authService.register(username, email, password, supervisorname).subscribe(
+    this.authService.register(username, email, password, supervisorkey).subscribe(
       data => {
        
         this.tokenStorage.saveToken(data.accessToken);
