@@ -38,20 +38,47 @@
     height:60px;
   }
 
+
+
+  .example-container {
+    display: flex;
+    flex-direction: column;
+
+    flex-basis: 300px;
+  }
+
   .mat-table {
-    margin-left: auto;
-    margin-right: auto;
+    overflow: auto;
+    max-height: 500px;
   }
 
-  .mat-cell 
-  .mat-header-cell {
-   
-    margin-left: 100px;
-    margin-right: 100px;
-  
+    .mat-column-name{
+  border-right: 1px solid grey;
+  align-self: stretch;
+  text-align: center
+
 
   }
+  .mat-column-position{
+  border-right: 1px solid grey;
+  align-self: stretch;
+  text-align: center;
 
+  }
+  .mat-column-weight{
+  border-right: 1px solid grey;
+  align-self: stretch;
+  text-align: center;
+
+  } 
+  .mat-column-symbol{
+
+  text-align: center;
+  align-self: stretch;
+  }
+  .mat-column-weight{
+      align-self: stretch;
+  } 
 
   
 

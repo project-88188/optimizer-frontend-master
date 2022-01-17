@@ -5,14 +5,14 @@
         {{term$|async}}
     </mat-card-content>
     <mat-card-content>
-        <div class="mat-elevation-z8">
+        <div class="example-container mat-elevation-z8">
            
                 <table mat-table [dataSource]="data"  matSort matSortActive="updatedAt"
                     matSortDisableClear matSortDirection="desc">
                     <!-- Number Column -->
                     <ng-container matColumnDef="UpdateAt">
                         <th mat-header-cell *matHeaderCellDef>Update</th>
-                        <td mat-cell *matCellDef="let row">{{row.updatedAt | date}}</td>
+                        <td mat-cell *matCellDef="let row">{{row.updatedAt | date :'short'}}</td>
                     </ng-container>
 
                     <!-- Title Column -->
@@ -28,11 +28,27 @@
                     </ng-container>
 
                     <!-- Created Column -->
-                    <ng-container matColumnDef="created">
+                    <ng-container matColumnDef="TotalUnit">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
-                            updatedAt
+                            TotalUnit
                         </th>
-                        <td mat-cell *matCellDef="let row">{{row.updatedat | date}}</td>
+                        <td mat-cell *matCellDef="let row">{{row.unitprice}}</td>
+                    </ng-container>
+
+                    <!-- Created Column -->
+                    <ng-container matColumnDef="UnitPrice">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            UnitPrice
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.unitprice}}</td>
+                    </ng-container>
+
+                                                            <!-- Created Column -->
+                    <ng-container matColumnDef="Status">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>
+                            Status
+                        </th>
+                        <td mat-cell *matCellDef="let row">{{row.status}}</td>
                     </ng-container>
 
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

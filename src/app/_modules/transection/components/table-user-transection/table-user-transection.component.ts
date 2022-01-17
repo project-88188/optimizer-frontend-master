@@ -26,7 +26,7 @@ export interface GithubIssue {
 })
 export class TableUserTransectionComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['UpdateAt','Type','Amount'];
+  displayedColumns: string[] = ['UpdateAt','Type','Amount','TotalUnit','UnitPrice','Status'];
   data:any[] = [];
   @ViewChild(MatSort) sort!: MatSort;
   term$ = new BehaviorSubject<string>('');
