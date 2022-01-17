@@ -5,7 +5,14 @@ import { BASE_URL } from 'src/app/_providers/global-url';
 import { SortDirection } from "@angular/material/sort";
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
-const baseUrl = BASE_URL + '/server/transections';
+const API_URL = BASE_URL + '/server/transections';
+
+const _httpOptions = {
+  headers:  new HttpHeaders()
+  .append('Content-Type', ['application/json'])
+  .append('Accept', ['application/json'])
+  
+};
 
 export interface DataApi {
   items:any[];
@@ -21,19 +28,28 @@ export class TransectionService {
   constructor(private http: HttpClient,
     private tokenStorage:TokenStorageService) { }
 
-  getData(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
 
-    const username=this.tokenStorage.getUser().username;
+  getusertransection(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+  const username=this.tokenStorage.getUser().username;
+  return this.http.get<DataApi>(API_URL+`/table/search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+  }
 
-    const _httpOptions = {
-      headers:  new HttpHeaders()
-      .append('x-access-token',[''+this.tokenStorage.getToken()])
-      .append('Content-Type', ['application/json'])
-      .append('Accept', ['application/json'])
-     
-    };
+  create(transection:any): Observable<any> {
+  return   this.http.post(API_URL+'/create',transection,_httpOptions);
+  }
 
-    return this.http.get<DataApi>(baseUrl+`/table/search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
- }
+  fineByPk(id:any): Observable<any> {
+  return   this.http.get(API_URL+`/find/${id}`,_httpOptions);
+  }
+
+
+  update(id:any,transection:any): Observable<any> {
+  return   this.http.put(API_URL+`/update/${id}`,transection,_httpOptions);
+  }
+
+
+  delete(id:any): Observable<any> {
+  return   this.http.get(API_URL+`/delete/${id}`,_httpOptions);
+  }
 
 }

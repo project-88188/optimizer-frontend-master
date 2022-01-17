@@ -1,6 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { ElementsService } from '../elements.service';
+import { PayoutService } from '../payout.service';
 
 @Component({
   selector: 'app-butt-withdrawal',
@@ -23,8 +22,7 @@ export class ButtWithdrawalComponent implements OnInit {
   submitted = false;
   successed = false;
   
-  constructor(private elementsService:ElementsService,
-    private tokenStorage:TokenStorageService) { }
+  constructor(private payoutService:PayoutService) { }
 
   ngOnInit(): void { 
     this.paypaloptions= JSON.parse(this.currentUserContent.paymentmethod);
@@ -45,11 +43,11 @@ export class ButtWithdrawalComponent implements OnInit {
       paymentdetail:this.form.paypalaccount,
       published:false,
       status:"created",
-      transectionstatus:"created",
-      transectiontype:"withdrawal"
+      type:"withdrawal",
+      comment:'processwithdrawal.'
     }
 
-    this.elementsService.withdrawal(data);
+    this.payoutService.processwithdrawal(data);
 
     this.submitted=true;
 

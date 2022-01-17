@@ -9,8 +9,8 @@ import { ButtBuyBitoptimizerComponent } from './butt-buy-bitoptimizer/butt-buy-b
 import { ButtBuyInvestmentComponent } from './butt-buy-investment/butt-buy-investment.component';
 import { ButtSellInvestmentComponent } from './butt-sell-investment/butt-sell-investment.component';
 import { ButtSellBitoptimizerComponent } from './butt-sell-bitoptimizer/butt-sell-bitoptimizer.component';
-import { ButtDepositComponent } from './butt-deposit/butt-deposit.component';
-import { ButtWithdrawalComponent } from './butt-withdrawal/butt-withdrawal.component';
+import { ButtDepositComponent } from '../_paypals/butt-deposit/butt-deposit.component';
+import { ButtWithdrawalComponent } from '../_paypals/butt-withdrawal/butt-withdrawal.component';
 import { SolutionModule } from '../_modules/solution/solution.module';
 import { ProductModule } from '../_modules/product/product.module';
 import { MarketBoardInvestmentComponent } from './market-board-investment/market-board-investment.component';
