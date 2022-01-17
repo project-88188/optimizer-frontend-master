@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { BASE_URL } from 'src/app/_providers/global-url';
 import { SortDirection } from "@angular/material/sort";
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { GithubApi } from '../components/table-user-transection/table-user-transection.component'; 
 
 const baseUrl = BASE_URL + '/server/transections';
 
@@ -22,7 +21,9 @@ export class TransectionService {
   constructor(private http: HttpClient,
     private tokenStorage:TokenStorageService) { }
 
-  getData( username:string, sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+  getData(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+    const username=this.tokenStorage.getUser().username;
 
     const _httpOptions = {
       headers:  new HttpHeaders()

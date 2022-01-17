@@ -1,3 +1,4 @@
+
 import { Component, AfterViewInit,ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -18,6 +19,7 @@ export class CurrencyTableComponent implements AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   term$ = new BehaviorSubject<string>('');
   resultsLength = 0;
+  resultsMessage ='';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private tableService: TablesoptimizerService) { }
@@ -27,25 +29,17 @@ export class CurrencyTableComponent implements AfterViewInit {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-    /*
+    merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page).subscribe(data=>{
 
-    merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page)
-      .pipe(
-        startWith({}),
-        switchMap((searchTerm) => {
-          return this.tableService!.getSampleData(this.sort.active, this.sort.direction, this.paginator.pageIndex, (searchTerm && typeof searchTerm == 'string') ? searchTerm.toString() : 'repo:angular/components')
-            .pipe(catchError(() => of(null)));
-        }),
-        map(data => {
-          if (data === null) {
-            return [];
-          }
+      this.tableService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
+        (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(values=>{
+       
+          this.data=values.items;
+          this.resultsLength=values.total_count;
+          this.resultsMessage=values.message;
 
-          this.resultsLength = data.total_count;
-          return data.items;
-        })
-      ).subscribe(data => this.data = data);
-      */
+        });
+    });
   }
 
 }
