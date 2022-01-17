@@ -37,3 +37,21 @@
     min-width: 155px;
     height:60px;
   }
+
+  .mat-table {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mat-cell 
+  .mat-header-cell {
+   
+    margin-left: 100px;
+    margin-right: 100px;
+  
+
+  }
+
+
+  
+

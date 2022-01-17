@@ -26,7 +26,7 @@ export interface GithubIssue {
 })
 export class TableUserTransectionComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
+  displayedColumns: string[] = ['UpdateAt','Type','Amount'];
   data:any[] = [];
   @ViewChild(MatSort) sort!: MatSort;
   term$ = new BehaviorSubject<string>('');
@@ -54,6 +54,9 @@ export class TableUserTransectionComponent implements AfterViewInit {
           this.data=values.items;
           this.resultsLength=values.total_count;
           this.resultsMessage=values.message;
+
+          console.log(values.items);
+
 
         });
     });
