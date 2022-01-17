@@ -14,7 +14,7 @@ import { TablesoptimizerService } from '../tablesoptimizer.service';
 })
 export class CurrencyTableComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['created', 'state', 'number', 'title'];
+  displayedColumns: string[] = ['updatedAt','Type','Amount','TotalUnit','UnitPrice','Status'];
   data: any[] = [];
   @ViewChild(MatSort) sort!: MatSort;
   term$ = new BehaviorSubject<string>('');
