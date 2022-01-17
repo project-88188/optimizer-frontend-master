@@ -33,7 +33,7 @@ export class OptimizercontrolTableComponent implements AfterViewInit {
     merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page).subscribe(data=>{
 
       if(this.isLoggedIn) {
-        this.tableService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
+        this.tableService!.getDataOptimizerControl(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
           (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(values=>{
          
             this.data=values.items;

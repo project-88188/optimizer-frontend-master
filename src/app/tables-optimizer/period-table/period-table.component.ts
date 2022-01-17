@@ -34,7 +34,7 @@ export class PeriodTableComponent implements AfterViewInit {
 
       if(this.isLoggedIn) {
 
-        this.tableService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
+        this.tableService!.getDataPeriod(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
           (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(values=>{
          
             this.data=values.items;

@@ -6,18 +6,12 @@ import { Observable } from 'rxjs';
 import { BASE_URL } from 'src/app/_providers/global-url';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
-export interface GithubApi {
-  items: GithubIssue[];
-  total_count: number;
-}
-
-export interface GithubIssue {
-  created_at: string;
-  number: string;
-  state: string;
-  title: string;
-}
-
+const _httpOptions = {
+  headers:  new HttpHeaders()
+  .append('Content-Type', ['application/json'])
+  .append('Accept', ['application/json'])
+ 
+};
 
 
 export interface DataApi {
@@ -35,23 +29,100 @@ export class TablesoptimizerService {
     private tokenStorage:TokenStorageService) {
   }
 
-  getSampleData(sort: string, order: SortDirection, page: number, q: string): Observable<GithubApi> {
-    return this.httpClient.get<GithubApi>(`https://api.github.com/search/issues?q=${q}&sort=${sort}&order=${order}&page=${page + 1}`);
-}
-
-getData(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+getDataCurrency(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
 
   const username=this.tokenStorage.getUser().username;
-  const baseUrl = BASE_URL + '/server/transections/table/';
-
-  const _httpOptions = {
-    headers:  new HttpHeaders()
-    .append('x-access-token',[''+this.tokenStorage.getToken()])
-    .append('Content-Type', ['application/json'])
-    .append('Accept', ['application/json'])
-   
-  };
+  const baseUrl = BASE_URL + '/server/currencies/table/';
 
   return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
 }
+
+getDataDeposit(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/deposits/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataExpert(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/experts/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataLeverage(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/leverages/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataOptimizerControl(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/optimizercontrols/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataPeriod(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/periods/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataProgram(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/programs/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataSymbol(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/symbols/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataTestercontrol(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/testercontrols/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataTestResult(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/testresults/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataTotalday(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/totaldays/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
+getDataTradingParameter(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
+
+  const username=this.tokenStorage.getUser().username;
+  const baseUrl = BASE_URL + '/server/tradingparameters/table/';
+
+  return this.httpClient.get<DataApi>(baseUrl+`search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
+}
+
 }
