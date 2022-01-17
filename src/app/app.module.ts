@@ -77,7 +77,7 @@ import { TablesOptimizerModule } from './tables-optimizer/tables-optimizer.modul
   exports:[
 
   ],
-//  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
