@@ -32,6 +32,11 @@ export class AuthService {
       supervisorkey
     }, httpOptions);
   }
+
+  logout():Observable<any> {
+    return this.http.get(AUTH_API + 'signout', httpOptions);
+  }
+
 }
 
 

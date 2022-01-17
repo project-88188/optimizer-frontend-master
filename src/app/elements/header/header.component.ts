@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/_services/auth.service';
 import { TokenStorageService } from '../../_services/token-storage.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit {
   showModeratorBoard = false;
   username?: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService,
+    private authService:AuthService) { }
 
   ngOnInit(): void {
     
@@ -31,13 +33,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  TogglerCilck(): void {
-    
-  }
-
   logout(): void {
-    this.tokenStorageService.signOut();
-    window.location.reload();
+    if(this.tokenStorageService.getToken())
+    {
+      this.tokenStorageService.signOut();
+      this.authService.logout().subscribe(()=>{});
+      window.location.reload();
+    }
   }
-
 }
