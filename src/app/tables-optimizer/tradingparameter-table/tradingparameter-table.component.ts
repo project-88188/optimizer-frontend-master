@@ -21,6 +21,7 @@ export class TradingparameterTableComponent implements AfterViewInit {
   resultsLength = 0;
   resultsMessage ='';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @Input() isLoggedIn:any;
 
 
   constructor(private tableService: TablesoptimizerService) { }
@@ -34,14 +35,25 @@ export class TradingparameterTableComponent implements AfterViewInit {
 
     merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page).subscribe(data=>{
 
-      this.tableService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
-        (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(values=>{
-       
-          this.data=values.items;
-          this.resultsLength=values.total_count;
-          this.resultsMessage=values.message;
+      if(this.isLoggedIn) {
 
-        });
+        this.tableService!.getData(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
+          (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(values=>{
+         
+            this.data=values.items;
+            this.resultsLength=values.total_count;
+            this.resultsMessage=values.message;
+  
+          });
+          
+      }
+      else
+      {
+
+
+      }
+
+
 
     });
     
