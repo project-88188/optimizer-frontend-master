@@ -59,8 +59,8 @@ export class ButtWithdrawalComponent implements OnInit {
     setTimeout(() => {
        this.submitted=false;
        this.successed=true;
-      this.elementService.RefreshUserContent();
-       this.reloadPage();
+     // this.elementService.RefreshUserContent();
+     //  this.reloadPage();
     }, 5000);
 
   }
