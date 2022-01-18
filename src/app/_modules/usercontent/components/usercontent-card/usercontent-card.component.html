@@ -81,13 +81,13 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th class="text-end">bitoptimizer units:</th>
-                      <th class="text-begin ">{{ currentUserContent.bitoptimizer + currentUserContent.bitoptimizeronmarket}}/{{currentUserContent.bitoptimizer }} [${{currentUserContent.bitoptimizer*0.5 }}]</th>
+                      <th class="text-end">bit units:</th>
+                      <th class="text-begin ">{{currentUserContent.bitoptimizer - currentUserContent.bitoptimizeronmarket}}</th>
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-end">Investment units:</th>
-                      <th class="text-begin">{{currentUserContent.investment + currentUserContent.investmentonmarket}}/{{currentUserContent.investment }} [${{currentUserContent.investment*1.05}}]</th>
+                      <th class="text-end">Inv units:</th>
+                      <th class="text-begin">{{currentUserContent.investment - currentUserContent.investmentonmarket}}</th>
                       <th></th>
                     </tr>
                     <tr>
@@ -96,7 +96,7 @@
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-end">Accurebalance:</th>
+                      <th class="text-end">Accure:</th>
                       <th class="text-begin"> ${{ currentUserContent.cashaccrue }}</th>
                       <th></th>
                     </tr>
