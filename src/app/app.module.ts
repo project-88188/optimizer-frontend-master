@@ -19,7 +19,6 @@ import { ProductModule } from './_modules/product/product.module';
 import { SolutionModule } from './_modules/solution/solution.module';
 import { TransectionModule } from './_modules/transection/transection.module';
 import { UsercontentModule } from './_modules/usercontent/usercontent.module';
-import { UsermanagerModule } from './_modules/usermanager/usermanager.module';
 import { ElementsModule } from './elements/elements.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -58,7 +57,6 @@ import { TablesOptimizerModule } from './tables-optimizer/tables-optimizer.modul
     SolutionModule,
     TransectionModule,
     UsercontentModule,
-    UsermanagerModule,
     ElementsModule,
     TablesOptimizerModule, 
 
