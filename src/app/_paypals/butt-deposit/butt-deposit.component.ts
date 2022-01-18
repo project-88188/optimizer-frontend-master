@@ -3,6 +3,7 @@ import { CLIENT_ID } from 'src/app/_providers/paypal-config';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { TransectionService } from 'src/app/_modules/transection/services/transection.service';
 import { CheckuotService } from '../checkout.service';
+import { ElementsService } from 'src/app/elements/elements.service';
 
 @Component({
   selector: 'app-butt-deposit',
@@ -35,6 +36,7 @@ export class ButtDepositComponent implements OnChanges {
  
 
   constructor( private transService:TransectionService,
+    private elementService:ElementsService,
     private checkoutService:CheckuotService) {
       this.initConfig();
      }
@@ -84,7 +86,17 @@ export class ButtDepositComponent implements OnChanges {
           });
         },
         onClientAuthorization: (data) => {
-         this.checkoutService.onClientAuthorization(this.checkoutitem.id,data).subscribe(()=>{});
+         this.checkoutService.onClientAuthorization(this.checkoutitem.id,data).subscribe(()=>{
+          this.submitted=true;
+          
+          setTimeout(() => {
+            this.submitted=false;
+            this.successed=true;
+            this.elementService.RefreshUserContent();
+            this.reloadPage();
+         }, 5000);
+           
+         });
         },
         onCancel: (data, progress) => {
          // console.log(data);
@@ -117,7 +129,7 @@ export class ButtDepositComponent implements OnChanges {
 
   reloadPage(): void {
     setTimeout(() => {
-       // window.location.reload();
+        window.location.reload();
     }, 2000);
   };
 
