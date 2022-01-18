@@ -21,25 +21,26 @@ export class CheckuotService {
   constructor(private tranService:TransectionService,
     private httpclient:HttpClient) { }
 
-  checkoutreceived(_transectionId:any,received:any) : Observable<any> {
-
-    return   this.httpclient.post(PAYPAL_PAYMENT_API+`received/${_transectionId}`,received,
-    _httpOptions);
-    
+  onClientAuthorization(_transectionId:any,data:any) : Observable<any> {
+    return   this.httpclient.post(PAYPAL_PAYMENT_API+`onclientauthorization/${_transectionId}`,data,_httpOptions);
   }
 
-  checkoutreject(_transectionId:any,data:any) : Observable<any> {
-
-    return   this.httpclient.post(PAYPAL_PAYMENT_API+`reject/${_transectionId}`,data,
-    _httpOptions);
-    
+  onError(_transectionId:any,data:any) : Observable<any> {
+    return   this.httpclient.post(PAYPAL_PAYMENT_API+`onerror/${_transectionId}`,data,_httpOptions);
   }
 
-  checkoutcancel(_transectionId:any,data:any) : Observable<any> {
-
-    return   this.httpclient.post(PAYPAL_PAYMENT_API+`cancel/${_transectionId}`,data,
-    _httpOptions);
-    
+  onCancel(_transectionId:any,data:any) : Observable<any> {
+    return   this.httpclient.post(PAYPAL_PAYMENT_API+`oncancel/${_transectionId}`,data,_httpOptions);
   }
 
+  OnApprove(_transectionId:any,data:any) : Observable<any> {
+    return   this.httpclient.post(PAYPAL_PAYMENT_API+`onapprove/${_transectionId}`,data,_httpOptions);
+  }
+
+  onClick(data:any) : Observable<any> {
+    return   this.httpclient.post(PAYPAL_PAYMENT_API+`onclick`,data,_httpOptions);
+  }
+  
 }
+
+

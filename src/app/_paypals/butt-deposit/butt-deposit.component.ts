@@ -1,8 +1,6 @@
 import { Component,Input,OnChanges,ViewChild }from '@angular/core'
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { CLIENT_ID } from 'src/app/_providers/paypal-config';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
-import { UsercontentService } from 'src/app/_modules/usercontent/services/usercontent.service';
 import { TransectionService } from 'src/app/_modules/transection/services/transection.service';
 import { CheckuotService } from '../checkout.service';
 
@@ -37,9 +35,7 @@ export class ButtDepositComponent implements OnChanges {
  
 
   constructor( private transService:TransectionService,
-    private checkoutService:CheckuotService,
-    private userContent:UsercontentService,
-    private tokenStorage:TokenStorageService) {
+    private checkoutService:CheckuotService) {
       this.initConfig();
      }
 
@@ -83,29 +79,43 @@ export class ButtDepositComponent implements OnChanges {
             label: 'paypal',
             layout: 'vertical'
         },
-        onApprove: (data, actions) => {
-          console.log(data);
-          console.log(this.checkoutitem);
+        onApprove: (data, progress) => {
+         console.log(data);
+
+          this.checkoutService.OnApprove(this.checkoutitem.id,data).subscribe(()=>{
+          });
         },
         onClientAuthorization: (data) => {
-        // console.log(data);
-       //  console.log(this.checkoutitem);
-     
-       this.checkoutService.checkoutreceived(this.checkoutitem,data);
+         // console.log(data);
+         this.checkoutService.onClientAuthorization(this.checkoutitem.id,data).subscribe(()=>{});
         },
-        onCancel: (data, actions) => {
-       //   console.log(data);
-       //   console.log(this.checkoutitem);
-          this.checkoutService.checkoutcancel(this.checkoutitem,data);
+        onCancel: (data, progress) => {
+         // console.log(data);
+          this.checkoutService.onCancel(this.checkoutitem.id,data).subscribe(()=>{});
         },
         onError: err => {
-          this.checkoutService.checkoutreject(this.checkoutitem,err);
+         // console.log(err);
+          this.checkoutService.onError(this.checkoutitem.id,err).subscribe(()=>{});
         },
         onClick: (data, actions) => {
-   //       console.log(data);
-        this.createCheckout(data);  
+          actions.reject();
+
+          const _request = {
+            contentid:this.currentUserContent.id,
+            username:this.currentUserContent.username,
+            amount:this.form.amount,
+            paymentmethod: data.fundingSource,
+            published:false,
+            status:"created",
+            type:'deposit',
+            fees:0,
+          }
+          this.checkoutService.onClick(_request).subscribe(data=>{
+            this.checkoutitem=data;
+            actions.resolve();
+          });
         }
-    };
+    }
   }
 
   reloadPage(): void {
@@ -153,7 +163,7 @@ export class ButtDepositComponent implements OnChanges {
 
   clientAuthorizatio(data:any) {
 
-    this.checkoutService.checkoutreceived(0,data);
+   // this.checkoutService.checkoutreceived(0,data);
 
     /*
     if('COMPLETED'==data.status)
