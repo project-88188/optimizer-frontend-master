@@ -45,8 +45,9 @@ export class ButtBuyInvestmentComponent implements OnInit {
 
         unitprice:this.form.unitprice,
         published:false,
-        transectionstatus:"created",
-        transectiontype:"buy_investment"
+        status:"created",
+        type:"buy_investment",
+        fees:0,
       }
 
     this.elementsService.buy_investment(data);

@@ -48,8 +48,9 @@ export class ButtSellInvestmentComponent implements OnInit {
         
         unitprice:this.form.unitprice,
         published:false,
-        transectionstatus:"created",
-        transectiontype:"sell_investment"
+        status:"created",
+        type:"sell_investment",
+        fees:0,
       }
   
        this.elementsService.sell_investment(data);

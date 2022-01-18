@@ -47,8 +47,9 @@ export class ButtBuyBitoptimizerComponent implements OnInit {
 
       unitprice:this.form.unitprice,
       published:false,
-      transectionstatus:"created",
-      transectiontype:"buy_bitoptimizer"
+      status:"created",
+      type:"buy_bitoptimizer",
+      fees:0,
     }
 
     const result = this.elementsService.buy_bitoptimizer(data);

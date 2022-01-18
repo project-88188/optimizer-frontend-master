@@ -28,9 +28,7 @@ export class PayoutService {
     
       this.createpayout(data1.id).subscribe(data2=>{
         setTimeout(() => {
-         this.getpayout(data1.id).subscribe(data3=>{
-            
-         });
+         this.updatepayout(data1.username).subscribe(()=>{});
         }, 5000);
       });
     });
@@ -46,15 +44,14 @@ export class PayoutService {
 
   getpayout(_transectionId:any) : Observable<any> {
 
-    return   this.httpclient.post(PAYPAL_PAYMENT_API+'getpayout',{
-      transectionId:_transectionId,
-    },_httpOptions);
+    return   this.httpclient.get(PAYPAL_PAYMENT_API+`getpayout/${_transectionId}`
+    ,_httpOptions);
 
   }
 
   updatepayout(username:any) : Observable<any> {
 
-    return   this.httpclient.get(PAYPAL_PAYMENT_API+`upatepayout/${username}`,
+    return   this.httpclient.get(PAYPAL_PAYMENT_API+`updatepayout/${username}`,
     _httpOptions);
   }
 

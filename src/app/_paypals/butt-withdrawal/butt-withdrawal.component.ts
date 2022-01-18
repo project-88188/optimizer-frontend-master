@@ -49,18 +49,18 @@ export class ButtWithdrawalComponent implements OnInit {
       published:false,
       status:"created",
       type:"withdrawal",
+      fees: 0,
     }
 
     this.payoutService.processwithdrawal(data);
-    this.payoutService.updatepayout(this.currentUserContent.username);
 
     this.submitted=true;
     
     setTimeout(() => {
        this.submitted=false;
        this.successed=true;
-     // this.elementService.RefreshUserContent();
-     //  this.reloadPage();
+       this.elementService.RefreshUserContent();
+       this.reloadPage();
     }, 5000);
 
   }
