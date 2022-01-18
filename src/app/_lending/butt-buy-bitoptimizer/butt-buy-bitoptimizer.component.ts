@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { ElementsService } from '../elements.service';
+import { ElementsService } from '../../elements/elements.service';
 
 @Component({
   selector: 'app-butt-buy-bitoptimizer',

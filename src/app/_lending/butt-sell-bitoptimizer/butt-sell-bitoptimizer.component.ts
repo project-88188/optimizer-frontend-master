@@ -1,12 +1,12 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { ElementsService } from '../elements.service';
+import { ElementsService } from '../../elements/elements.service';
 
 @Component({
-  selector: 'app-butt-buy-investment',
-  templateUrl: './butt-buy-investment.component.html',
-  styleUrls: ['./butt-buy-investment.component.css']
+  selector: 'app-butt-sell-bitoptimizer',
+  templateUrl: './butt-sell-bitoptimizer.component.html',
+  styleUrls: ['./butt-sell-bitoptimizer.component.css']
 })
-export class ButtBuyInvestmentComponent implements OnInit {
+export class ButtSellBitoptimizerComponent implements OnInit {
 
   form: any = {
     amount: null,
@@ -20,38 +20,38 @@ export class ButtBuyInvestmentComponent implements OnInit {
 
   submitted = false;
   successed = false;
-  constructor(private elementsService:ElementsService) { }
+   constructor(private elementsService:ElementsService) { }
 
   ngOnInit(): void { }
 
   onSubmit() {
+  
 
     if(!this.form.totalunits)
     return;
 
     if(!this.form.unitprice)
     return;
- 
-    this.form.amount=this.form.totalunits*this.form.unitprice;
 
+    this.form.amount=this.form.totalunits*this.form.unitprice;
       const data:any = {
         contentid:this.currentUserContent.id,
         username:this.currentUserContent.username,
         amount: this.form.amount,
         totalunits:this.form.totalunits,
-        
+
         remainunits:this.form.totalunits,
         matchunits:0,
 
         unitprice:this.form.unitprice,
         published:false,
         status:"created",
-        type:"buy_investment",
+        type:"sell_bitoptimizer",
         fees:0,
       }
-
-    this.elementsService.buy_investment(data);
   
+    this.elementsService.sell_bitoptimizer(data);
+
     this.submitted=true;
 
     setTimeout(() => {
