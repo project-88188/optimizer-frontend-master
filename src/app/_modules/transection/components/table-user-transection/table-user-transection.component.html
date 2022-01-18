@@ -1,9 +1,5 @@
 <mat-card>
-    <mat-card-title>Transections</mat-card-title>
-    <mat-card-content>
-        <input type="text" placeholder="Search a text" (input)="term$.next($any($event.target).value)" /> Term-
-        {{term$|async}}
-    </mat-card-content>
+    <mat-card-content >Transections</mat-card-content>
     <mat-card-content>
         <div class="example-container mat-elevation-z8">
                 <table mat-table [dataSource]="data"  matSort matSortActive="updatedAt"

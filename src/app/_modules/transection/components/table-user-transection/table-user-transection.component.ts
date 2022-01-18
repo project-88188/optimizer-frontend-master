@@ -29,7 +29,6 @@ export class TableUserTransectionComponent implements AfterViewInit {
   displayedColumns: string[] = ['updatedAt','Type','Amount','TotalUnit','UnitPrice','Status'];
   data:any[] = [];
   @ViewChild(MatSort) sort!: MatSort;
-  term$ = new BehaviorSubject<string>('');
   resultsLength = 0;
   resultsMessage ='';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -46,10 +45,9 @@ export class TableUserTransectionComponent implements AfterViewInit {
     // If the user changes the sort order, reset back to the first page.
     this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
-    merge(this.sort.sortChange, this.term$.pipe(debounceTime(1000), distinctUntilChanged()), this.paginator.page).subscribe(data=>{
+    merge(this.sort.sortChange, this.paginator.page).subscribe(data=>{
 
-      this.transService!.getusertransection(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize, 
-        (this.term$.getValue() && typeof this.term$.getValue()== 'string') ? this.term$.getValue().toString() : 'repo:angular/components').subscribe(values=>{
+      this.transService!.getusertransection(this.sort.active, this.sort.direction, this.paginator.pageIndex,this.paginator.pageSize,'repo:angular/components').subscribe(values=>{
        
           this.data=values.items;
           this.resultsLength=values.total_count;
