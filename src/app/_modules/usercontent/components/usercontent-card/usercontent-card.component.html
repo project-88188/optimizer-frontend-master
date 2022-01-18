@@ -20,37 +20,37 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th class="text-begin">User name:</th>
+                      <th class="text-begin">username:</th>
                       <th class="text-begin">{{ currentUserContent.username }}</th>
                       <th></th>
                     </tr>
                     <tr *ngIf='currentUserContent.moderatorname && currentUserContent.moderatorname!="" '>
-                      <th class="text-begin">Moderator name:</th>
-                      <th class="text-begin">{{ currentUserContent.moderatorname }}</th>
+                      <th class="text-begin">moderatorkey:</th>
+                      <th class="text-begin">{{ currentUserContent.moderatorkey }}</th>
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-begin">Status:</th>
+                      <th class="text-begin">status:</th>
                       <th class="text-begin">{{ currentUserContent.published>0 ? "Published" : "Pending" }}</th>
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-begin">Created:</th>
+                      <th class="text-begin">created:</th>
                       <th class="text-begin">{{ currentUserContent.createdAt | date }}</th>
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-begin">Updated:</th>
+                      <th class="text-begin">updated:</th>
                       <th class="text-begin">{{ currentUserContent.updatedAt | date }}</th>
                       <th></th>
                     </tr>
                     <tr *ngIf='currentUserContent.time'>
-                      <th class="text-begin">Time:</th>
+                      <th class="text-begin">time:</th>
                       <th class="text-begin">{{ currentUserContent.time }}</th>
                       <th></th>
                     </tr>
                     <tr  *ngIf='currentUserContent.count'>
-                      <th class="text-begin">Count:</th>
+                      <th class="text-begin">count:</th>
                       <th class="text-begin">{{ currentUserContent.count }}</th>
                       <th></th>
                     </tr>
@@ -81,22 +81,22 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th class="text-end">bit units:</th>
+                      <th class="text-end">bit unit:</th>
                       <th class="text-begin ">{{currentUserContent.bitoptimizer - currentUserContent.bitoptimizeronmarket}}</th>
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-end">Inv units:</th>
+                      <th class="text-end">inv unit:</th>
                       <th class="text-begin">{{currentUserContent.investment - currentUserContent.investmentonmarket}}</th>
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-end">Cash balance:</th>
+                      <th class="text-end">cash balance:</th>
                       <th class="text-begin">${{ currentUserContent.cashbalance }}</th>
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-end">Accure:</th>
+                      <th class="text-end">accure:</th>
                       <th class="text-begin"> ${{ currentUserContent.cashaccrue }}</th>
                       <th></th>
                     </tr>
@@ -128,27 +128,27 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th class="text-end">Deposit:</th>
+                        <th class="text-end">deposit:</th>
                         <th class="text-begin ">${{ currentUserContent.deposit }}</th>
                         <th></th>
                       </tr>
                       <tr>
-                        <th class="text-end">Dividen received:</th>
+                        <th class="text-end">dividen:</th>
                         <th class="text-begin">${{ currentUserContent.dividenreceived }}</th>
                         <th></th>
                       </tr>
                       <tr>
-                        <th class="text-end">Interest received:</th>
-                        <th class="text-begin">$${{ currentUserContent.interestreceived }}</th>
+                        <th class="text-end">interest:</th>
+                        <th class="text-begin">${{ currentUserContent.interestreceived }}</th>
                         <th></th>
                       </tr>
                       <tr>
-                        <th class="text-end">Sold:</th>
+                        <th class="text-end">sold:</th>
                         <th class="text-begin">${{ currentUserContent.sold }}</th>
                         <th></th>
                       </tr>
                       <tr>
-                        <th class="text-end">Earned:</th>
+                        <th class="text-end">earned:</th>
                         <th class="text-begin">${{ currentUserContent.earned }}</th>
                         <th></th>
                       </tr>

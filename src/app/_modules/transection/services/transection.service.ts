@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { BASE_URL } from 'src/app/_providers/global-url';
 import { SortDirection } from "@angular/material/sort";
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { PayoutService } from 'src/app/_paypals/payout.service';
 
 const API_URL = BASE_URL + '/server/transections';
 
@@ -26,11 +27,13 @@ export interface DataApi {
 export class TransectionService {
 
   constructor(private http: HttpClient,
+    private payoutService:PayoutService,
     private tokenStorage:TokenStorageService) { }
 
 
   getusertransection(sort: string, order: SortDirection, page: number,size:number, q: string): Observable<DataApi> {
   const username=this.tokenStorage.getUser().username;
+  this.payoutService.updatepayout(username).subscribe(()=>{});
   return this.http.get<DataApi>(API_URL+`/table/search?q=${q}&username=${username}&sort=${sort}&order=${order}&page=${page + 1}&size=${size}`,_httpOptions);
   }
 
