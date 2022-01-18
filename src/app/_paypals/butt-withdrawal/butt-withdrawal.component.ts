@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { ElementsService } from 'src/app/elements/elements.service';
 import { UsercontentService } from 'src/app/_modules/usercontent/services/usercontent.service';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { PayoutService } from '../payout.service';
@@ -25,8 +26,7 @@ export class ButtWithdrawalComponent implements OnInit {
   successed = false;
   
   constructor(private payoutService:PayoutService,
-    private contentService:UsercontentService,
-    private tokenStorage:TokenStorageService) { }
+    private elementService:ElementsService) { }
 
   ngOnInit(): void { 
     this.paypaloptions= JSON.parse(this.currentUserContent.paymentmethod);
@@ -52,16 +52,16 @@ export class ButtWithdrawalComponent implements OnInit {
     }
 
     this.payoutService.processwithdrawal(data);
+    this.payoutService.updatepayout(this.currentUserContent.username);
 
     this.submitted=true;
-
-
-
+    
     setTimeout(() => {
        this.submitted=false;
        this.successed=true;
+      this.elementService.RefreshUserContent();
        this.reloadPage();
-    }, 2000);
+    }, 5000);
 
   }
 

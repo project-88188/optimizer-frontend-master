@@ -258,4 +258,13 @@ export class ElementsService {
 
   //#endregion
 
+  RefreshUserContent() {
+        let  userdata=this.tokenStorege.getUser();
+        let  _content=JSON.parse(userdata.content);
+        this.userContent.fineByPk(_content.id).subscribe(data=>{
+        userdata.content=JSON.stringify(data);
+        this.tokenStorege.saveUser(userdata);
+        });
+  }
+  
 }
