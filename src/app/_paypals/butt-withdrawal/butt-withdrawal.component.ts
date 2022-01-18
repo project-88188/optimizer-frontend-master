@@ -1,7 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ElementsService } from 'src/app/elements/elements.service';
-import { UsercontentService } from 'src/app/_modules/usercontent/services/usercontent.service';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { PayoutService } from '../payout.service';
 
 @Component({
