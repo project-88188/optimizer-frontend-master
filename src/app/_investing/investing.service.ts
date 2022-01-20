@@ -21,6 +21,7 @@ export class InvestingService {
     private httpclient:HttpClient) { }
 
     buy_investment(data:any): void {
+      console.log(data);
          this.httpclient.post(INVESTING_API+'buy',data,_httpOptions).subscribe(()=>{
           setTimeout(()=>{
             this.elementsService.RefreshUserContent();
@@ -30,6 +31,7 @@ export class InvestingService {
     }
 
     sell_investment(data:any): void {
+      console.log(data);
         this.httpclient.post(INVESTING_API+'sell',data,_httpOptions).subscribe(()=>{
           setTimeout(()=>{
             this.elementsService.RefreshUserContent();

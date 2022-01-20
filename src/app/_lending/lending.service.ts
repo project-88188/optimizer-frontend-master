@@ -18,11 +18,11 @@ const LENDING_API = BASE_URL + '/server/lending/';
 })
 export class LendingService {
 
-  constructor(private tranService:TransectionService,
-    private elementsService:ElementsService,
+  constructor(private elementsService:ElementsService,
     private httpclient:HttpClient) { }
 
   buy_bitoptimizer(data:any): void {
+    console.log(data);
       this.httpclient.post(LENDING_API+'buy',data,_httpOptions).subscribe(()=>{
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
@@ -32,6 +32,7 @@ export class LendingService {
   }
 
   sell_bitoptimizer(data:any): void {
+    console.log(data);
       this.httpclient.post(LENDING_API+'sell',data,_httpOptions).subscribe(()=>{
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
