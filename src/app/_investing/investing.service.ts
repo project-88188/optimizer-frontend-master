@@ -10,7 +10,7 @@ const _httpOptions = {
   .append('Accept', ['application/json'])
   
 };
-const INVESTING_API = BASE_URL + '/server/paypals/';
+const INVESTING_API = BASE_URL + '/server/investing/';
 
 @Injectable({
   providedIn: 'root'
