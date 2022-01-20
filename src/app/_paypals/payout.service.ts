@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ElementsService } from '../elements/elements.service';
 import { TransectionService } from '../_modules/transection/services/transection.service';
 import { BASE_URL } from '../_providers/global-url';
 
@@ -18,6 +19,7 @@ const PAYPAL_PAYMENT_API = BASE_URL + '/server/paypals/';
 export class PayoutService {
 
   constructor(private tranService:TransectionService,
+    private elementService:ElementsService,
     private httpclient:HttpClient) { }
 
   //#region processwithdrawal
@@ -28,8 +30,12 @@ export class PayoutService {
     
       this.createpayout(data1.id).subscribe(data2=>{
         setTimeout(() => {
-         this.updatepayout(data1.username).subscribe(()=>{});
-        }, 5000);
+         this.updatepayout(data1.username).subscribe(()=>{
+           setTimeout(()=>{
+            this.elementService.RefreshUserContent();
+           },2000);
+         });
+        }, 2000);
       });
     });
 

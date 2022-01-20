@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { ElementsService } from '../../elements/elements.service';
+import { LendingService } from '../lending.service';
 
 @Component({
   selector: 'app-butt-sell-bitoptimizer',
@@ -17,10 +18,10 @@ export class ButtSellBitoptimizerComponent implements OnInit {
   @Input()
   currentUserContent: any;
 
-
   submitted = false;
   successed = false;
-   constructor(private elementsService:ElementsService) { }
+
+   constructor(private lendingService:LendingService) { }
 
   ngOnInit(): void { }
 
@@ -50,7 +51,7 @@ export class ButtSellBitoptimizerComponent implements OnInit {
         fees:0,
       }
   
-    this.elementsService.sell_bitoptimizer(data);
+    this.lendingService.sell_bitoptimizer(data);
 
     this.submitted=true;
 

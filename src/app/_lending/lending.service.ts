@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TransectionService } from '../_modules/transection/services/transection.service';
 import { BASE_URL } from '../_providers/global-url';
+import { ElementsService } from '../elements/elements.service';
 
 const _httpOptions = {
   headers:  new HttpHeaders()
@@ -18,14 +19,24 @@ const LENDING_API = BASE_URL + '/server/lending/';
 export class LendingService {
 
   constructor(private tranService:TransectionService,
+    private elementsService:ElementsService,
     private httpclient:HttpClient) { }
 
-  buy_bitoptimizer(data:any): Observable<any> {
-    return   this.httpclient.post(LENDING_API+'buy',data,_httpOptions);
+  buy_bitoptimizer(data:any): void {
+      this.httpclient.post(LENDING_API+'buy',data,_httpOptions).subscribe(()=>{
+        setTimeout(()=>{
+          this.elementsService.RefreshUserContent();
+        },2000);
+
+      });
   }
 
-  sell_bitoptimizer(data:any): Observable<any> {
-    return   this.httpclient.post(LENDING_API+'sell',data,_httpOptions);
+  sell_bitoptimizer(data:any): void {
+      this.httpclient.post(LENDING_API+'sell',data,_httpOptions).subscribe(()=>{
+        setTimeout(()=>{
+          this.elementsService.RefreshUserContent();
+        },2000);
+      });
   }
 
   getmarket_bitoptimizer(): Observable<any> {
