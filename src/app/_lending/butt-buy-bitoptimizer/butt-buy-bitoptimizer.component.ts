@@ -42,14 +42,10 @@ export class ButtBuyBitoptimizerComponent implements OnInit {
       username:this.currentUserContent.username,
       amount: this.form.amount,
       totalunits:this.form.totalunits,
-
       remainunits:this.form.totalunits,
-      matchunits:0,
-
       unitprice:this.form.unitprice,
+      matchunits:0,
       published:false,
-      status:"created",
-      type:"buy_bitoptimizer",
       fees:0,
     }
 
