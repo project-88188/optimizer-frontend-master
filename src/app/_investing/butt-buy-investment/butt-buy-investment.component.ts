@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { ElementsService } from '../../elements/elements.service';
+import { InvestingService } from '../investing.service';
 
 @Component({
   selector: 'app-butt-buy-investment',
@@ -20,7 +20,7 @@ export class ButtBuyInvestmentComponent implements OnInit {
 
   submitted = false;
   successed = false;
-  constructor(private elementsService:ElementsService) { }
+  constructor(private investingService:InvestingService) { }
 
   ngOnInit(): void { }
 
@@ -46,7 +46,7 @@ export class ButtBuyInvestmentComponent implements OnInit {
       fees:0,
     }
 
-    this.elementsService.buy_investment(data);
+    this.investingService.buy_investment(data);
   
     this.submitted=true;
 

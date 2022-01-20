@@ -22,7 +22,7 @@ export class LendingService {
     private httpclient:HttpClient) { }
 
   buy_bitoptimizer(data:any): void {
-    console.log(data);
+   
       this.httpclient.post(LENDING_API+'buy',data,_httpOptions).subscribe(()=>{
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
@@ -32,7 +32,7 @@ export class LendingService {
   }
 
   sell_bitoptimizer(data:any): void {
-    console.log(data);
+ 
       this.httpclient.post(LENDING_API+'sell',data,_httpOptions).subscribe(()=>{
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();

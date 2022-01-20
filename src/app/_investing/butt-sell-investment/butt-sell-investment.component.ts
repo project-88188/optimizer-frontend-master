@@ -1,6 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { TokenStorageService } from 'src/app/_services/token-storage.service';
-import { ElementsService } from '../../elements/elements.service';
+import { InvestingService } from '../investing.service';
 
 @Component({
   selector: 'app-butt-sell-investment',
@@ -21,7 +20,7 @@ export class ButtSellInvestmentComponent implements OnInit {
 
   submitted = false;
   successed = false;
-  constructor(private elementsService:ElementsService) { }
+  constructor(private investingService:InvestingService) { }
 
   ngOnInit(): void { }
 
@@ -48,7 +47,7 @@ export class ButtSellInvestmentComponent implements OnInit {
       fees:0,
     }
   
-       this.elementsService.sell_investment(data);
+       this.investingService.sell_investment(data);
 
       this.submitted=true;
 
