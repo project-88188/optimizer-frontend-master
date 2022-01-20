@@ -1,5 +1,4 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { ElementsService } from 'src/app/elements/elements.service';
 import { PayoutService } from '../payout.service';
 
 @Component({
@@ -23,8 +22,7 @@ export class ButtWithdrawalComponent implements OnInit {
   submitted = false;
   successed = false;
   
-  constructor(private payoutService:PayoutService,
-    private elementService:ElementsService) { }
+  constructor(private payoutService:PayoutService) { }
 
   ngOnInit(): void { 
     this.paypaloptions= JSON.parse(this.currentUserContent.paymentmethod);
@@ -56,10 +54,9 @@ export class ButtWithdrawalComponent implements OnInit {
     
     setTimeout(() => {
        this.submitted=false;
-       this.successed=true;
-       this.elementService.RefreshUserContent();
+       this.successed=true
        this.reloadPage();
-    }, 5000);
+    }, 2000);
 
   }
 

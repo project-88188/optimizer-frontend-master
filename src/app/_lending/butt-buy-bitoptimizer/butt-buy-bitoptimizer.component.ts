@@ -1,6 +1,7 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { ElementsService } from '../../elements/elements.service';
+import { LendingService } from '../lending.service';
 
 @Component({
   selector: 'app-butt-buy-bitoptimizer',
@@ -20,8 +21,8 @@ export class ButtBuyBitoptimizerComponent implements OnInit {
 
   submitted = false;
   successed = false;
-  constructor(  private elementsService:ElementsService,
-    private tokenStorege:TokenStorageService ) { }
+
+  constructor(private lendingService:LendingService) { }
 
   ngOnInit(): void { }
 
@@ -52,7 +53,7 @@ export class ButtBuyBitoptimizerComponent implements OnInit {
       fees:0,
     }
 
-    const result = this.elementsService.buy_bitoptimizer(data);
+    this.lendingService.buy_bitoptimizer(data);
     
     this.submitted=true;
 
