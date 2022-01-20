@@ -16,7 +16,7 @@ const PAYPAL_PAYMENT_API = BASE_URL + '/server/paypals/';
 @Injectable({
   providedIn: 'root'
 })
-export class LendingService {
+export class InvestmentService {
 
   constructor() { }
 }
