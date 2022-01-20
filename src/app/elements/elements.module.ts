@@ -6,14 +6,12 @@ import { ElementsRoutingModule } from './elements-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ButtBuyBitoptimizerComponent } from '../_lending/butt-buy-bitoptimizer/butt-buy-bitoptimizer.component';
-import { ButtBuyInvestmentComponent } from '../_investment/butt-buy-investment/butt-buy-investment.component';
-import { ButtSellInvestmentComponent } from '../_investment/butt-sell-investment/butt-sell-investment.component';
 import { ButtSellBitoptimizerComponent } from '../_lending/butt-sell-bitoptimizer/butt-sell-bitoptimizer.component';
 import { ButtDepositComponent } from '../_paypals/butt-deposit/butt-deposit.component';
 import { ButtWithdrawalComponent } from '../_paypals/butt-withdrawal/butt-withdrawal.component';
 import { SolutionModule } from '../_modules/solution/solution.module';
 import { ProductModule } from '../_modules/product/product.module';
-import { MarketBoardInvestmentComponent } from '../_investment/market-board-investment/market-board-investment.component';
+import { MarketBoardInvestmentComponent } from '../_investing/market-board-investment/market-board-investment.component';
 import { MarketBoardBitoptimizerComponent } from '../_lending/market-board-bitoptimizer/market-board-bitoptimizer.component';
 import { UploadFilesComponent } from './upload-files/upload-files.component';
 import { UploadImagesComponent } from './upload-images/upload-images.component';
@@ -32,6 +30,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { OptimizeronthecloudComponent } from './optimizeronthecloud/optimizeronthecloud.component';
 
 import { NgxPayPalModule } from 'ngx-paypal';
+import { ButtBuyInvestmentComponent } from '../_investing/butt-buy-investment/butt-buy-investment.component';
+import { ButtSellInvestmentComponent } from '../_investing/butt-sell-investment/butt-sell-investment.component';
 
 
 @NgModule({
@@ -39,8 +39,6 @@ import { NgxPayPalModule } from 'ngx-paypal';
     FooterComponent,
     HeaderComponent,
     ButtBuyBitoptimizerComponent,
-    ButtBuyInvestmentComponent,
-    ButtSellInvestmentComponent,
     ButtSellBitoptimizerComponent,
     ButtDepositComponent,
     ButtWithdrawalComponent,
@@ -49,6 +47,10 @@ import { NgxPayPalModule } from 'ngx-paypal';
     UploadFilesComponent,
     UploadImagesComponent,
     OptimizeronthecloudComponent,   
+    ButtBuyBitoptimizerComponent,
+    ButtSellBitoptimizerComponent,
+    ButtBuyInvestmentComponent,
+    ButtSellInvestmentComponent,
   ],
   imports: [
     CommonModule,
@@ -73,11 +75,13 @@ import { NgxPayPalModule } from 'ngx-paypal';
     FooterComponent,
     HeaderComponent,
     ButtBuyBitoptimizerComponent,
-    ButtBuyInvestmentComponent,
-    ButtSellInvestmentComponent,
     ButtSellBitoptimizerComponent,
     ButtDepositComponent,
     ButtWithdrawalComponent,
+    ButtBuyBitoptimizerComponent,
+    ButtSellBitoptimizerComponent,
+    ButtBuyInvestmentComponent,
+    ButtSellInvestmentComponent,
     UploadFilesComponent,
     UploadImagesComponent,
     OptimizeronthecloudComponent,
