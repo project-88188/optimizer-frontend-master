@@ -29,13 +29,12 @@ bid:maketPrice[]
 })
 export class MarketBoardBitoptimizerComponent implements OnInit {
  
-  public displaysource?:marketUI;
-
+  public displaysource= {} as marketUI;
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService,
     private http:HttpClient) { 
 
-      this.displaysource= {} as marketUI;
+     
       let market ={} as maketPrice;
       for(let i=0; i<4; i++)
       {
