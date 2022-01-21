@@ -50,11 +50,6 @@ export class MarketBoardInvestmentComponent implements OnInit {
       
     }
 
-  buys:any[] =[];
-  sells:any[] =[];
-
-  
-
   ngOnInit(): void {
   
   }
