@@ -10,13 +10,13 @@ import { MarketSolutionCardsListComponent } from 'src/app/_modules/solution/comp
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
 interface maketPrice {
-  price:'unquote',
-  unit:'unquote',
+  price:any,
+  unit:any,
 }
 
 interface marketUI  {
-offer:maketPrice[],
-bid:maketPrice[]
+  offer:any[],
+  bid:any[]
 }
 
 @Injectable({
@@ -38,7 +38,9 @@ export class MarketBoardInvestmentComponent implements OnInit {
     private http:HttpClient) { 
 
      
-      let market ={} as maketPrice;
+      let market = {price:'unquote',
+      unit:'unquote',} as maketPrice;
+    
       for(let i=0; i<4; i++)
       {
         this.displaysource.bid.push(market)
