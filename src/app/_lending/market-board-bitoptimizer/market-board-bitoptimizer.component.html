@@ -12,17 +12,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let offer of displaysource.offer">
-          <th class="text-center">{{offer.unit}}</th>
+        <tr *ngFor="let offer of displaysource.offers">
+          <th class="text-center">{{offer.units}}</th>
           <th class="text-center">{{offer.price}}</th>
           <th></th>
           <th></th>
         </tr>
-        <tr *ngFor="let bid of displaysource.bid">
+        <tr *ngFor="let bid of displaysource.bids">
           <th></th>
           <th></th>
           <th class="text-center">{{bid.price}}</th>
-          <th class="text-center">{{bid.unit}}</th>
+          <th class="text-center">{{bid.units}}</th>
         </tr>
       </tbody>
     </table>

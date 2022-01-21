@@ -10,12 +10,12 @@ const ELEMENTS_API = BASE_URL + '/server/transections/';
 
 interface maketPrice {
   price:any,
-  unit:any,
+  units:any,
 }
 
 interface marketUI  {
-offer:any[],
-bid:any[]
+  offers:any[],
+  bids:any[]
 }
 
 @Injectable({
@@ -29,7 +29,7 @@ bid:any[]
 })
 export class MarketBoardBitoptimizerComponent implements OnInit {
  
-  public displaysource= {offer:[],  bid:[]} as marketUI;
+  public displaysource= {offers:[],  bids:[]} as marketUI;
 
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService,
@@ -37,19 +37,20 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
 
      
       let market = {price:'unquote',
-      unit:'unquote',} as maketPrice;
-
+      units:'unquote',} as maketPrice;
+    
       for(let i=0; i<4; i++)
       {
-        this.displaysource.bid.push(market)
-        this.displaysource.offer.push(market)
+        this.displaysource.bids.push(market)
+        this.displaysource.offers.push(market)
       }
       
       
     }
 
+
   ngOnInit(): void {
-    console.log(JSON.stringify(this.displaysource));
+   
   }
 
   get_market_sell_bitoptimizer(): Observable<any> {
