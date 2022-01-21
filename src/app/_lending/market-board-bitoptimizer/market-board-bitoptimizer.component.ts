@@ -29,7 +29,8 @@ bid:maketPrice[]
 })
 export class MarketBoardBitoptimizerComponent implements OnInit {
  
-  public displaysource= {} as marketUI;
+  public displaysource= {offer:[],  bid:[]} as marketUI;
+
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService,
     private http:HttpClient) { 
@@ -50,7 +51,7 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this.displaysource);
+    console.log(JSON.stringify(this.displaysource));
   }
 
   get_market_sell_bitoptimizer(): Observable<any> {
