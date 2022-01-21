@@ -15,7 +15,7 @@ interface maketPrice {
 
 interface marketUI  {
 offer:maketPrice[],
-bit:maketPrice[]
+bid:maketPrice[]
 }
 
 @Injectable({
@@ -29,19 +29,29 @@ bit:maketPrice[]
 })
 export class MarketBoardBitoptimizerComponent implements OnInit {
  
+  public displaysource?:marketUI;
+
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService,
-    private http:HttpClient) { }
+    private http:HttpClient) { 
 
-    public displaysource?:marketUI;
-  
+      this.displaysource= {} as marketUI;
+      let market ={} as maketPrice;
+      for(let i=0; i<4; i++)
+      {
+        this.displaysource?.bid.push(market)
+        this.displaysource?.offer.push(market)
+      }
+      
+      
+    }
 
   buys:any[] =[];
   sells:any[] =[];
 
 
   ngOnInit(): void {
-
+    console.log(this.displaysource);
   }
 
   get_market_sell_bitoptimizer(): Observable<any> {

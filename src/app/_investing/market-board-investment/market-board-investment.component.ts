@@ -36,6 +36,7 @@ export class MarketBoardInvestmentComponent implements OnInit {
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService,
     private http:HttpClient) { 
+
       this.displaysource= {} as marketUI;
       let market ={} as maketPrice;
       for(let i=0; i<4; i++)
@@ -44,7 +45,7 @@ export class MarketBoardInvestmentComponent implements OnInit {
         this.displaysource?.offer.push(market)
       }
       
-      console.log(this.displaysource);
+      
     }
 
   buys:any[] =[];
@@ -54,7 +55,7 @@ export class MarketBoardInvestmentComponent implements OnInit {
 
   ngOnInit(): void {
   
-
+    console.log(this.displaysource);
   }
 
   get_market_sell_investment(): Observable<any> {
