@@ -58,7 +58,6 @@ export class MarketBoardInvestmentComponent implements OnInit {
   ngOnInit(): void {
   
     console.log(JSON.stringify(this.displaysource));
-    console.log('this.displaysource')
   }
 
   get_market_sell_investment(): Observable<any> {

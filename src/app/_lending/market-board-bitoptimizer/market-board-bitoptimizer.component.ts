@@ -54,7 +54,6 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(JSON.stringify(this.displaysource));
-    console.log('this.displaysource')
   }
 
   get_market_sell_bitoptimizer(): Observable<any> {

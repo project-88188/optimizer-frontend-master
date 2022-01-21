@@ -11,17 +11,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let sell of sells">
-          <th class="text-center">{{sell.remainunits}}</th>
-          <th class="text-center">{{sell.unitprice}}</th>
+        <tr *ngFor="let offer of displaysource.offer">
+          <th class="text-center">{{offer.unit}}</th>
+          <th class="text-center">{{offer.price}}</th>
           <th></th>
           <th></th>
         </tr>
-        <tr *ngFor="let buy of buys">
+        <tr *ngFor="let bid of displaysource.bid">
           <th></th>
           <th></th>
-          <th class="text-center">{{buy.unitprice}}</th>
-          <th class="text-center">{{buy.remainunits}}</th>
+          <th class="text-center">{{bid.price}}</th>
+          <th class="text-center">{{bid.unit}}</th>
         </tr>
       </tbody>
     </table>
