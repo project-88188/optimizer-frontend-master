@@ -40,8 +40,8 @@ export class MarketBoardInvestmentComponent implements OnInit {
     private http:HttpClient) { 
 
      
-      let market = {price:'unquote',
-      units:'unquote',} as maketPrice;
+      let market = {price:'loading',
+      units:'loading',} as maketPrice;
     
       for(let i=0; i<4; i++)
       {
