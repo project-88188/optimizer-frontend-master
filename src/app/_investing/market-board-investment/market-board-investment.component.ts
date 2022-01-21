@@ -5,6 +5,7 @@ import { BASE_URL } from '../../_providers/global-url';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { MarketSolutionCardsListComponent } from 'src/app/_modules/solution/components/market-solution-cards-list/market-solution-cards-list.component';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
@@ -15,8 +16,7 @@ interface maketPrice {
 
 interface marketUI  {
 offer:maketPrice[],
-bit:maketPrice[]
-
+bid:maketPrice[]
 }
 
 @Injectable({
@@ -30,15 +30,30 @@ bit:maketPrice[]
 })
 export class MarketBoardInvestmentComponent implements OnInit {
 
+  
+  public displaysource?:marketUI;
+
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService,
-    private http:HttpClient) { }
+    private http:HttpClient) { 
+      this.displaysource= {} as marketUI;
+      let market ={} as maketPrice;
+      for(let i=0; i<4; i++)
+      {
+        this.displaysource?.bid.push(market)
+        this.displaysource?.offer.push(market)
+      }
+      
+      console.log(this.displaysource);
+    }
 
   buys:any[] =[];
   sells:any[] =[];
 
-  ngOnInit(): void {
+  
 
+  ngOnInit(): void {
+  
 
   }
 
