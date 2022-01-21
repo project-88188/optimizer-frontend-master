@@ -8,19 +8,19 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
-@Injectable({
-  providedIn: 'root'
-})
-
 interface maketPrice {
-    price:'unquote',
-    unit:'unquote',
+  price:'unquote',
+  unit:'unquote',
 }
 
 interface marketUI  {
-  offer:maketPrice[],
-  bit:maketPrice[]
+offer:maketPrice[],
+bit:maketPrice[]
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-market-board-bitoptimizer',
