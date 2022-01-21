@@ -12,6 +12,16 @@ const ELEMENTS_API = BASE_URL + '/server/transections/';
   providedIn: 'root'
 })
 
+interface maketPrice {
+    price:'unquote',
+    unit:'unquote',
+}
+
+interface marketUI  {
+  offer:maketPrice[4],
+  bit:maketPrice[4]
+}
+
 @Component({
   selector: 'app-market-board-bitoptimizer',
   templateUrl: './market-board-bitoptimizer.component.html',
@@ -22,6 +32,9 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
   constructor(private elementsService:ElementsService,
     private tokenStorage:TokenStorageService,
     private http:HttpClient) { }
+
+    public displaysource?:marketUI;
+  
 
   buys:any[] =[];
   sells:any[] =[];
