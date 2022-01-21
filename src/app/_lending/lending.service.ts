@@ -41,6 +41,7 @@ export class LendingService {
   }
 
   getmarket_bitoptimizer(): Observable<any> {
-    return   this.httpclient.get(LENDING_API+'getmarket',_httpOptions);
+    const marketurl = "https://asia-northeast3-bitoptimizer-live.cloudfunctions.net/get";
+    return   this.httpclient.post( marketurl,{},_httpOptions);
   }
 }

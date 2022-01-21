@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
 import { MarketSolutionCardsListComponent } from 'src/app/_modules/solution/components/market-solution-cards-list/market-solution-cards-list.component';
+import { InvestingService } from '../investing.service';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
@@ -34,6 +35,7 @@ export class MarketBoardInvestmentComponent implements OnInit {
   public displaysource= {offers:[],  bids:[]} as marketUI;
 
   constructor(private elementsService:ElementsService,
+    private investingService:InvestingService,
     private tokenStorage:TokenStorageService,
     private http:HttpClient) { 
 
@@ -51,7 +53,9 @@ export class MarketBoardInvestmentComponent implements OnInit {
     }
 
   ngOnInit(): void {
-  
+  this.investingService.getmarket_investment().subscribe(data2=>{
+    console.log(data2);
+  })
   }
 
   get_market_sell_investment(): Observable<any> {

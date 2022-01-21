@@ -5,6 +5,7 @@ import { BASE_URL } from '../../_providers/global-url';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/_services/token-storage.service';
+import { LendingService } from '../lending.service';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
@@ -32,6 +33,7 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
   public displaysource= {offers:[],  bids:[]} as marketUI;
 
   constructor(private elementsService:ElementsService,
+    private lendingService:LendingService,
     private tokenStorage:TokenStorageService,
     private http:HttpClient) { 
 
@@ -50,6 +52,9 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.lendingService.getmarket_bitoptimizer().subscribe(data2=>{
+      console.log(data2);
+    })
    
   }
 

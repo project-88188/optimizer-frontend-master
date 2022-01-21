@@ -41,7 +41,8 @@ export class InvestingService {
     }
 
     getmarket_investment(): Observable<any> {
-      return   this.httpclient.get(INVESTING_API+'getmarket',_httpOptions);
+      const marketurl = "https://asia-northeast3-bitoptimizer-live.cloudfunctions.net/get";
+      return   this.httpclient.post( marketurl,{},_httpOptions);
     }
 
 }
