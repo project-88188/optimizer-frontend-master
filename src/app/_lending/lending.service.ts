@@ -24,6 +24,7 @@ export class LendingService {
   buy_bitoptimizer(data:any): void {
    
       this.httpclient.post(LENDING_API+'buy',data,_httpOptions).subscribe(()=>{
+        this.setmarket_bitoptimizer(data).subscribe(()=>{});
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
         },2000);
@@ -34,8 +35,10 @@ export class LendingService {
   sell_bitoptimizer(data:any): void {
  
       this.httpclient.post(LENDING_API+'sell',data,_httpOptions).subscribe(()=>{
+        this.setmarket_bitoptimizer(data).subscribe(()=>{});
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
+        
         },2000);
       });
   }
@@ -47,5 +50,11 @@ export class LendingService {
       "kind":"Task",
       "key":"sampletask1",  },_httpOptions);
       
+  }
+
+  setmarket_bitoptimizer(transection:any):  Observable<any> {
+  const marketurl = "https://asia-northeast3-bitoptimizer-live.cloudfunctions.net/set";
+
+    return   this.httpclient.post( marketurl,transection,_httpOptions);
   }
 }

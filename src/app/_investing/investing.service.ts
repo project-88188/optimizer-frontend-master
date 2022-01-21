@@ -23,6 +23,7 @@ export class InvestingService {
     buy_investment(data:any): void {
    
          this.httpclient.post(INVESTING_API+'buy',data,_httpOptions).subscribe(()=>{
+          this.setmarket_investment(data).subscribe(()=>{})
           setTimeout(()=>{
             this.elementsService.RefreshUserContent();
           },2000);
@@ -33,8 +34,10 @@ export class InvestingService {
     sell_investment(data:any): void {
     
         this.httpclient.post(INVESTING_API+'sell',data,_httpOptions).subscribe(()=>{
+          this.setmarket_investment(data).subscribe(()=>{})
           setTimeout(()=>{
             this.elementsService.RefreshUserContent();
+
           },2000);
   
         });
@@ -47,6 +50,11 @@ export class InvestingService {
         "kind":"Task",
         "key":"sampletask1",  },_httpOptions);
         
+    }
+
+    setmarket_investment(transection:any):  Observable<any> {
+      const marketurl = "https://asia-northeast3-bitoptimizer-live.cloudfunctions.net/set";
+      return   this.httpclient.post( marketurl,transection,_httpOptions);
     }
 
 }
