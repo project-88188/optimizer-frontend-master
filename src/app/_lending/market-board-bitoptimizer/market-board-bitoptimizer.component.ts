@@ -18,8 +18,8 @@ interface maketPrice {
 }
 
 interface marketUI  {
-  offer:maketPrice[4],
-  bit:maketPrice[4]
+  offer:maketPrice[],
+  bit:maketPrice[]
 }
 
 @Component({
@@ -42,15 +42,6 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.get_market_buy_bitoptimizer().subscribe( data=>{
-        this.buys=data as any[];
-        this.buys.sort((a,b) => a.unitprice.localeCompare(b.unitprice));
-      });
-    this.get_market_sell_bitoptimizer().subscribe(data=>{
-       
-        this.sells=data as any[];
-        this.sells.sort((a,b) => b.unitprice.localeCompare(a.unitprice));
-      });
   }
 
   get_market_sell_bitoptimizer(): Observable<any> {

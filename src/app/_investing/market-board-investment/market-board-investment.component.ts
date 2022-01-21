@@ -8,6 +8,16 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 
 const ELEMENTS_API = BASE_URL + '/server/transections/';
 
+interface maketPrice {
+  price:'unquote',
+  unit:'unquote',
+}
+
+interface marketUI  {
+offer:maketPrice[],
+bit:maketPrice[]
+
+}
 
 @Injectable({
   providedIn: 'root'
@@ -29,17 +39,7 @@ export class MarketBoardInvestmentComponent implements OnInit {
 
   ngOnInit(): void {
 
-   this.get_market_buy_investment().subscribe(
-    data=>{
-        this.buys=data as any[];
-       this.buys.sort((a,b) => a.unitprice.localeCompare(b.unitprice));
-      });
-  this.get_market_sell_investment().subscribe(
-    data=>{
-       this.sells=data as any[];
-       this.sells.sort((a,b) => b.unitprice.localeCompare(a.unitprice));
-       
-   });
+
   }
 
   get_market_sell_investment(): Observable<any> {
