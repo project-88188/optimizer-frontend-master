@@ -54,7 +54,7 @@ export class MarketBoardInvestmentComponent implements OnInit {
 
   ngOnInit(): void {
   this.investingService.getmarket_investment().subscribe(data2=>{
-    this.displaysource=data;
+    this.displaysource=data2;
   })
   }
 

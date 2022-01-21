@@ -52,7 +52,7 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
 
   ngOnInit(): void {
     this.lendingService.getmarket_bitoptimizer().subscribe(data2=>{
-      this.displaysource=data;
+      this.displaysource=data2;
     })
    
   }
