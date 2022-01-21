@@ -24,7 +24,7 @@ export class LendingService {
   buy_bitoptimizer(data:any): void {
    
       this.httpclient.post(LENDING_API+'buy',data,_httpOptions).subscribe(()=>{
-        this.setmarket_bitoptimizer(data).subscribe(()=>{});
+        this.setmarket_bitoptimizer(data).subscribe(x=>{console.log(x)});
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
         },2000);
@@ -35,7 +35,7 @@ export class LendingService {
   sell_bitoptimizer(data:any): void {
  
       this.httpclient.post(LENDING_API+'sell',data,_httpOptions).subscribe(()=>{
-        this.setmarket_bitoptimizer(data).subscribe(()=>{});
+        this.setmarket_bitoptimizer(data).subscribe(x=>{console.log(x)});
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
         

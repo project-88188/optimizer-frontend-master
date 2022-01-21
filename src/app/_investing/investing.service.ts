@@ -23,7 +23,7 @@ export class InvestingService {
     buy_investment(data:any): void {
    
          this.httpclient.post(INVESTING_API+'buy',data,_httpOptions).subscribe(()=>{
-          this.setmarket_investment(data).subscribe(()=>{})
+          this.setmarket_investment(data).subscribe(x=>{console.log(x)})
           setTimeout(()=>{
             this.elementsService.RefreshUserContent();
           },2000);
@@ -34,7 +34,7 @@ export class InvestingService {
     sell_investment(data:any): void {
     
         this.httpclient.post(INVESTING_API+'sell',data,_httpOptions).subscribe(()=>{
-          this.setmarket_investment(data).subscribe(()=>{})
+          this.setmarket_investment(data).subscribe(x=>{console.log(x)})
           setTimeout(()=>{
             this.elementsService.RefreshUserContent();
 
