@@ -41,8 +41,8 @@ export class MarketBoardInvestmentComponent implements OnInit {
       let market ={} as maketPrice;
       for(let i=0; i<4; i++)
       {
-        this.displaysource?.bid.push(market)
-        this.displaysource?.offer.push(market)
+        this.displaysource.bid.push(market)
+        this.displaysource.offer.push(market)
       }
       
       
