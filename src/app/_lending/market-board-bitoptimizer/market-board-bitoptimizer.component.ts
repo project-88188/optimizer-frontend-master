@@ -48,10 +48,6 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
       
     }
 
-  buys:any[] =[];
-  sells:any[] =[];
-
-
   ngOnInit(): void {
     console.log(JSON.stringify(this.displaysource));
   }

@@ -1,7 +1,7 @@
 
+
 <mat-card>
   <mat-card-content>
-    
     <table class="table table-striped">
       <thead>
         <tr>
@@ -11,18 +11,18 @@
           <th class="text-center">Vol</th>
         </tr>
       </thead>
-      <tbody > 
-        <tr *ngFor="let sell of sells">
-          <th class="text-center">{{sell.remainunits}}</th>
-          <th class="text-center">{{sell.unitprice}}</th>
+      <tbody>
+        <tr *ngFor="let offer of displaysource.offer">
+          <th class="text-center">{{offer.unit}}</th>
+          <th class="text-center">{{offer.price}}</th>
           <th></th>
           <th></th>
         </tr>
-        <tr *ngFor="let buy of buys">
+        <tr *ngFor="let bid of displaysource.bid">
           <th></th>
           <th></th>
-          <th class="text-center">{{displaysource.bid[0].price}}</th>
-          <th class="text-center">{{displaysource.bid[1].price}}</th>
+          <th class="text-center">{{bid.price}}</th>
+          <th class="text-center">{{bid.unit}}</th>
         </tr>
       </tbody>
     </table>
