@@ -44,7 +44,7 @@ export class InvestingService {
     }
 
     getmarket_investment(): Observable<any> {
-      const marketurl = "https://asia-northeast3-bitoptimizer-live.cloudfunctions.net/get";
+      const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/get";
 
       return   this.httpclient.post( marketurl,{
         "kind":"Task",
@@ -53,7 +53,8 @@ export class InvestingService {
     }
 
     setmarket_investment(transection:any):  Observable<any> {
-      const marketurl = "https://asia-northeast3-bitoptimizer-live.cloudfunctions.net/set";
+      
+      const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/set";
       return   this.httpclient.post( marketurl,transection,_httpOptions);
     }
 
