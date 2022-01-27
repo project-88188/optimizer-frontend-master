@@ -1,5 +1,5 @@
 
-//self standalone
+//self standalone with
 
 export const BASE_URL = window.location.origin;
 export const OPTIMIZER_URL = window.location.origin;
