@@ -66,7 +66,7 @@
       
         <mat-card class="col-sm">
           <mat-card-title>
-            <div class="text-center">Assets</div>
+            <div class="text-center">Asset</div>
           </mat-card-title>
           <mat-card-content>
               <div *ngIf="currentUserContent">
@@ -81,7 +81,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th class="text-end">bit unit:</th>
+                      <th class="text-end">deb unit:</th>
                       <th class="text-begin ">{{currentUserContent.bitoptimizer - currentUserContent.bitoptimizeronmarket}}</th>
                       <th></th>
                     </tr>
@@ -91,7 +91,7 @@
                       <th></th>
                     </tr>
                     <tr>
-                      <th class="text-end">cash balance:</th>
+                      <th class="text-end">fund:</th>
                       <th class="text-begin">${{ currentUserContent.cashbalance }}</th>
                       <th></th>
                     </tr>
@@ -112,7 +112,7 @@
 
         <mat-card class="col-sm">
           <mat-card-title>
-            <div class="text-center">Operation in</div>
+            <div class="text-center">in</div>
           </mat-card-title>
             <mat-card-content>
                 <div *ngIf="currentUserContent">
@@ -164,7 +164,7 @@
 
         <mat-card class="col-sm">
           <mat-card-title>
-            <div class="text-center">Operation out</div>
+            <div class="text-center">out</div>
           </mat-card-title>
             <mat-card-content>
                 <div *ngIf="currentUserContent">
@@ -179,27 +179,27 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th class="text-end">Withdrawal:</th>
+                        <th class="text-end">withdraw:</th>
                         <th class="text-begin ">${{ currentUserContent.withdrawal }}</th>
                         <th></th>
                       </tr>
                       <tr>
-                        <th class="text-end">Invested:</th>
+                        <th class="text-end">invest:</th>
                         <th class="text-begin">${{ currentUserContent.invested }}</th>
                         <th></th>
                       </tr>
                       <tr>
-                        <th class="text-end">Purchased:</th>
+                        <th class="text-end">purchase:</th>
                         <th class="text-begin">${{ currentUserContent.purchased }}</th>
                         <th></th>
                       </tr>
                       <tr>
-                        <th class="text-end">Paid out:</th>
+                        <th class="text-end">paid out:</th>
                         <th class="text-begin">${{ currentUserContent.paidout  }}</th>
                         <th></th>
                       </tr>
                       <tr>
-                        <th class="text-end">Fees:</th>
+                        <th class="text-end">fees:</th>
                         <th class="text-begin">${{ currentUserContent.fees  }}</th>
                         <th></th>
                       </tr>
