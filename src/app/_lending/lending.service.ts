@@ -44,17 +44,19 @@ export class LendingService {
   }
 
   getmarket_bitoptimizer(): Observable<any> {
-    const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/get";
+    return this.httpclient.get(LENDING_API+'getmarket',_httpOptions);
+  //  const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/get";
 
-    return   this.httpclient.post( marketurl,{
-      "kind":"Task",
-      "key":"sampletask1",  },_httpOptions);
+  //  return   this.httpclient.post( marketurl,{
+  //    "kind":"Task",
+  //    "key":"sampletask1",  },_httpOptions);
       
   }
 
   setmarket_bitoptimizer(transection:any):  Observable<any> {
-    const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/set";
+    return this.httpclient.get(LENDING_API+'setmarket',_httpOptions);
+  //  const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/set";
 
-    return   this.httpclient.post( marketurl,transection,_httpOptions);
+   // return   this.httpclient.post( marketurl,transection,_httpOptions);
   }
 }

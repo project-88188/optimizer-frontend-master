@@ -44,17 +44,17 @@ export class InvestingService {
     }
 
     getmarket_investment(): Observable<any> {
-      const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/get";
+     return this.httpclient.get(INVESTING_API+'getmarket',_httpOptions);
+     // const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/get";
 
-      return   this.httpclient.post( marketurl,{
-        "kind":"Task",
-        "key":"sampletask1",  },_httpOptions);
+     // return   this.httpclient.post( marketurl,{
+      //  "kind":"Task",
+     //   "key":"sampletask1",  },_httpOptions);
         
     }
 
     setmarket_investment(transection:any):  Observable<any> {
-
-      this.httpclient.get(INVESTING_API+'getmarket',_httpOptions).subscribe(d=>{console.log(d)})
+      return this.httpclient.get(INVESTING_API+'setmarket',_httpOptions);
       
      // const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/set";
      // return   this.httpclient.post( marketurl,transection,_httpOptions);
