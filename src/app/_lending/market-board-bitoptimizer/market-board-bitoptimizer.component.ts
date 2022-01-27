@@ -57,6 +57,8 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
    
   }
 
+  //#region  TO DELETE
+
   get_market_sell_bitoptimizer(): Observable<any> {
     
     const httpOptions = {
@@ -88,5 +90,5 @@ export class MarketBoardBitoptimizerComponent implements OnInit {
       transectionstatus:'marketing'
       },httpOptions);
    }
-
+//#endregion
 }

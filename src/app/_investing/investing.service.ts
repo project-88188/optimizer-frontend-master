@@ -53,9 +53,11 @@ export class InvestingService {
     }
 
     setmarket_investment(transection:any):  Observable<any> {
+
+      this.httpclient.get(INVESTING_API+'getmarket',_httpOptions).subscribe(d=>{console.log(d)})
       
-      const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/set";
-      return   this.httpclient.post( marketurl,transection,_httpOptions);
+     // const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/set";
+     // return   this.httpclient.post( marketurl,transection,_httpOptions);
     }
 
 }

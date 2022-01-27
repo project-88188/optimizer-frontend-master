@@ -58,6 +58,7 @@ export class MarketBoardInvestmentComponent implements OnInit {
   })
   }
 
+  //#region  TO DELETE
   get_market_sell_investment(): Observable<any> {
     
     const httpOptions = {
@@ -90,5 +91,6 @@ export class MarketBoardInvestmentComponent implements OnInit {
         },httpOptions);
    }
 
+   //#endregion
 
 }
