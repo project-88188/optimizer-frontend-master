@@ -23,7 +23,7 @@ export class InvestingService {
     buy_investment(data:any): void {
    
          this.httpclient.post(INVESTING_API+'buy',data,_httpOptions).subscribe(()=>{
-          this.setmarket_investment(data).subscribe(x=>{console.log(x)})
+          this.setmarket_investment(data).subscribe(()=>{console.log("setmarket")})
           setTimeout(()=>{
             this.elementsService.RefreshUserContent();
           },2000);
@@ -34,7 +34,7 @@ export class InvestingService {
     sell_investment(data:any): void {
     
         this.httpclient.post(INVESTING_API+'sell',data,_httpOptions).subscribe(()=>{
-          this.setmarket_investment(data).subscribe(x=>{console.log(x)})
+          this.setmarket_investment(data).subscribe(()=>{console.log("setmarket")})
           setTimeout(()=>{
             this.elementsService.RefreshUserContent();
 
@@ -45,19 +45,10 @@ export class InvestingService {
 
     getmarket_investment(): Observable<any> {
      return this.httpclient.get(INVESTING_API+'getmarket',_httpOptions);
-     // const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/get";
-
-     // return   this.httpclient.post( marketurl,{
-      //  "kind":"Task",
-     //   "key":"sampletask1",  },_httpOptions);
-        
     }
 
     setmarket_investment(transection:any):  Observable<any> {
       return this.httpclient.get(INVESTING_API+'setmarket',_httpOptions);
-      
-     // const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/set";
-     // return   this.httpclient.post( marketurl,transection,_httpOptions);
     }
 
 }

@@ -24,7 +24,7 @@ export class LendingService {
   buy_bitoptimizer(data:any): void {
    
       this.httpclient.post(LENDING_API+'buy',data,_httpOptions).subscribe(()=>{
-        this.setmarket_bitoptimizer(data).subscribe(x=>{console.log(x)});
+        this.setmarket_bitoptimizer(data).subscribe(()=>{console.log("setmarket")});
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
         },2000);
@@ -35,7 +35,7 @@ export class LendingService {
   sell_bitoptimizer(data:any): void {
  
       this.httpclient.post(LENDING_API+'sell',data,_httpOptions).subscribe(()=>{
-        this.setmarket_bitoptimizer(data).subscribe(x=>{console.log(x)});
+        this.setmarket_bitoptimizer(data).subscribe(()=>{console.log("setmarket")});
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
         
@@ -45,18 +45,9 @@ export class LendingService {
 
   getmarket_bitoptimizer(): Observable<any> {
     return this.httpclient.get(LENDING_API+'getmarket',_httpOptions);
-  //  const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/get";
-
-  //  return   this.httpclient.post( marketurl,{
-  //    "kind":"Task",
-  //    "key":"sampletask1",  },_httpOptions);
-      
   }
 
   setmarket_bitoptimizer(transection:any):  Observable<any> {
     return this.httpclient.get(LENDING_API+'setmarket',_httpOptions);
-  //  const marketurl = "https://asia-northeast3-bahts-club-app.cloudfunctions.net/set";
-
-   // return   this.httpclient.post( marketurl,transection,_httpOptions);
   }
 }
