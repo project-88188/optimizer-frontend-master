@@ -1,5 +1,5 @@
 import { Component,Input,OnChanges,ViewChild }from '@angular/core'
-import { CLIENT_ID } from 'src/app/_providers/paypal-config';
+import { paypals } from 'src/app/_providers/paypal-config';
 import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
 import { TransectionService } from 'src/app/_modules/transection/services/transection.service';
 import { CheckuotService } from '../checkout.service';
@@ -12,7 +12,7 @@ import { ElementsService } from 'src/app/elements/elements.service';
 })
 export class ButtDepositComponent implements OnChanges {
 
-  public client_id=CLIENT_ID;
+  public client_id=paypals.sanbox.CLIENT_ID; //----CLIENT-ID----//
   public payPalConfig?: IPayPalConfig;
 
   public showSuccess = false;

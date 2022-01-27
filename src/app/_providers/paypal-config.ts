@@ -1,9 +1,10 @@
 
- 
- //live
-//export const CLIENT_ID = "AQ4JNOLrf619OBA8RNioSisHE3eNaCXQPPnqQOEuuP_H8QfY8902_FwxGQ7xENK23BsSg2pej030cOjj";
-//export const SECRET= "EH-1LcyLojl2YDoo-_RLOGvqw2QrX4fG_XbtLmJbx7_Nm8hzkVY2RzNIQIFO2n0Op4Rt5L0Vv74YW79Z";
-
- //sanbox
- export const CLIENT_ID = "AQ4JNOLrf619OBA8RNioSisHE3eNaCXQPPnqQOEuuP_H8QfY8902_FwxGQ7xENK23BsSg2pej030cOjj";
- export const SECRET= "EH-1LcyLojl2YDoo-_RLOGvqw2QrX4fG_XbtLmJbx7_Nm8hzkVY2RzNIQIFO2n0Op4Rt5L0Vv74YW79Z";
+ export const paypals = {
+     sanbox: {
+        CLIENT_ID: "AQ4JNOLrf619OBA8RNioSisHE3eNaCXQPPnqQOEuuP_H8QfY8902_FwxGQ7xENK23BsSg2pej030cOjj",
+    },
+   
+    live : {
+       CLIENT_ID: "AQ4JNOLrf619OBA8RNioSisHE3eNaCXQPPnqQOEuuP_H8QfY8902_FwxGQ7xENK23BsSg2pej030cOjj",
+    }
+ }
