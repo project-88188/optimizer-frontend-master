@@ -11,7 +11,6 @@ import { LendingService } from '../lending.service';
 export class ButtBuyBitoptimizerComponent implements OnInit {
 
   form: any = {
-    amount: null,
     totalunits:null,
     unitprice:null
   };
@@ -35,18 +34,12 @@ export class ButtBuyBitoptimizerComponent implements OnInit {
     if(!this.form.unitprice)
     return;
   
-    this.form.amount=this.form.totalunits*this.form.unitprice;
-
     const data:any = {
       contentid:this.currentUserContent.id,
       username:this.currentUserContent.username,
-     // amount: this.form.amount,
+
       totalunits:this.form.totalunits,
-    //  remainunits:this.form.totalunits,
       unitprice:this.form.unitprice,
-     // matchunits:0,
-     // published:false,
-      //fees:0,
     }
 
     this.lendingService.buy_bitoptimizer(data);
