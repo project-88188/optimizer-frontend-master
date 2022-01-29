@@ -5,7 +5,7 @@
 <mat-card>
 
 <mat-card-title>
- <b class="text-center" >SELL BIT_OPTIMIZER</b>
+ <b class="text-center" >BUY BIT_OPTIMIZER</b>
 </mat-card-title>
 
  <mat-card-content>
@@ -41,14 +41,14 @@
        </button>
      </div>
      <div *ngIf="submitted && successed"  class="form-group">
-         <p class="text-center">Sell bitoptimizer completed</p>
+         <p class="text-center">Buy bitoptimizer completed</p>
      </div>
    </form>
 
    <div *ngIf="submitted">
      <mat-spinner class="loader"></mat-spinner>
      <div class="p-2">
-       <p>Sell bitoptimizer {{form.totalunits}} units for {{currentUserContent.username}} amount ${{form.unitprice*form.totalunits}}.</p>
+       <p>Buy bitoptimizer {{form.totalunits}} units for {{currentUserContent.username}} amount ${{form.unitprice*form.totalunits}}.</p>
      </div>
    </div>
 
