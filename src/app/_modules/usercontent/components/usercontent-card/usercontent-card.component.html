@@ -5,7 +5,7 @@
 
         <mat-card class="col-sm">
           <mat-card-title>
-            <div class="text-center">Status</div>
+            <div class="text-center">status</div>
           </mat-card-title>
           <mat-card-content>
               <div *ngIf="currentUserContent">
@@ -66,7 +66,7 @@
       
         <mat-card class="col-sm">
           <mat-card-title>
-            <div class="text-center">Asset</div>
+            <div class="text-center">cash</div>
           </mat-card-title>
           <mat-card-content>
               <div *ngIf="currentUserContent">
@@ -81,17 +81,7 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th class="text-end">deb unit:</th>
-                      <th class="text-begin ">{{currentUserContent.bitoptimizer - currentUserContent.bitoptimizeronmarket}}</th>
-                      <th></th>
-                    </tr>
-                    <tr>
-                      <th class="text-end">inv unit:</th>
-                      <th class="text-begin">{{currentUserContent.investment - currentUserContent.investmentonmarket}}</th>
-                      <th></th>
-                    </tr>
-                    <tr>
-                      <th class="text-end">fund:</th>
+                      <th class="text-end">total:</th>
                       <th class="text-begin">${{ currentUserContent.cashbalance }}</th>
                       <th></th>
                     </tr>
@@ -109,6 +99,89 @@
               </div>
           </mat-card-content>
         </mat-card>
+
+        <mat-card class="col-sm">
+          <mat-card-title>
+            <div class="text-center">invest-unit</div>
+          </mat-card-title>
+          <mat-card-content>
+              <div *ngIf="currentUserContent">
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-end">total:</th>
+                      <th class="text-begin">{{currentUserContent.investment  }}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-end">onmarket:</th>
+                      <th class="text-begin">${{ currentUserContent.investmentonmarket }}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-end">accure:</th>
+                      <th class="text-begin"> ${{ currentUserContent.investmentaccrue }}</th>
+                      <th></th>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div *ngIf="!currentUserContent">
+                <mat-spinner></mat-spinner>
+              </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="col-sm">
+          <mat-card-title>
+            <div class="text-center">debt-unit</div>
+          </mat-card-title>
+          <mat-card-content>
+              <div *ngIf="currentUserContent">
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="text-end">total:</th>
+                      <th class="text-begin ">{{currentUserContent.bitoptimizer}}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-end">onmarket:</th>
+                      <th class="text-begin ">{{ currentUserContent.bitoptimizeronmarket}}</th>
+                      <th></th>
+                    </tr>
+                    <tr>
+                      <th class="text-end">acure:</th>
+                      <th class="text-begin ">{{currentUserContent.bitoptimizeraccrue}}</th>
+                      <th></th>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </div>
+              <div *ngIf="!currentUserContent">
+                <mat-spinner></mat-spinner>
+              </div>
+          </mat-card-content>
+        </mat-card>
+
 
         <mat-card class="col-sm">
           <mat-card-title>
