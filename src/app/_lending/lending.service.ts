@@ -38,7 +38,6 @@ export class LendingService {
         this.setmarket_bitoptimizer(data).subscribe(()=>{console.log("setmarket")});
         setTimeout(()=>{
           this.elementsService.RefreshUserContent();
-        
         },2000);
       });
   }

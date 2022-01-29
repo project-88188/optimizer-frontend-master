@@ -38,13 +38,13 @@ export class ButtSellInvestmentComponent implements OnInit {
     const data:any = {
       contentid:this.currentUserContent.id,
       username:this.currentUserContent.username,
-      amount: this.form.amount,
+    //  amount: this.form.amount,
       totalunits:this.form.totalunits,
-      remainunits:this.form.totalunits,
+    //  remainunits:this.form.totalunits,
       unitprice:this.form.unitprice,
-      matchunits:0,
-      published:false,
-      fees:0,
+     // matchunits:0,
+     // published:false,
+     // fees:0,
     }
   
        this.investingService.sell_investment(data);
@@ -54,7 +54,7 @@ export class ButtSellInvestmentComponent implements OnInit {
       setTimeout(() => {
         this.submitted=false;
         this.successed=true;
-      //  this.reloadPage();
+        this.reloadPage();
       }, 2000);
 
   }
